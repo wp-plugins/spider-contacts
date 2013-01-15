@@ -390,7 +390,7 @@ if($img!=='******0' || $img!=='')
 	$img=$image_with_atach_id[0];
 	
 	
-$small_images_str.='<a href="'.$img.'" target="_blank"><img style="width:50px; height:50px" src="'.$attach_url.'" vspace="5" hspace="5" onMouseOver="cont_change_picture(\''.$attach_url_medium.'\',this,'.$params->large_picture_width.','.$params->large_picture_height.');" /></a>
+$small_images_str.='<a href="'.$img.'" target="_blank"><img style="max-width:50px; max-height:50px" src="'.$attach_url.'" vspace="5" hspace="5" onMouseOver="cont_change_picture(\''.$attach_url_medium.'\',this,'.$params->large_picture_width.','.$params->large_picture_height.');" /></a>
 ';
 $small_images_count++;
 }
@@ -1115,7 +1115,7 @@ if(!strpos(get_permalink(),'?'))
 		 if (!($row->image_url != "" and $row->image_url != ";"))
       {
         $imgurl[0] =plugins_url('images/noimage.jpg',__FILE__);
-		  echo   '<div style="margin:5px;"><a href="'.$link.'" target="_self"><img style="width:' . $params->get('table_small_picture_width') . 'px ;height:' . $params->get('table_small_picture_height') . 'px "   src="'.$imgurl[0].'" /></a></div>';
+		  echo   '<div style="margin:5px;"><a href="'.$link.'" target="_self"><img style="max-width:' . $params->get('table_small_picture_width') . 'px ; max-height:' . $params->get('table_small_picture_height') . 'px "   src="'.$imgurl[0].'" /></a></div>';
         
 	  }
 	  
@@ -1132,7 +1132,7 @@ if(!strpos(get_permalink(),'?'))
 	}
 	$img=$image_with_atach_id[0]; 
    
-			echo '<div style="margin:5px;"><a href="'.$link.'" target="_self"><img style="width:' . $params->get('table_small_picture_width') . 'px ;height:' . $params->get('table_small_picture_height') . 'px "   src="'.$attach_url.'" /></a></div>';
+			echo '<div style="margin:5px;"><a href="'.$link.'" target="_self"><img style="max-width:' . $params->get('table_small_picture_width') . 'px ; max-height:' . $params->get('table_small_picture_height') . 'px "   src="'.$attach_url.'" /></a></div>';
 }
 				echo '</td>';
 				
@@ -1574,7 +1574,7 @@ foreach ($rows as $row)
       {
         $imgurl[0] =plugins_url('images/noimage.jpg',__FILE__);
         
-  echo '<td style="padding:10px;"><img style="width:' . $params->get('cube_small_picture_width') . 'px;height:' . $params->get('cube_small_picture_height') . 'px" src="' .$imgurl[0]. '" />
+  echo '<td style="padding:10px;"><img style="max-width:' . $params->get('cube_small_picture_width') . 'px; max-height:' . $params->get('cube_small_picture_height') . 'px" src="' .$imgurl[0]. '" />
 
 </td>';
       }
@@ -1591,7 +1591,7 @@ foreach ($rows as $row)
 	$attach_url=$image_with_atach_id[0];
 	}
 	$img=$image_with_atach_id[0];
-        echo '<td style="padding:10px;"><a href="' . $img . '" target="_blank"><img style="width:' . $params->get('cube_small_picture_width') . 'px;height:' . $params->get('cube_small_picture_height') . 'px" src="'. $attach_url . '" /></a></td>';
+        echo '<td style="padding:10px;"><a href="' . $img . '" target="_blank"><img style="max-width:' . $params->get('cube_small_picture_width') . 'px;max-height:' . $params->get('cube_small_picture_height') . 'px" src="'. $attach_url . '" /></a></td>';
           
 	  
   
@@ -1861,9 +1861,9 @@ input.spidercontactinput
 -webkit-border-radius: 8px;
 -moz-border-radius: 8px;
 border-radius: 8px;
-padding-bottom: 8px !important;
+padding-bottom: 5px !important;
 padding-left: 5px !important;
-padding-top: 8px !important;
+padding-top: 5px !important;
 padding-right:5px !important;
 margin-left:5px !important;
 line-height:1 !important;
@@ -2093,7 +2093,7 @@ if (($params->get("choose_category") and !($idddd > 0)) or $params->get("name_se
 if ($params->get("choose_category") and !($idddd > 0))
 {
 	
-	echo __('Choose Category','sp_contact') . '&nbsp;
+	echo '<span style="font-size:14px !important">'.__('Choose Category','sp_contact') . '</span>&nbsp;
 	<select id="cat_id" name="cat_id" class="spidercontactinput" size="1" onChange="document.cat_form.submit();">
 		<option value="0">' . __('All','sp_contact') . '</option> ';
     
@@ -2117,8 +2117,8 @@ if(isset($_POST['name_search']))
 $name_search = $_POST['name_search'];	
 	
 
-echo '<br />
-' . __('Search by name','sp_contact') . '&nbsp;
+echo '<br /><span style="font-size:14px !important">
+' . __('Search by name','sp_contact') . '</span>&nbsp;
 <input type="text" id="name_search" name="name_search" class="spidercontactinput" value="'.$name_search.'"> 
 	<input type="submit" value="'. __('Search','sp_contact') .'" class="spidercontactbutton" style="background-color:'.$params->get( 'full_button_background_color' ).'; color:'.$params->get( 'full_button_color' ).'; width:inherit;"><input type="button" value="'. __('Reset','sp_contact') .'" onClick="cat_form_reset(this.form);" class="spidercontactbutton" style="background-color:'.$params->get( 'full_button_background_color' ).'; color:'.$params->get( 'full_button_color' ).'; width:inherit;">';
 }
@@ -2170,7 +2170,7 @@ foreach ($rows as $row)
       {
         $imgurl[0] = plugins_url('images/noimage.jpg',__FILE__);
         
-  echo '<td style="padding:10px;"><img style="width:' . $params->get('small_picture_width') . 'px;height:' . $params->get('small_picture_height') . 'px" src="' . $imgurl[0] . '" />
+  echo '<td style="padding:10px;"><img style="max-width:' . $params->get('small_picture_width') . 'px;max-height:' . $params->get('small_picture_height') . 'px" src="' . $imgurl[0] . '" />
 
 </td>';
       }
@@ -2186,7 +2186,7 @@ foreach ($rows as $row)
 	$attach_url=$image_with_atach_id[0];
 	}
 	$img=$image_with_atach_id[0];
-        echo '<td style="padding:10px;"><a href="' .$img . '" target="_blank"><img style="width:' . $params->get('small_picture_width') . 'px;height:' . $params->get('small_picture_height') . 'px" src="' .$attach_url . '" /></a></td>';
+        echo '<td style="padding:10px;"><a href="' .$img . '" target="_blank"><img style="max-width:' . $params->get('small_picture_width') . 'px;max-height:' . $params->get('small_picture_height') . 'px" src="' .$attach_url . '" /></a></td>';
           
 	  
   
