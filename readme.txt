@@ -136,8 +136,168 @@ Vietnamese (vi)
 3.10 Order. Choose the order of the contact.	
 3.11 Published. Choose whether to publish the contact or not.	
 
+== Step 4: The Spider Contacts’ Messages ==        
+    
+= Viewing/Editing messages. =    
 
+In this section you can view all the submitted messages of the Spider Contacts.	
+4.1 On the left menu select Spider Contacts>Message	
+4.2 Select a category for the message of the Spider Contacts.	
+4.3 Select a contact for the message of the Spider Contacts.	
+4.4 Each message of the Spider contacts in the list has the following parameters: Message title, Sender name, Phone, Sender, Contact Preferences with Sender, Category, and Date.	 
+4.5 It is possible to filter the messages of the contacts by the date and name parameters.	
 
+== Step 5: Options of the WordPress Contacts. ==        
+    
+= 5.1 Global options of the Spider Contacts =  
+
+5.1.1 Enable/Disable Search Contact on Front-end by Category. Here you can enable or disable searching contacts by category on front-end.	
+5.1.2 Enable/Disable Search Contact on Front-end by Name. Here you can enable or disable searching contacts by category on front-end.	
+
+= 5.2 Styles and Colors of the Spider Contacts =
+
+5.2 Full View Options of the Spider Contacts.	
+5.2.1 Background Color. Choose a background color for the Spider Contacts full view.	
+5.2.2 The First Background Color of Parameters. Choose the first background color of the Spider Contacts Parameters section.	
+5.2.3 Enable/Disable Rounded Corners (Does not work in IE8 or earlier). Choose whether to make the corners round or not.	
+5.2.4 The Second Background Color of Parameters. Choose the second background color of the Parameters section.	
+5.2.5 The Width of Parameters Box. Define the width of the contacts  parameters selection box.	
+5.2.6 Border Style. Choose the style of the border (solid, double, dashed, dotted, etc).	
+5.2.7 Border Width. Define the width of the border for the Spider Contacts full view.	
+5.2.8 The Color of Border. Choose the color of the border for the Spider Contacts full view.	
+5.2.9 The Color of Text. Choose the color of the text for the Spider Contacts full view.	
+5.2.10 Text Color of Parameter Values. Choose the color of the parameter values for the Spider Contacts full view.	
+5.2.11 Hyperlink Color. Choose the color of hyperlink for the Spider Contacts full view.	
+5.5.12The color of full name. Choose the color of the full name section for the Spider Contacts full view.	
+5.2.13 The Background Color of Full Name. Choose the background color of the full name section for the Spider Contacts full view.	
+5.2.14 The Background Color of Buttons. Choose the background color of the Spider Contacts buttons.	
+5.2.15 The Text Color of Buttons. Choose the text color of  the Spider Contacts buttons.
+ 
+= 5.2 Main Page Options of the Spider Contacts =	
+
+5.2.16 Count of Contacts in the Row. Define the number of contacts in the row.	
+5.2.17 Count of Rows in the Page. Define the number of rows in a page.	
+5.2.18 Contact Cell Width. Define the width of the contact cell.	
+5.2.19 Contact Cell Height. Define the height of the contact cell.	
+5.2.20 Picture Width. Define the width of the image on the Spider Contacts.	
+5.2.21 Picture Height. Define the height of the image on the Spider Contacts.	
+5.2.22 Text Size. Define the font size of the text.	
+5.2.22 Full Name Size. Define the font size of the full name.
+
+= 5.3 Contact Page Options of the Spider Contacts =	 
+
+5.3.1 The background Color of Contact. Choose the background color of the contact box.	
+5.3.2 Border Color. Choose the color of the border.	
+5.3.3 Border Style. Choose the style of the border.	
+5.3.4 Parameters Border Width. Define the border width of the parameters cell.	
+5.3.5 The First Background Color of Parameters. Choose the first background color of the parameters cell.	
+5.3.6 The Second Background Color of Parameters. Choose the second background color of the parameters cell.	
+5.3.7 The Text Color of Parameters Value. Choose the text color of the parameters values.	
+5.3.8 Text Color. Choose the text color.	
+5.3.9 The Text Color of the Description. Choose the color of the description text.	
+5.3.10 The Background Color of the Full Name. Choose the background color of the full name section.	
+5.3.11The text color of the full name. Choose the text color of full name.	
+5.3.12 The Background Color of Buttons. Choose the background color of buttons.	
+5.3.13 The Text Color of Buttons. Choose the text color of buttons.	
+5.3.14 The Background Color of the Message Box. Choose the background color of the message box. 	
+5.3.15 Picture Width. Define the width of the image.	
+5.3.16 Picture Height. Define the height of the image.	
+5.3.17 Small Pictures Height. Define the height of the small pictures.	
+5.3.18 Text Size. Define the font size of the text.	
+5.3.19 Full Name Text Size. Define the font size of the full name.	
+5.3.20 Enable/Disable Rounded Corners. Choose whether to make the corners round or not.
+
+= 5.4 Table View Options of the Spider Contacts =	
+
+5.4.1 Background Color of Table. Choose the background color of the table for the Spider Contacts table view.	
+5.4.2 The First Background Color of Parameters. . Choose the first background color of the Parameters section.	
+5.4.3 The Second Background Color of Parameters. Choose the second background color of the Parameters section.	
+5.4.4 Parameters Box Width. Define the width of the parameters selection box for the Spider Contacts table view.	
+5.4.5 Main Table Width. Define the width of the main table for the Spider Contacts table view.	
+5.4.6 Border Style. Choose the style of the border for the Spider Contacts table view.	
+5.4.7 Enable/Disable Rounded Corners (Does not work in IE8 or earlier). Choose whether to make the corners round or not for the Spider Contacts table view.	
+5.4.8 Border Width. Define the width of the border for the Spider Contacts table view.	
+5.4.9 Border Color. Choose the color of the border for the Spider Contacts table view.	
+5.4.10 Text Color. Choose the color of the text for the Spider Contacts table view.	
+5.4.11 The First Text Color of Parameter Values. Choose the first color of the parameter values for the Spider Contacts table view.	
+5.4.12 The Second Text Color of Parameter Values. Choose the second color of the parameter values for the Spider Contacts table view.	
+5.4.13 The Text Color of the Title Row. Choose the text color of the title line.	
+5.4.14 The Background Color of the Title Row. Choose the background color of the title section for the Spider Contacts table view.	
+5.4.15 Background of the Table Row on Hover.  Choose whether to change the background of the table row on hover or not.
+5.4.16 Background Color on Hover. Choose the background color on hover for the Spider Contacts table view.	
+5.4.17 Text Color on Hover. Choose the text color on hover for the Spider Contacts table view.	
+5.4.18 The Background Color of Buttons. Choose the background color of buttons for the Spider Contacts table view.	
+5.4.19 The Text Color of Buttons. Choose the text color of buttons for the Spider Contacts table view.	
+
+= 5.4 Main Page Options of the Spider Contacts =	
+
+5.4.20 Count of Rows in the Table. Choose the count of the rows in the table for the Spider Contacts main page.	
+5.4.21 Text Size. Define the size of the text for the Spider Contacts main page.	
+5.4.22 Full Name Text Size. Define the font size of the full name for the Spider Contacts main page.	
+5.4.23 Picture Width. Define the width of the picture for the Spider Contacts main page.	
+5.4.24 Picture Height. Define the height of the picture for the Spider Contacts main page.	
+
+= 5.5 Short View Options of the Spider Contacts =	
+
+5.5.1 Background Color. Choose a background color for the Spider Contacts short view.	
+5.5.2 Enable/Disable Rounded Corners (Does not work in IE8 or earlier). Choose whether to make the corners round or not for the Spider Contacts short view.	
+5.5.3 Border Style. Choose the style of the border (groove, dashed, solid, etc.) for the Spider Contacts short view.	
+5.5.4 Border Width. Define the width of the border for the Spider Contacts short view.	
+5.5.5 Border Color. Choose the color of the border for the Spider Contacts short view.	
+5.5.6 Text Color. Choose the color of the text for the Spider Contacts short view.	
+5.5.7 Hyperlink Color. Choose the color of hyperlink for the Spider Contacts short view.	
+5.5.8 Full Name Text Color. Choose the text color of the full name for the Spider Contacts short view.	
+5.5.9 Background Color of the Full Name. Choose the background color of the full name section for the Spider Contacts short view.	
+5.5.10 Background Color of Buttons. Choose the background color of buttons for the Spider Contacts short view.	
+5.5.11 Text Color of Buttons. Choose the text color of buttons for the Spider Contacts short view.	
+
+= 5.5 Main Page Options of the Spider Contacts =	
+
+5.5.12 Counts of Contacts in the Row. Define the number of contacts in the row for the Spider Contacts main page.	
+5.5.13 Count of Rows in the Page. Define the number of rows in a page for the Spider Contacts main page.	
+5.5.14 Contact Cell Width. Define the width of the contact cell for the Spider Contacts main page.	
+5.5.15 Contact Cell Height. Define the height of the contact cell for the Spider Contacts main page.	
+5.5.16 Picture Width. Define the width of the image for the Spider Contacts main page.	
+5.5.17 Picture Height. Define the height of the image for the Spider Contacts main page.	
+5.5.18 Text Size. Define the font size of the text for the Spider Contacts main page.	
+5.5.19 Full Name Text Size. Define the font size of the full name for the Spider Contacts main page.	
+
+= 5.6 Message Options of the Spider Contacts =	
+
+5.6.1 Enable/Disable Opportunity to Send a Message. Choose whether to enable the message sending option or not for the Spider Contacts messages.	
+5.6.2 Enable/Disable 'Email' Field. Choose whether to have an ‘Email’ field or not for the Spider Contacts messages.	
+5.6.3 Enable/Disable 'Name' Field. Choose whether to have a ‘Name’ field or not for the Spider Contacts messages.	
+5.6.4 Enable/Disable 'Phone' Field. Choose whether to have a ‘Phone’ field or not for the Spider Contacts messages.	
+5.6.5 Enable/Disable 'Contact Preferences' Field. Choose whether to have a ‘Contact Preferences’ field or not for the Spider Contacts messages.
+       	   
+= 5.6 Message Options of the Spider Contacts = 	
+
+5.6.1 Enable/Disable Opportunity to Send a Message. Choose whether to enable the message sending option or not for the Spider Contacts messages.	
+5.6.2 Enable/Disable 'Email' Field. Choose whether to have an ‘Email’ field or not for the Spider Contacts messages. 	
+5.6.3 Enable/Disable 'Name' Field. Choose whether to have a ‘Name’ field or not for the Spider Contacts messages.	
+5.6.4 Enable/Disable 'Phone' Field. Choose whether to have a ‘Phone’ field or not for the Spider Contacts messages.	
+5.6.5 Enable/Disable 'Contact Preferences' Field. Choose whether to have a ‘Contact Preferences’ field or not for the Spider Contacts messages.
+
+== Step 6: Publishing the Created WordPress Contacts. ==        
+    
+= To insert a contact into a Page or a Post. =	
+
+6.1 Press the button named Insert Spider Contacts in a post or a page you want to show the contact.	
+6.2 Single Contact 	
+6.2.1 Select Contact. Select a contact from the given list.	
+6.3 Contacts List Category 	
+6.3.1 Select Category. Select a category from the given list.	
+6.3.2 Contacts display type. Choose whether to display the contacts in a short view, table view or Full view 
+
+If there is any problem with editor, you can add the short code manually to the pages or posts.			
+Single Contact		
+Add the short code [Spider_contact_single id="my id"] to the pages or posts and change the following point.	
+*	ID. Add the ID (Spider Contacts>Contact >ID) of the single contact to the appropriate place("my id") in the shortcode.	
+Contacts List Category	
+Add  the short code  [Spider_contact_categories id="Contact ID" type=""] to the pages or posts and change the following points.	
+*	ID. Add the ID (Spider Contacts>Contacts >ID) of the category which you want to show to the appropriate place("my id") in the shortcode. If the value of the ID is "All_CAT", the all categories will be shown.	
+*	Type. If the value of the type is 0, the contacts list category will be shown in short view. If the value of the type is 1, the contacts list  category  will be shown in a table view. If the value of the type is 2, the contacts list category will be shown in a Full view.	
+  
 == Screenshots ==
 1.  WordPress Contacts  - Send a message  
 2.  WordPress Contacts  - Contacts 
