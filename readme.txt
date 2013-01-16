@@ -89,9 +89,10 @@ Turkish (tr_TR)
 Ukrainian (uk_UA)  
 Vietnamese (vi)
 
-== Screenshots ==
-1.  WordPress Contacts  - Send a message  
-2.  WordPress Contacts  - Contacts 
-3.  WordPress Contacts  - Global options  
-4.  WordPress Contacts  - Message options  
-5.  WordPress Contacts  - Styles and colors  
+== Screenshots ==  
+1.  WordPress Contacts - Send a message  
+2.  WordPress Contacts - Contacts 
+3.  WordPress Contacts - Global options  
+4.  WordPress Contacts - Message options  
+5.  WordPress Contacts - Styles and colors  
+
