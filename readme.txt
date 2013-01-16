@@ -14,7 +14,7 @@ Spider Contacts helps you to display information about the group of people more 
   
 ###Spider WordPress Contacts
   
-Spider Contacts is a WordPress plugin with large and affecting capabilities which helps you to display information about the group of people more intelligible, effective and convenient.  Spider Contacts’ main feature is the possibility to create and manage your own list of different contacts with corresponding images, data and with a feedback option. If there is any necessityto introduce your staff, Spider Contacts is the best tool which suits your needs. Spider Contacts can help you to create a list of your staff members, placing them into different categories and groups. Moreover, the plugin is highly configurable and has numerous customizable parameters that let you display your contacts list the way you want.
+Spider Contacts is a WordPress plugin with large and affecting capabilities which helps you to display information about the group of people more intelligible, effective and convenient.  Spider Contacts main feature is the possibility to create and manage your own list of different contacts with corresponding images, data and with a feedback option. If there is any necessityto introduce your staff, Spider Contacts is the best tool which suits your needs. Spider Contacts can help you to create a list of your staff members, placing them into different categories and groups. Moreover, the plugin is highly configurable and has numerous customizable parameters that let you display your contacts list the way you want.
 
 ###If you want to have possibility to edit the style and global optionsm you can buy the commercial version [here.](http://web-dorado.com/products/wordpress-contacts-plugin.html)    
   
@@ -22,7 +22,7 @@ Spider Contacts is a WordPress plugin with large and affecting capabilities whic
   
 ###Features of Spider  [Wordpress Contacts](http://web-dorado.com/products/wordpress-contacts-plugin.html)  
   
-Spider Contacts has the following features, allowing you to create contacts list based on each contact’s characteristics:
+Spider Contacts has the following features, allowing you to create contacts list based on each contacts characteristics:
 *	WordPress 3.0+
 *	The contacts can be arranged by categories
 *	Each contact (e.g. staff member) can have his/her own signature.
@@ -88,3 +88,10 @@ Thai (th)
 Turkish (tr_TR)  
 Ukrainian (uk_UA)  
 Vietnamese (vi)
+
+== Screenshots ==
+1.  WordPress Contacts  - Send a message  
+2.  WordPress Contacts  - Contacts 
+3.  WordPress Contacts  - Global options  
+4.  WordPress Contacts  - Message options  
+5.  WordPress Contacts  - Styles and colors  
