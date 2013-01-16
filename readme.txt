@@ -112,20 +112,31 @@ Vietnamese (vi)
 = Creating/Editing categories. =    
     
 2.1 On the left menu select Spider Contacts >Categories
-
-2.2 From Spider Contacts Manager choose “Categories”
-
-2.3 In the upper right corner click on the “Add a category” button.
-
+2.2 From Spider Contacts Manager choose "Categories"
+2.3 In the upper right corner click on the "Add a category" button.
 2.4 Name. Add a name for the category for the Spider Contacts. 
 2.5 Description. Add a description for the category for the Spider Contacts.
-
 2.6 Parameters. Here you can define different parameters for the category. You can add as many parameters as you wish. After filling in the current parameter title, press “Enter” to proceed to the next parameter.
-
 2.7 Order. Choose the order of the category for the Spider Contacts.
-
 2.8 Published. Choose whether to publish the category or not.
   
+== Step 3: Creating Contacts for the WordPress Contacts ==        
+    
+= Creating/Editing contacts. =    
+    
+3.1 On the left menu select  Spider Contacts>Contacts
+3.2 In the upper right corner click on the "Add a Contact" button.
+3.3 First Name. Add the first name of the contact.
+3.4 Last Name. Add the last name of the contact.
+3.5 Email. Add the Email.
+3.6 Send Email when Message Sent. Choose whether the submitted messages are redirected to the contacts e-mail or not.
+3.7 Category. Choose a category from the existing list of categories.
+3.8 Images. You can add an unlimited number of images to the contact.
+3.9 Description. Add a description for the contact.
+3.10 Order. Choose the order of the contact.
+3.11 Published. Choose whether to publish the contact or not.
+
+
 
 == Screenshots ==
 1.  WordPress Contacts  - Send a message  
