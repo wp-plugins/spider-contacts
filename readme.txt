@@ -89,10 +89,28 @@ Turkish (tr_TR)
 Ukrainian (uk_UA)  
 Vietnamese (vi)
 
-== Screenshots ==  
-1.  WordPress Contacts - Send a message  
-2.  WordPress Contacts - Contacts 
-3.  WordPress Contacts - Global options  
-4.  WordPress Contacts - Message options  
-5.  WordPress Contacts - Styles and colors  
 
+== Spider WordPress Contacts ==    
+= Step by step guide for the Installing the WordPress Contacts = 
+1.1 Minimum requirements for installing Spider Contacts
+
+*	Wordpress 3.0+
+*	PHP 5.x
+*	MySQL 5.x
+
+1.2 Perform a new installation for the Spider Contacts
+
+1.	Log in to the administrator panel for installing the Spider Contacts
+2.	Go to Plugins Add > New > Upload.
+3.	Click “Choose file” (“Browse”) and select the Spider Contacts zip file.
+4.	Click “Install Now” button.
+5.	If the installation of the contacts succeeded you will see the message in the picture. If any problem occurs during the installation of the contacts, please contact us info@web-dorado.com.
+6.	Click “Activate Plugin” button for activating Spider Contacts plugin.
+
+
+== Screenshots ==
+1.  WordPress Contacts  - Send a message  
+2.  WordPress Contacts  - Contacts 
+3.  WordPress Contacts  - Global options  
+4.  WordPress Contacts  - Message options  
+5.  WordPress Contacts  - Styles and colors 
