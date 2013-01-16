@@ -102,11 +102,30 @@ Vietnamese (vi)
 
 1.	Log in to the administrator panel for installing the Spider Contacts
 2.	Go to Plugins Add > New > Upload.
-3.	Click “Choose file” (“Browse”) and select the Spider Contacts zip file.
-4.	Click “Install Now” button.
+3.	Click "Choose file" ("Browse") and select the Spider Contacts zip file.
+4.	Click "Install Now" button.
 5.	If the installation of the contacts succeeded you will see the message in the picture. If any problem occurs during the installation of the contacts, please contact us info@web-dorado.com.
-6.	Click “Activate Plugin” button for activating Spider Contacts plugin.
+6.	Click "Activate Plugin" button for activating Spider Contacts plugin.
 
+== Step 2: Creating categories for the WordPress Contacts  ==        
+    
+= Creating/Editing categories. =    
+    
+2.1 On the left menu select Spider Contacts >Categories
+
+2.2 From Spider Contacts Manager choose “Categories”
+
+2.3 In the upper right corner click on the “Add a category” button.
+
+2.4 Name. Add a name for the category for the Spider Contacts. 
+2.5 Description. Add a description for the category for the Spider Contacts.
+
+2.6 Parameters. Here you can define different parameters for the category. You can add as many parameters as you wish. After filling in the current parameter title, press “Enter” to proceed to the next parameter.
+
+2.7 Order. Choose the order of the category for the Spider Contacts.
+
+2.8 Published. Choose whether to publish the category or not.
+  
 
 == Screenshots ==
 1.  WordPress Contacts  - Send a message  
