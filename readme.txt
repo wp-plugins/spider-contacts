@@ -282,7 +282,7 @@ In this section you can view all the submitted messages of the Spider Contacts.
     
 = To insert a contact into a Page or a Post. =	
 
-6.1 Press the button named Insert Spider Contacts in a post or a page you want to show the contact.	
+6.1 Press the button named Insert Spider Contacts in a post or a page you want to show the contact.		
 6.2 Single Contact 	
 6.2.1 Select Contact. Select a contact from the given list.			
 6.3 Contacts List Category 	
