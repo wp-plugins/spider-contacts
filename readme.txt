@@ -290,7 +290,7 @@ In this section you can view all the submitted messages of the Spider Contacts.
 6.3.2 Contacts display type. Choose whether to display the contacts in a short view, table view or Full view 
 
 If there is any problem with editor, you can add the short code manually to the pages or posts.			
-Single Contact		
+Single Contact	view	
 Add the short code [Spider_contact_single id="my id"] to the pages or posts and change the following point.	
 *	ID. Add the ID (Spider Contacts>Contact >ID) of the single contact to the appropriate place("my id") in the shortcode.	
 Contacts List Category	
