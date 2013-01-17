@@ -111,9 +111,9 @@ Vietnamese (vi)
     
 = Creating/Editing categories. =    
     
-2.1 On the left menu select Spider Contacts >Categories	
+2.1 On the left menu select Spider Contacts >Categories		
 2.2 From Spider Contacts Manager choose "Categories"	
-2.3 In the upper right corner click on the "Add a category" button.	
+2.3 In the upper right corner click on the "Add a category" button.		
 2.4 Name. Add a name for the category for the Spider Contacts. 	
 2.5 Description. Add a description for the category for the Spider Contacts.	
 2.6 Parameters. Here you can define different parameters for the category. You can add as many parameters as you wish. After filling in the current parameter title, press "Enter" to proceed to the next parameter.	
@@ -141,7 +141,7 @@ Vietnamese (vi)
 = Viewing/Editing messages. =    
 
 In this section you can view all the submitted messages of the Spider Contacts.		
-4.1 On the left menu select Spider Contacts>Message	
+4.1 On the left menu select Spider Contacts>Message		
 4.2 Select a category for the message of the Spider Contacts.	
 4.3 Select a contact for the message of the Spider Contacts.	
 4.4 Each message of the Spider contacts in the list has the following parameters: Message title, Sender name, Phone, Sender, Contact Preferences with Sender, Category, and Date.	 
@@ -170,7 +170,7 @@ In this section you can view all the submitted messages of the Spider Contacts.
 5.2.11 Hyperlink Color. Choose the color of hyperlink for the Spider Contacts full view.	
 5.5.12The color of full name. Choose the color of the full name section for the Spider Contacts full view.	
 5.2.13 The Background Color of Full Name. Choose the background color of the full name section for the Spider Contacts full view.	
-5.2.14 The Background Color of Buttons. Choose the background color of the Spider Contacts buttons.	
+5.2.14 The Background Color of Buttons. Choose the background color of the Spider Contacts buttons.		
 5.2.15 The Text Color of Buttons. Choose the text color of  the Spider Contacts buttons.
  
 = 5.2 Main Page Options of the Spider Contacts =	
@@ -179,7 +179,7 @@ In this section you can view all the submitted messages of the Spider Contacts.
 5.2.17 Count of Rows in the Page. Define the number of rows in a page.	
 5.2.18 Contact Cell Width. Define the width of the contact cell.	
 5.2.19 Contact Cell Height. Define the height of the contact cell.	
-5.2.20 Picture Width. Define the width of the image on the Spider Contacts.	
+5.2.20 Picture Width. Define the width of the image on the Spider Contacts.		
 5.2.21 Picture Height. Define the height of the image on the Spider Contacts.		
 5.2.22 Text Size. Define the font size of the text.		
 5.2.23 Full Name Size. Define the font size of the full name.	
@@ -187,23 +187,23 @@ In this section you can view all the submitted messages of the Spider Contacts.
 = 5.3 Contact Page Options of the Spider Contacts =	 
 
 5.3.1 The background Color of Contact. Choose the background color of the contact box.	
-5.3.2 Border Color. Choose the color of the border.	
-5.3.3 Border Style. Choose the style of the border.	
-5.3.4 Parameters Border Width. Define the border width of the parameters cell.	
-5.3.5 The First Background Color of Parameters. Choose the first background color of the parameters cell.	
+5.3.2 Border Color. Choose the color of the border.		
+5.3.3 Border Style. Choose the style of the border.			
+5.3.4 Parameters Border Width. Define the border width of the parameters cell.		
+5.3.5 The First Background Color of Parameters. Choose the first background color of the parameters cell.		
 5.3.6 The Second Background Color of Parameters. Choose the second background color of the parameters cell.	
 5.3.7 The Text Color of Parameters Value. Choose the text color of the parameters values.	
 5.3.8 Text Color. Choose the text color.	
 5.3.9 The Text Color of the Description. Choose the color of the description text.	
-5.3.10 The Background Color of the Full Name. Choose the background color of the full name section.	
+5.3.10 The Background Color of the Full Name. Choose the background color of the full name section.		
 5.3.11The text color of the full name. Choose the text color of full name.	
-5.3.12 The Background Color of Buttons. Choose the background color of buttons.	
+5.3.12 The Background Color of Buttons. Choose the background color of buttons.		
 5.3.13 The Text Color of Buttons. Choose the text color of buttons.		
 5.3.14 The Background Color of the Message Box. Choose the background color of the message box. 		
 5.3.15 Picture Width. Define the width of the image.	
 5.3.16 Picture Height. Define the height of the image.	
 5.3.17 Small Pictures Height. Define the height of the small pictures.	
-5.3.18 Text Size. Define the font size of the text.	
+5.3.18 Text Size. Define the font size of the text.		
 5.3.19 Full Name Text Size. Define the font size of the full name.			
 5.3.20 Enable/Disable Rounded Corners. Choose whether to make the corners round or not.
 
@@ -215,10 +215,10 @@ In this section you can view all the submitted messages of the Spider Contacts.
 5.4.4 Parameters Box Width. Define the width of the parameters selection box for the Spider Contacts table view.	
 5.4.5 Main Table Width. Define the width of the main table for the Spider Contacts table view.	
 5.4.6 Border Style. Choose the style of the border for the Spider Contacts table view.	
-5.4.7 Enable/Disable Rounded Corners (Does not work in IE8 or earlier). Choose whether to make the corners round or not for the Spider Contacts table view.	
+5.4.7 Enable/Disable Rounded Corners (Does not work in IE8 or earlier). Choose whether to make the corners round or not for the Spider Contacts table view.		
 5.4.8 Border Width. Define the width of the border for the Spider Contacts table view.		
 5.4.9 Border Color. Choose the color of the border for the Spider Contacts table view.	
-5.4.10 Text Color. Choose the color of the text for the Spider Contacts table view.	
+5.4.10 Text Color. Choose the color of the text for the Spider Contacts table view.		
 5.4.11 The First Text Color of Parameter Values. Choose the first color of the parameter values for the Spider Contacts table view.		
 5.4.12 The Second Text Color of Parameter Values. Choose the second color of the parameter values for the Spider Contacts table view.	
 5.4.13 The Text Color of the Title Row. Choose the text color of the title line.	
@@ -267,7 +267,7 @@ In this section you can view all the submitted messages of the Spider Contacts.
 5.6.1 Enable/Disable Opportunity to Send a Message. Choose whether to enable the message sending option or not for the Spider Contacts messages.	
 5.6.2 Enable/Disable "Email" Field. Choose whether to have an "Email" field or not for the Spider Contacts messages.	
 5.6.3 Enable/Disable "Name" Field. Choose whether to have a "Name" field or not for the Spider Contacts messages.	
-5.6.4 Enable/Disable "Phone" Field. Choose whether to have a "Phone" field or not for the Spider Contacts messages.	
+5.6.4 Enable/Disable "Phone" Field. Choose whether to have a "Phone" field or not for the Spider Contacts messages.		
 5.6.5 Enable/Disable "Contact Preferences" Field. Choose whether to have a "Contact Preferences" field or not for the Spider Contacts messages.
        	   
 = 5.6 Message Options of the Spider Contacts = 	
