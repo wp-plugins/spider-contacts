@@ -298,7 +298,7 @@ Add  the short code  [Spider_contact_categories id="Contact ID" type=""] to the 
 *	ID. Add the ID (Spider Contacts>Contacts >ID) of the category which you want to show to the appropriate place("my id") in the shortcode. If the value of the ID is "All_CAT", the all categories will be shown.	
 *	Type. If the value of the type is 0, the contacts list category will be shown in short view. If the value of the type is 1, the contacts list  category  will be shown in a table view. If the value of the type is 2, the contacts list category will be shown in a Full view.	
   
-== Screenshots ==
+== Screenshots ==  
 1. WordPress Contacts - Send a message  
 2. WordPress Contacts - Contacts  
 3. WordPress Contacts - Global options  
