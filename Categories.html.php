@@ -67,8 +67,8 @@ var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.
     <form method="post"  onkeypress="doNothing()" action="admin.php?page=Categories_Spider_contact" id="admin_form" name="admin_form">
 	<table cellspacing="10" width="100%">
                       <tr>   
-<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-contacts-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
-This section allows you to create categories of contacts. <a href="http://web-dorado.com/spider-contacts-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>   
+<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/wordpress-contacts-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
+This section allows you to create categories of contacts. <a href="http://web-dorado.com/wordpress-contacts-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>   
 <td colspan="7" align="right" style="font-size:16px;">
   <a href="http://web-dorado.com/files/fromSpiderContactsWP.php" target="_blank" style="color:red; text-decoration:none;">
 <img src="<?php echo plugins_url("images/header.png",__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderContactsWP.php" width="215"><br>
@@ -216,8 +216,8 @@ function submitbutton(pressbutton)
 <table width="95%">
   <tbody>
                         <tr>   
-<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-contacts-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
-This section allows you to create categories of contacts. <a href="http://web-dorado.com/spider-contacts-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>   
+<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/wordpress-contacts-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
+This section allows you to create categories of contacts. <a href="http://web-dorado.com/wordpress-contacts-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>   
 <td colspan="7" align="right" style="font-size:16px;">
   <a href="http://web-dorado.com/files/fromSpiderContactsWP.php" target="_blank" style="color:red; text-decoration:none;">
 <img src="<?php echo plugins_url("images/header.png",__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderContactsWP.php" width="215"><br>
@@ -419,8 +419,8 @@ function submitbutton(pressbutton)
 <table width="95%">
   <tbody>
                         <tr>   
-<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/spider-contacts-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
-This section allows you to create categories of contacts. <a href="http://web-dorado.com/spider-contacts-wordpress-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>   
+<td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/wordpress-contacts-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
+This section allows you to create categories of contacts. <a href="http://web-dorado.com/wordpress-contacts-guide-step-2.html" target="_blank" style="color:blue; text-decoration:none;">More...</a></td>   
 <td colspan="7" align="right" style="font-size:16px;">
   <a href="http://web-dorado.com/files/fromSpiderContactsWP.php" target="_blank" style="color:red; text-decoration:none;">
 <img src="<?php echo plugins_url("images/header.png",__FILE__) ?>" border="0" alt="http://web-dorado.com/files/fromSpiderContactsWP.php" width="215"><br>
