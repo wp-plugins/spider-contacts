@@ -1,6 +1,6 @@
 === WordPress Contacts ===  
 Contributors: webdorado  
-Donate link: http://web-dorado.com/products/wordpress-contacts-plugin.html 
+Donate link: http://webdorado.org/products/wordpress-contacts-plugin.html 
 Tags: contact, connections, contacts, staff  
 Requires at least: 3.0  
 Tested up to: 3.5 
@@ -16,11 +16,11 @@ Spider Contacts helps you to display information about the group of people more 
   
 Spider Contacts is a WordPress plugin with large and affecting capabilities which helps you to display information about the group of people more intelligible, effective and convenient.  Spider Contacts main feature is the possibility to create and manage your own list of different contacts with corresponding images, data and with a feedback option. If there is any necessityto introduce your staff, Spider Contacts is the best tool which suits your needs. Spider Contacts can help you to create a list of your staff members, placing them into different categories and groups. Moreover, the plugin is highly configurable and has numerous customizable parameters that let you display your contacts list the way you want.
 
-###If you want to have possibility to edit the style and global optionsm you can buy the commercial version [here.](http://web-dorado.com/products/wordpress-contacts-plugin.html)    
+###If you want to have possibility to edit the style and global optionsm you can buy the commercial version [here.](http://webdorado.org/products/wordpress-contacts-plugin.html)    
   
     
   
-###Features of Spider  [Wordpress Contacts](http://web-dorado.com/products/wordpress-contacts-plugin.html)  
+###Features of Spider  [Wordpress Contacts](http://webdorado.org/products/wordpress-contacts-plugin.html)  
   
 Spider Contacts has the following features, allowing you to create contacts list based on each contacts characteristics:
 *	WordPress 3.0+
@@ -104,7 +104,7 @@ Vietnamese (vi)
 2.	Go to Plugins Add > New > Upload.
 3.	Click "Choose file" ("Browse") and select the Spider Contacts zip file.
 4.	Click "Install Now" button.
-5.	If the installation of the contacts succeeded you will see the message in the picture. If any problem occurs during the installation of the contacts, please contact us info@web-dorado.com.
+5.	If the installation of the contacts succeeded you will see the message in the picture. If any problem occurs during the installation of the contacts, please contact us info@webdorado.org.
 6.	Click "Activate Plugin" button for activating Spider Contacts plugin.
 
 == Step 2: Creating categories for the WordPress Contacts  ==        
