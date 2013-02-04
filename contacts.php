@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: Spider Contacts
-Plugin URI: http://webdorado.org/
+Plugin URI: http://web-dorado.com/
 Version: 1.0.2
-Author: http://webdorado.org/
+Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
 
@@ -393,7 +393,7 @@ Purchasing a license will add possibility to customize the styles and colors, gl
 
  </p>
 <br /><br />
-<a href="http://webdorado.org/files/fromSpiderContactsWP.php" class="button-primary" target="_blank">Purchase a License</a>
+<a href="http://web-dorado.com/files/fromSpiderContactsWP.php" class="button-primary" target="_blank">Purchase a License</a>
 <br /><br /><br />
 <p>After the purchasing the commercial version follow this steps:</p>
 <ol>
