@@ -658,7 +658,7 @@ if ($search)
 	$query_count.= " AND concat(first_name,' ', last_name) LIKE %s";
 	$query_count=$wpdb->prepare($query_count,"%".$search."%");
 }
-
+$query .= " ORDER BY `ordering`";
 $query .= " limit ".(($page_num-1)*$cont_in_page).",".$cont_in_page." ";
 
 
@@ -803,6 +803,7 @@ if ($search)
 	$query_count=$wpdb->prepare($query_count,'%'.$search.'%',(($page_num-1)*$cont_in_page),(int)$cont_in_page);
 	}
 else{
+$query .= " ORDER BY `ordering`";
 $query .= " limit %d,%d";
 $query=$wpdb->prepare($query,(($page_num-1)*$cont_in_page),(int)$cont_in_page);
 

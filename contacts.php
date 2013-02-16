@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Contacts
 Plugin URI: http://web-dorado.com/
-Version: 1.0.2
+Version: 1.0.3
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
