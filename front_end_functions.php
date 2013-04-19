@@ -593,18 +593,25 @@ function front_end_cotegory_contact_list($id){
 $idddd=$id;
 $params = new wp_cont_param;
 $cont_in_page=$params->get( 'count_of_rows_in_the_table' );
-$search='';
-if(isset($_POST['name_search']))
-$search = $_POST['name_search'];
+$search ='';
 
-$page_num=1;
-if(isset($_GET['page_num'])){
-	$page_num=$_GET['page_num'];
+
+if(isset($_GET['page_num']))
+		$page_num=$_GET['page_num'];
+		else
+		$page_num=1;
+		
+if(isset($_POST['name_search'])){
+   $search = $_POST['name_search'];
 }
-$cat_id=0;
+
 if(isset($_POST['cat_id'])){
-	$cat_id=$_POST['cat_id'];
-}
+		if($_POST['cat_id']!=0){
+		$cat_id=$_POST['cat_id'];
+		}
+		else{
+		$cat_id=0;}
+		}
 
 
 
@@ -745,15 +752,24 @@ $params = new wp_cont_param;
 
 $cont_in_page=$params->get('cube_count_of_contact_in_the_row' )*$params->get( 'cube_count_of_rows_in_the_page' );
 $search ='';
-if(isset($_POST['name_search']))
-$search = $_POST['name_search'];
 
-$page_num =1;
+
 if(isset($_GET['page_num']))
-$page_num = $_GET['page_num'];
-$cat_id =0;
-if(isset($_POST['cat_id']))
-$cat_id = $_POST['cat_id'];
+		$page_num=$_GET['page_num'];
+		else
+		$page_num=1;
+		
+if(isset($_POST['name_search'])){
+   $search = $_POST['name_search'];
+}
+
+if(isset($_POST['cat_id'])){
+		if($_POST['cat_id']!=0){		
+		$cat_id=$_POST['cat_id'];
+		}
+		else{
+		$cat_id=0;}
+		}
 
 
 
@@ -879,17 +895,26 @@ $params = new wp_cont_param;
 
 $cont_in_page=$params->get('count_of_contact_in_the_row' )*$params->get( 'count_of_rows_in_the_page' );
 
-$page_num=1;
+$search ='';
+
+
 if(isset($_GET['page_num']))
-$page_num=$_GET['page_num'];
-$cat_id=0;
-if(isset($_GET['cat_id']))
-$cat_id=$_GET['cat_id'];
-$search='';
-if(isset($_GET['name_search']))
-$search=$_GET['name_search'];
+		$page_num=$_GET['page_num'];
+		else
+		$page_num=1;
+		
+if(isset($_POST['name_search'])){
+   $search = $_POST['name_search'];
+}
 
-
+if(isset($_POST['cat_id'])){
+		if($_POST['cat_id']!=0){
+		$cat_id=$_POST['cat_id'];
+		}
+		else{
+		
+		$cat_id=0;}
+		}
 
 
 
@@ -934,10 +959,10 @@ if($cat_id!=0)
 if ($search)
 {
 
-	$query.= " AND concat(first_name,' ', last_name) LIKE %s  ORDER BY `ordering` LIMIT %d,%d";
-	$query_count.= " AND concat(first_name,' ', last_name) LIKE %s  ORDER BY `ordering` LIMIT %d,%d";
-	$query_count=$wpdb->prepare($query_count,'%'.$cat_id.'%',(($page_num-1)*$cont_in_page),$cont_in_page);
-	$query=$wpdb->prepare($query,'%'.$cat_id.'%',(($page_num-1)*$cont_in_page),$cont_in_page);
+	$query.= " AND concat(first_name,' ', last_name) LIKE %s limit %d,%d";
+	$query= $wpdb->prepare($query,'%'.$search.'%',(($page_num-1)*$cont_in_page),(int)$cont_in_page);
+	$query_count.= " AND concat(first_name,' ', last_name) LIKE %s limit %d,%d";
+	$query_count=$wpdb->prepare($query_count,'%'.$search.'%',(($page_num-1)*$cont_in_page),(int)$cont_in_page);
 }
 else
 {	

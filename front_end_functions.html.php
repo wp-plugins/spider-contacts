@@ -1035,10 +1035,21 @@ echo '<style>
 
   </style>';
  endif;  
+   if( 'page' == get_option( 'show_on_front' ) && ( '' != get_option( 'page_for_posts' ) ) && is_home() ){
+      $page_link=get_permalink($frontpage_id);
+   }
+	   else if(is_home())
+	   {
+		   $page_link=site_url().'/index.php';
+	   }
+	   else
+	   {
+		   $page_link=get_permalink();
+	   }
  
 if (($params->get("choose_category") and !($idddd > 0)) or $params->get("name_search"))
   {
-    echo '<div id="contactssMainDivs" style="width:'.$params->get("paramstable_parameters_main_table_width").'px !important"><form action="" method="post" name="cat_form" id="cat_form">
+    echo '<div id="contactssMainDivs" style="width:'.$params->get("paramstable_parameters_main_table_width").'px !important"><form action="'. $page_link.'" method="post" name="cat_form" id="cat_form">
 <input type="hidden" name="page_num"	value="1">
 <div class="ContactSearchBox">';
 
@@ -1488,9 +1499,21 @@ endif;
 $cat_id =0;
 if(isset($_POST['cat_id'])) 
   $cat_id=$_POST['cat_id'];
+  if( 'page' == get_option( 'show_on_front' ) && ( '' != get_option( 'page_for_posts' ) ) && is_home() ){
+      $page_link=get_permalink($frontpage_id);
+   }
+	   else if(is_home())
+	   {
+		   $page_link=site_url().'/index.php';
+	   }
+	   else
+	   {
+		   $page_link=get_permalink();
+	   }
+  
 if (($params->get("choose_category") and !($idddd > 0)) or $params->get("name_search"))
   {
-    echo '<form action="" method="post" name="cat_form" id="cat_form">
+    echo '<form action="'. $page_link.'" method="post" name="cat_form" id="cat_form">
 <input type="hidden" name="page_num"	value="1">
 <div class="ContactSearchBox">';
 if ($params->get("choose_category") and !($idddd > 0))
@@ -2084,9 +2107,20 @@ endif;
 $cat_id=0;
 if(isset($_POST['cat_id']))
 $cat_id = $_POST['cat_id'];
+  if( 'page' == get_option( 'show_on_front' ) && ( '' != get_option( 'page_for_posts' ) ) && is_home() ){
+      $page_link=get_permalink($frontpage_id);
+   }
+	   else if(is_home())
+	   {
+		   $page_link=site_url().'/index.php';
+	   }
+	   else
+	   {
+		   $page_link=get_permalink();
+	   }
 if (($params->get("choose_category") and !($idddd > 0)) or $params->get("name_search"))
   {
-    echo '<div id="contactssMainDivs"><form action="" method="post" name="cat_form" id="cat_form">
+    echo '<div id="contactssMainDivs"><form action="'. $page_link.'" method="post" name="cat_form" id="cat_form">
 <input type="hidden" name="page_num"	value="1">
 <div class="ContactSearchBox">';
 
