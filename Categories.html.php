@@ -1,6 +1,9 @@
-	<?php	
-	
+	<?php		
+	if(function_exists('current_user_can'))
 	if(!current_user_can('manage_options')) {
+	die('Access Denied');
+}	
+if(!function_exists('current_user_can')){
 	die('Access Denied');
 }	
  //////////////////////////////////////////////////////                                             /////////////////////////////////////////////////////// 
@@ -26,7 +29,7 @@
 
 
 
-function html_showcategories_contact($option, $rows, $controller, $lists, $pageNav,$sort){
+function html_showcategories_contact($rows, $pageNav,$sort){
 	global $wpdb;
 	?>
     <script language="javascript">
@@ -87,6 +90,7 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
     </tr>
     </table>
     <?php
+	$serch_value='';
 	if(isset($_POST['serch_or_not'])) {if($_POST['serch_or_not']=="search"){ $serch_value=$_POST['search_events_by_title']; }else{$serch_value="";}} 
 	$serch_fields='<div class="alignleft actions" style="width:180px;">
     	<label for="search_events_by_title" style="font-size:14px">Filter: </label>
@@ -188,7 +192,7 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
-function html_editCategory_contact($ord_elem, $count_ord,$images,$row)
+function html_editCategory_contact($ord_elem, $count_ord,$row)
 
 {
 	
@@ -247,7 +251,6 @@ Name:
 </tr>
 
 <tr><td colspan="2" style="width:500px;">
-<?php echo $image_url_list; ?>
 </td></tr>
 <tr>
 <td width="100" align="right" class="key">
@@ -255,10 +258,15 @@ Description:
 </td>
 <td>
 
-<div id="main_editor"><div  style=" width:600px; text-align:left" id="poststuff">
+<div id="main_editor">
+<?php if(version_compare(get_bloginfo('version'),'3.3')<0){ ?>
+<div  style=" width:600px; text-align:left" id="poststuff">
 <div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor(stripslashes($row->description),"content","title" ); ?>
 </div>
 </div>
+<?php }else{
+	wp_editor(stripslashes($row->description),"content");
+	} ?>
 </div>
 
 </td>
@@ -280,8 +288,8 @@ $par=explode("	",$row->param);
 for($k=0;$k<=count($par);$k++)
 {
 if(isset($par[$k]) and $par[$k]!='')
-echo "'".stripslashes(str_replace('
-','',htmlspecialchars($par[$k])))."',";
+echo "'".str_replace('
+','',htmlspecialchars($par[$k]))."',";
 }
 
 ?>'');
@@ -445,7 +453,7 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
 Name:
 </td>
 <td>
-<input class="text_area" type="text" name="name" id="name" size="50" maxlength="250" value="<?php echo $row->name;?>" />
+<input class="text_area" type="text" name="name" id="name" size="50" maxlength="250" value="" />
 </td>
 </tr>
 
@@ -463,12 +471,17 @@ Description:
 </td>
 <td>
 
-<div id="main_editor"><div  style=" width:600px; text-align:left" id="poststuff">
+<div id="main_editor">
+<?php if(version_compare(get_bloginfo('version'),'3.3')<0){ ?>
+<div  style=" width:600px; text-align:left" id="poststuff">
 <div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor
 
 ("","content","title" ); ?>
 </div>
 </div>
+<?php }else{
+	wp_editor(stripslashes($row->description),"content");
+	} ?>
 </div>
 
 </td>
@@ -490,7 +503,7 @@ $par=explode("	",$row->param);
 for($k=0;$k<=count($par);$k++)
 {
 if(isset($par[$k]) and $par[$k]!='')
-echo "'".addslashes(htmlspecialchars($par[$k]))."',";
+echo "'".htmlspecialchars($par[$k])."',";
 }
 
 ?>'');
@@ -561,7 +574,7 @@ for($i=0;$i<$count_ord;$i++)
 </tr>
 </table>
 <input type="hidden" name="id"
-value="<?php echo $row->id; ?>" />
+value="" />
 <input type="hidden" name="task" value="" />
 </form>
 <?php

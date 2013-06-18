@@ -158,7 +158,6 @@ foreach($paramsarrray as $par){
 		}
 
 
-		//echo $cont_pref.'adadasd';
 
 		if ($cont_pref == '1')
 
@@ -174,7 +173,6 @@ foreach($paramsarrray as $par){
 
 		else $cont_pref_db= ' ';
 
-		//echo $cont_pref_db.'123123123123123312';
 		$message_text='';
 		if(isset($_POST['message_text'])){
 			$message_text=catal_secure_for_scripts('message_text');
@@ -187,8 +185,10 @@ foreach($paramsarrray as $par){
 
 
 													
-		
-		$code=$_POST['code'];
+		if(isset($_POST['code']))
+			$code=$wpdb->escape($_POST['code']);
+		else
+			$code='';
 		
 	$code_come_in_sesssion='';
 	if(isset($_SESSION['captcha_code']))
@@ -554,7 +554,7 @@ Message:
 
 				
 
-	return	html_front_end_single_contact($rows,$option, $params,$category_name);
+	return	html_front_end_single_contact($rows,$params,$category_name);
 
 
 
@@ -716,7 +716,7 @@ foreach($rows as $row)
 
 	$query= "SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE `published`=1 ";		$category_list = $wpdb->get_results($query);
 
-	return html_front_end_cotegory_contact_list($rows, $option,$params,$page_num,$cont_count,@$categories,$cont_in_page,$category_list,$params1,$idddd);
+	return html_front_end_cotegory_contact_list($rows, $params,$page_num,$cont_count,@$categories,$cont_in_page,$category_list,$idddd);
 
 
 
@@ -873,7 +873,7 @@ foreach($rows as $row)
 		
 		$category_list = $wpdb->get_results($query);
 
-return	html_fornt_end_contact_short($rows, $option,$params,$page_num,$cont_count,@$categories,$cont_in_page,$category_list,$idddd);
+return	html_fornt_end_contact_short($rows, $params,$page_num,$cont_count,@$categories,$cont_in_page,$category_list,$idddd);
 
 
 
@@ -1012,7 +1012,7 @@ $query  = "SELECT last_name, first_name, param FROM  `".$wpdb->prefix."spidercon
 $row_param = $wpdb->get_results($query);
 
 
-return html_fornt_end_contact_cells($rows, $option,$params,$page_num,$cont_count,@$categories,$cont_in_page,$category_list,$idddd);
+return html_fornt_end_contact_cells($rows, $params,$page_num,$cont_count,@$categories,$cont_in_page,$category_list,$idddd);
 
 
 

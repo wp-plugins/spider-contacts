@@ -1,7 +1,7 @@
 <?php 
 
 
-function html_front_end_single_contact($rows,$option, $params,$category_name){
+function html_front_end_single_contact($rows, $params,$category_name){
 ob_start();
 	@session_start();
 	
@@ -319,7 +319,7 @@ if ($params->viewcontact_radius == 0)
 	  }  
 
 foreach($rows as $row){
-	
+if(isset($_GET['back']))	
 if($_GET['back'])
 {
 echo '<span id="back_to_spidercontact_button"><a href="'.get_permalink().'" >'.__('Back to all Contacts','sp_contact').'</a></span>';
@@ -348,7 +348,8 @@ $imgurl[0]=plugins_url('images/noimage.jpg',__FILE__);echo '<tr><td colspan="2" 
 else{
 	
 		$image_with_atach_id=explode('******',$imgurl[0]);
-	if($image_with_atach_id[1])
+
+	if(isset($image_with_atach_id[1]) && $image_with_atach_id[1])
 	{
 		$array_with_sizes=wp_get_attachment_image_src( $image_with_atach_id[1], 'medium' );
 	$attach_url=$array_with_sizes[0];
@@ -376,7 +377,7 @@ foreach($imgurl as $img)
 if($img!=='******0' || $img!=='')
 {
 	$image_with_atach_id=explode('******',$img);
-	if($image_with_atach_id[1])
+	if(isset($image_with_atach_id[1]) && $image_with_atach_id[1])
 	{
 		$array_with_sizes=wp_get_attachment_image_src( $image_with_atach_id[1], 'thumbnail' );
 	$attach_url=$array_with_sizes[0];
@@ -584,7 +585,7 @@ echo '<div style="font-weight:bold;">'.__('Contact Preference','sp_contact').'</
 	<input type="hidden" name="contact_id" value="'.$row->id.'" />
 	<input type="hidden" name="view" value="showcontact" />
 	<input type="hidden" name="is_message" value=true />
-	<input type="hidden" name="option" value="'.$option.'" />';
+	<input type="hidden" name="option" value="" />';
 
 	?><br />
 <br />
@@ -592,7 +593,7 @@ echo '<div style="font-weight:bold;">'.__('Contact Preference','sp_contact').'</
     <table id="cap_table" cellpadding="0" cellspacing="10" border="0" valign="middle" width="100%"> <tr><td>
     <?php echo __('Please, Enter the Code','sp_contact') ?>
     </td><td style="max-width:120px !important;">
-   <span id="wd_captcha"><img src="<?php echo plugins_url('wd_captcha.php',__FILE__) ?>" id="wd_captcha_img" height="24" width="80" /></span><a href="javascript:refreshCaptcha();" style="text-decoration:none">&nbsp;<img src="<?php echo plugins_url('Front_images/refresh.png',__FILE__) ?>" border="0" style="border:none" /></a>&nbsp;</td><td><input type="text" name="code" id="message_capcode" size="6" /><span id="caphid"></span>
+   <span id="wd_captcha"><img src="<?php echo  admin_url('admin-ajax.php?action=spidercontactwdcaptchae') ?>" id="wd_captcha_img" height="24" width="80" /></span><a href="javascript:refreshCaptchaCont();" style="text-decoration:none">&nbsp;<img src="<?php echo plugins_url('Front_images/refresh.png',__FILE__) ?>" border="0" style="border:none" /></a>&nbsp;</td><td><input type="text" name="code" id="message_capcode" size="6" /><span id="caphid"></span>
    </td>
    <td  align="right">   
    <input type="button" class="spidercontactbutton" style="<?php echo 'background-color:'.$params->button_background_color.'; color:'.$params->button_color ?>; width:inherit;margin-right:10px;"  value="<?php echo __('Send','sp_contact') ?>" onclick='submit_message("<?php echo __('The Name field is required.','sp_contact'); ?>","<?php echo __('The Message field is required.','sp_contact'); ?>", "<?php echo __('The Email field is Required.','sp_contact'); ?>", "<?php echo __('Incorrect security code','sp_contact'); ?>",  "<?php echo __('The Phone field is required.','sp_contact'); ?>",  "<?php echo __('The Email field is Required.','sp_contact'); ?>" );' />
@@ -674,7 +675,7 @@ window.onload = SpiderCatAddToOnload;
 
 
 
-function html_front_end_cotegory_contact_list($rows, $option,$params,$page_num,$cont_count,$categories=0,$cont_in_page,$category_list,$params1,$idddd){
+function html_front_end_cotegory_contact_list($rows, $params,$page_num,$cont_count,$categories=0,$cont_in_page,$category_list,$idddd){
 
 ob_start();
 if ($params->get('table_radius')):
@@ -1133,7 +1134,7 @@ if(!strpos(get_permalink(),'?'))
         
   else {    
   $image_with_atach_id=explode('******',$imgurl[0]);
-	if($image_with_atach_id[1])
+	if(isset($image_with_atach_id[1]) && $image_with_atach_id[1])
 	{
 		$array_with_sizes=wp_get_attachment_image_src( $image_with_atach_id[1], 'thumbnail' );
 	$attach_url=$array_with_sizes[0];
@@ -1269,7 +1270,9 @@ if ($pos > 0)
 else
     $url = $_SERVER['QUERY_STRING'];
 
-
+$cat_id =0;
+if(isset($_POST['cat_id'])) 
+  $cat_id=$_POST['cat_id'];
 
 
 
@@ -1419,7 +1422,7 @@ if ($cont_count > $cont_in_page and $cont_in_page > 0)
 
 
 
-function html_fornt_end_contact_short($rows, $option,$params,$page_num,$cont_count,$categories,$cont_in_page,$category_list,$idddd){
+function html_fornt_end_contact_short($rows, $params,$page_num,$cont_count,$categories,$cont_in_page,$category_list,$idddd){
 ob_start();
 $prod_iterator = 0;
 
@@ -1605,7 +1608,7 @@ foreach ($rows as $row)
 	{
 		
 			$image_with_atach_id=explode('******',$imgurl[0]);
-	if($image_with_atach_id[1])
+	if(isset($image_with_atach_id[1]) && $image_with_atach_id[1])
 	{
 		$array_with_sizes=wp_get_attachment_image_src( $image_with_atach_id[1], 'thumbnail' );
 	$attach_url=$array_with_sizes[0];
@@ -1805,7 +1808,7 @@ window.onload = SpiderCatAddToOnload;
 
 
 
-function html_fornt_end_contact_cells($rows, $option,$params,$page_num,$cont_count,$categories,$cont_in_page,$category_list,$idddd){
+function html_fornt_end_contact_cells($rows, $params,$page_num,$cont_count,$categories,$cont_in_page,$category_list,$idddd){
 
 
 ob_start();
@@ -2211,7 +2214,7 @@ foreach ($rows as $row)
     else
 	{
 			$image_with_atach_id=explode('******',$imgurl[0]);
-	if($image_with_atach_id[1])
+	if(isset($image_with_atach_id[1]) && $image_with_atach_id[1])
 	{
 		$array_with_sizes=wp_get_attachment_image_src( $image_with_atach_id[1], 'thumbnail' );
 	$attach_url=$array_with_sizes[0];

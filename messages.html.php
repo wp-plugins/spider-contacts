@@ -1,8 +1,11 @@
 	<?php	
-	
+if(function_exists('current_user_can'))
 	if(!current_user_can('manage_options')) {
 	die('Access Denied');
 }	
+if(!function_exists('current_user_can')){
+	die('Access Denied');
+}		
 
 
 
@@ -15,10 +18,7 @@
 
 
 
-
-
-
-function html_show_spider_contact_massage($rows, $pageNav, $sort,$id,$cat_rows,$cont_rows){
+function html_show_spider_contact_massage($rows, $pageNav, $sort,$cat_rows,$cont_rows){
 	 
 	 
 	 	
@@ -84,10 +84,10 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
     </table>
     
    
- Filter:<input type="text" name="search" id="search" value="<?php  echo $_POST['search']; ?>" class="text_area" onchange="document.adminForm.submit();">
- From: 	<input class="inputbox" type="text" value="<?php echo $_POST['startdate']; ?>" name="startdate" id="startdate" size="10" maxlength="10" >
+ Filter:<input type="text" name="search" id="search" value="<?php if(isset($_POST['search'])) echo $_POST['search']; ?>" class="text_area" onchange="document.adminForm.submit();">
+ From: 	<input class="inputbox" type="text" value="<?php if(isset($_POST['startdate'])) echo $_POST['startdate']; ?>" name="startdate" id="startdate" size="10" maxlength="10" >
 		<input type="reset" class="button" value="..." onclick="return showCalendar('startdate','%Y-%m-%d');"> 
- To:    <input class="inputbox" type="text" value="<?php echo $_POST['enddate']; ?>" name="enddate" id="enddate" size="10" maxlength="10" > 
+ To:    <input class="inputbox" type="text" value="<?php if(isset($_POST['enddate'])) echo $_POST['enddate']; ?>" name="enddate" id="enddate" size="10" maxlength="10" > 
 		<input type="reset" class="button" value="..." onclick="return showCalendar('enddate','%Y-%m-%d');">
         <button class="button-primary" onclick="this.form.submit();">Submit</button>
 		<button class="button-primary" onclick="document.getElementById('search').value=''; document.getElementById('enddate').value='';document.getElementById('startdate').value='';this.form.getElementById('filter_state').value='';this.form.submit();">Reset</button>
@@ -96,14 +96,22 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
 					$serch=' <select name="cat_search" id="cat_search" class="inputbox" onchange="this.form.submit();">
                     <option value="0">- Select a Category -</option>';
                   foreach($cat_rows as $cat_row) {
-                    $serch.='<option '.(($_POST['cat_search']==$cat_row->id)?'selected="selected"':'').' value="'.$cat_row->id.'">'.$cat_row->name.'</option>';
+				  $serch.='<option value="'.$cat_row->id.'"';
+	              if(isset($_POST['cat_search']))
+		          if($_POST['cat_search']==$cat_row->id)
+		          $serch.='selected="selected"';		
+		          $serch.='>'.$cat_row->name.'</option>';                  
 					}
                    
                    $serch.= '</select>
                     <select name="cont_search" id="cont_search" class="inputbox" onchange="this.form.submit();">
                     <option  value="0">- Select a Contact -</option>';
                     foreach($cont_rows as $cont_row) {
-                    $serch.= '<option '.(($_POST['cont_search']==$cont_row->id)?'selected="selected"':'').' value="'.$cont_row->id.'">'.$cont_row->first_name.' '.$cont_row->last_name.'</option>';
+					$serch.='<option value="'.$cont_row->id.'"';
+	                if(isset($_POST['cat_search']))
+		            if($_POST['cont_search']==$cont_row->id)
+		            $serch.='selected="selected"';		
+		            $serch.='>'.$cont_row->first_name.' '.$cont_row->last_name.'</option>';                  
 					}
                    
                     $serch.='</select>

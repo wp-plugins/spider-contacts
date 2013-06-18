@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Contacts
 Plugin URI: http://web-dorado.com/
-Version: 1.0.4
+Version: 1.1
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -19,6 +19,9 @@ function contcat_single_shotrcode($atts) {
      extract(shortcode_atts(array(
 	      'id' => 'no contact',
      ), $atts));
+	 if(!(is_numeric($atts['id'])))
+	return 'insert numerical  shortcode in `id`';
+	 
      return single_contact_front_end($id);
 }
 add_shortcode('Spider_contact_single', 'contcat_single_shotrcode');
@@ -29,6 +32,11 @@ function contcat_category_shotrcode($atts) {
 	      'id' => 'no contact',
 		  'type' => 0
      ), $atts));
+	 if(!(is_numeric($atts['id']) || $atts['id']=='ALL_CAT'))
+	return 'insert numerical or `ALL_CAT` shortcode in `id`';
+	if(!($atts['type']==0 || $atts['type']==1 || $atts['type']==2))
+	return  'insert valid `type`';
+	
      return category_contact_front_end($atts['id'],$atts['type']);
 }
 add_shortcode('Spider_contact_categories', 'contcat_category_shotrcode');
@@ -65,7 +73,7 @@ function category_contact_front_end($id,$type)
 	}
 	else
 	{
-	 return	front_end_cotegory_contact_list($id,$details,$type);
+	 return	front_end_cotegory_contact_list($id,$type);
 	}
 	}
 	
@@ -274,7 +282,7 @@ add_action('admin_head', 'add_button_style_Spider_contact');
 
 
 function contact_spiderbox_scripts_method() {
-    wp_enqueue_script( 'spiderbox',plugins_url("spiderBox/spiderBox.js.php",__FILE__).'?delay=3000&allImagesQ=0&slideShowQ=0&darkBG=1&juriroot='.urlencode(plugins_url("",__FILE__)).'&spiderShop=1' );
+    wp_enqueue_script( 'spiderbox',admin_url('admin-ajax.php?action=conspiderboxjsphp').'&delay=3000&allImagesQ=0&slideShowQ=0&darkBG=1&juriroot='.urlencode(plugins_url("",__FILE__)).'&spiderShop=1' );
 	wp_enqueue_script( 'contact_common',plugins_url("js/common.js",__FILE__));
 	wp_enqueue_style('spider_contact_main',plugins_url("spidercontacts_main.css",__FILE__));
 }    
@@ -412,34 +420,524 @@ Purchasing a license will add possibility to customize the styles and colors, gl
 
 
 
+////////////////////////////////////////////////// ajax function
+add_action('wp_ajax_spidercontactwdcaptchae', 'spider_contact_wd_captcha');
+add_action('wp_ajax_nopriv_spidercontactwdcaptchae', 'spider_contact_wd_captcha');
+function spider_contact_wd_captcha(){
 
+$cap_width=80;
+$cap_height=30;
+$cap_quality=100;
+$cap_length_min=6;
+$cap_length_max=6;
+$cap_digital=1;
+$cap_latin_char=1;
+// _____________________________________________________________________________
 
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////// TAGS
-
-//////////require_once("nav_function/nav_html_func.php");
-/*
-add_filter('admin_head','ShowTinyMCE');
-function ShowTinyMCE() {
-	// conditions here
-	wp_enqueue_script( 'common' );
-	wp_enqueue_script( 'jquery-color' );
-	wp_print_scripts('editor');
-	if (function_exists('add_thickbox')) add_thickbox();
-	wp_print_scripts('media-upload');
-	if (function_exists('wp_tiny_mce')) wp_tiny_mce();
-	wp_admin_css();
-	wp_enqueue_script('utils');
-	do_action("admin_print_styles-post-php");
-	do_action('admin_print_styles');
+function code_generic($_length,$_digital=1,$_latin_char=1)
+{
+$dig=array(0,1,2,3,4,5,6,7,8,9);
+$lat=array('a','b','c','d','e','f','g','h','j','k','l','m','n','o',
+'p','q','r','s','t','u','v','w','x','y','z');
+$main=array();
+if ($_digital) $main=array_merge($main,$dig);
+if ($_latin_char) $main=array_merge($main,$lat);
+shuffle($main);
+$pass=substr(implode('',$main),0,$_length);
+return $pass;
 }
-*/
+if(isset($_GET['checkcap'])=='1'){
+if($_GET['checkcap']=='1')
+{
+@session_start();
+if(isset($_GET['cap_code'])){ 
+if($_GET['cap_code']==$_SESSION['captcha_code'])
+echo 1;
+}
+else echo 0;
+}}
+else
+{
+$l=rand($cap_length_min,$cap_length_max);
+$code=code_generic($l,$cap_digital,$cap_latin_char);
+@session_start();
+$_SESSION['captcha_code']= $code;
+$canvas=imagecreatetruecolor($cap_width,$cap_height);
+$c=imagecolorallocate($canvas,rand(150,255),rand(150,255),rand(150,255));
+imagefilledrectangle($canvas,0,0,$cap_width,$cap_height,$c);
+$count=strlen($code);
+$color_text=imagecolorallocate($canvas,0,0,0);
+for($it=0;$it<$count;$it++)
+{ $letter=$code[$it];
+  imagestring($canvas,6,(10*$it+10),$cap_height/4,$letter,$color_text);
+}
+for ($c = 0; $c < 150; $c++){
+	$x = rand(0,79);
+	$y = rand(0,29);
+	$col='0x'.rand(0,9).'0'.rand(0,9).'0'.rand(0,9).'0';
+	imagesetpixel($canvas, $x, $y, $col);
+	}
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); 
+header('Cache-Control: no-store, no-cache, must-revalidate'); 
+header('Cache-Control: post-check=0, pre-check=0',false);
+header('Pragma: no-cache');
+header('Content-Type: image/jpeg');
+imagejpeg($canvas,null,$cap_quality);
+}
+die('');
+}
+
+
+
+add_action('wp_ajax_spidercontactswindow', 'spider_contact_window');
+
+function spider_contact_window(){
+
+global $wpdb;
+$single_products=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts WHERE published=\'1\'');
+$categories=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE published=\'1\'');
+?>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<title>Spider Contact</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/jquery/jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script><link rel="stylesheet" href="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/themes/advanced/skins/wp_theme/dialog.css?ver=342-20110630100">
+	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
+	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
+	<base target="_self">
+</head>
+<body id="link" onLoad="tinyMCEPopup.executeOnLoad('init();');document.body.style.display='';"  style="" dir="ltr" class="forceColors">
+<form name="spider_cat" action="#">
+	<div class="tabs" role="tablist" tabindex="-1">
+		<ul>
+			<li id="Contacts_View_tab" class="current" role="tab" tabindex="0"><span><a href="javascript:mcTabs.displayTab('Contacts_View_tab','Contacts_View_panel');" onMouseDown="return false;" tabindex="-1">Contacts Single</a></span></li>
+			<li id="Contacts_Short_tab" role="tab" tabindex="-1"><span><a href="javascript:mcTabs.displayTab('Contacts_Short_tab','Contacts_Short_panel');" onMouseDown="return false;" tabindex="-1">Contacts Category</a></span></li>
+	
+		</ul>
+	</div>
+	
+	<div class="panel_wrapper">
+    
+    
+    
+		<div id="Contacts_View_panel" class="panel current">
+		<br>
+		<table border="0" cellpadding="4" cellspacing="0">
+         <tbody><tr>
+            <td nowrap="nowrap"><label for="spider_contact_contact">Select Contact</label></td>
+            <td><select name="spider_contact_contact" id="spider_contact_contact" >
+<option value="- Select a Contact -" selected="selected">- Select  a Contact -</option>
+<?php 
+	   foreach($single_products as $single_product)
+	   {
+		   ?>
+           <option value="<?php echo $single_product->id; ?>"><?php echo $single_product->first_name; ?></option>
+           <?php }?>
+</select>
+            </td>
+          </tr>
+        </tbody></table>
+		</div>
+        
+        
+        
+        
+		<div id="Contacts_Short_panel" class="panel">
+		<br>
+		<table border="0" cellpadding="4" cellspacing="0">
+         <tbody><tr>
+            <td nowrap="nowrap"><label for="Spider_contact_Category">Select Category</label></td>
+            <td><select name="Spider_contact_Category" id="Spider_contact_Category" >
+<option value="ALL_CAT" selected="selected">- All categories -</option>
+<?php 
+	   foreach($categories as $categorie)
+	   {
+		   ?>
+           <option value="<?php echo $categorie->id; ?>"><?php echo $categorie->name; ?></option>
+           <?php }?>
+</select>
+            </td>
+          </tr>
+          <tr>
+            <td nowrap="nowrap" valign="top"><label for="showtype">Show Category Type</label></td>
+            <td>	<input type="radio" name="cat_show" id="paramsshow_category_details0" value="0" checked="checked">
+                    <label style="position:relative; bottom:4px" for="paramsshow_category_details0">Short</label>
+                    <input type="radio" name="cat_show" id="paramsshow_category_details1" value="1">
+                    <label style="position:relative; bottom:4px" for="paramsshow_category_details1">Table</label>
+                    <input type="radio" name="cat_show" id="paramsshow_category_details2" value="2">
+                    <label style="position:relative; bottom:4px" for="paramsshow_category_details2">Full</label>
+    		</td>
+          </tr>
+             
+        </tbody></table>
+		</div>
+        </div>
+        <div class="mceActionPanel">
+		<div style="float: left">
+			<input type="button" id="cancel" name="cancel" value="Cancel" onClick="tinyMCEPopup.close();" />
+		</div>
+
+		<div style="float: right">
+			<input type="submit" id="insert" name="insert" value="Insert" onClick="insert_spider_catalog();" />
+		</div>
+        
+	</div>
+
+</form>
+
+<script type="text/javascript">
+function insert_spider_catalog() {
+	
+	if(document.getElementById('Contacts_View_panel').className==='panel')
+	{
+	
+
+	
+				
+					
+					var lists;
+					var show;
+					lists="";
+					show=0;
+					if(document.getElementById('paramsshow_category_details0').checked)
+					{
+					show=0;
+					}
+					if(document.getElementById('paramsshow_category_details1').checked)
+					{
+					show=1;
+					}
+					if(document.getElementById('paramsshow_category_details2').checked)
+					{
+					show=2;
+					}
+				   var tagtext;
+				   tagtext='[Spider_contact_categories id="'+document.getElementById('Spider_contact_Category').value+'"  type="'+show+'"]';
+				   window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
+				   tinyMCEPopup.editor.execCommand('mceRepaint');
+				   tinyMCEPopup.close();		
+				
+	
+	
+	}
+	else
+	{
+		
+		
+			if(document.getElementById('spider_contact_contact').value=='- Select a Contact -')
+			{
+				tinyMCEPopup.close();
+			}
+			else
+			{
+			   var tagtext;
+			   tagtext='[Spider_contact_single id="'+document.getElementById('spider_contact_contact').value+'"]';
+			   window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
+			   tinyMCEPopup.editor.execCommand('mceRepaint');
+			   tinyMCEPopup.close();		
+			}
+		
+		
+		
+		
+	}
+}
+
+</script>
+</body></html>
+ <?php	
+	 die(); 
+
+}
+
+ add_action('wp_ajax_conspiderboxjsphp', 'con_spider_box_js_php');
+ add_action('wp_ajax_nopriv_conspiderboxjsphp', 'con_spider_box_js_php');
+	
+function con_spider_box_js_php()
+{
+ header('Content-Type: text/javascript; charset=UTF-8');
+?>
+var keyOfOpenImage;
+var listOfImages=Array();
+var slideShowOn;
+var globTimeout;
+var slideShowDelay;
+var viewportheight;
+var viewportwidth;
+var newImg = new Image();
+var LoadingImg = new Image();
+var spiderShop;
+
+function SetOpacity(elem, opacityAsInt)
+ {
+     var opacityAsDecimal = opacityAsInt;
+     
+     if (opacityAsInt > 100)
+         opacityAsInt = opacityAsDecimal = 100; 
+     else if (opacityAsInt < 0)
+         opacityAsInt = opacityAsDecimal = 0; 
+     
+     opacityAsDecimal /= 100;
+     if (opacityAsInt < 1)
+         opacityAsInt = 1; // IE7 bug, text smoothing cuts out if 0
+     
+     elem.style.opacity = (opacityAsDecimal);
+     elem.style.filter  = "alpha(opacity=" + opacityAsInt + ")";
+ }
+ 
+ function FadeOpacity(elemId, fromOpacity, toOpacity, time, fps)
+  {
+      var steps = Math.ceil(fps * (time / 1000));
+      var delta = (toOpacity - fromOpacity) / steps;
+      
+      FadeOpacityStep(elemId, 0, steps, fromOpacity, 
+                      delta, (time / steps));
+  }
+  
+ function FadeOpacityStep(elemId, stepNum, steps, fromOpacity, 
+                          delta, timePerStep)
+ {
+     SetOpacity(document.getElementById(elemId), 
+                Math.round(parseInt(fromOpacity) + (delta * stepNum)));
+ 
+     if (stepNum < steps)
+         setTimeout("FadeOpacityStep('" + elemId + "', " + (stepNum+1) 
+                  + ", " + steps + ", " + fromOpacity + ", "
+                  + delta + ", " + timePerStep + ");", 
+                    timePerStep);
+ }
+
+function getWinHeight() {
+	winH=0;
+ if (navigator.appName=="Netscape") {
+  winH = window.innerHeight;
+ }
+ if (navigator.appName.indexOf("Microsoft")!=-1) {
+  winH = document.body.offsetHeight;
+ }
+ return winH;
+}
+
+function getImageKey(href)
+{
+	var key=-1;
+for(i=0; i<listOfImages.length; i++)	{
+		if(encodeURI(href)==encodeURI(listOfImages[i]) || href==encodeURI(listOfImages[i]) || encodeURI(href)==listOfImages[i])
+			{
+				key=i;				break;
+			}	}	return key;	
+}
+
+function hidePictureAnimated()
+{
+FadeOpacity("showPictureAnimated", 100, 0, 500, 10);
+FadeOpacity("showPictureAnimatedBg", 70, 0, 500, 10);
+setTimeout('document.getElementById("showPictureAnimated").style.display="none";',700);
+setTimeout('document.getElementById("showPictureAnimatedBg").style.display="none";',700);
+setTimeout('document.getElementById("showPictureAnimatedTable").style.display="none";',700);
+	keyOfOpenImage=-1;
+clearTimeout(globTimeout);
+}
+
+function showPictureAnimated(href)
+{
+newImg = new Image();
+
+newImg.onload=function() {if(encodeURI(href)==encodeURI(newImg.src) || href==encodeURI(newImg.src) || encodeURI(href)==newImg.src) showPictureAnimatedInner(href, newImg.height, newImg.width);}
+
+if(document.getElementById("showPictureAnimated").clientHeight>0)
+{
+document.getElementById("showPictureAnimated").style.height=""+document.getElementById("showPictureAnimated").clientHeight+"px";
+LoadingImgMargin=(document.getElementById("showPictureAnimated").clientHeight-LoadingImg.height)/2;
+}
+else
+{
+document.getElementById("showPictureAnimated").style.height="400px";
+LoadingImgMargin=(400-LoadingImg.height)/2;
+}
+
+
+document.getElementById("showPictureAnimated").innerHTML='<img style="margin-top:'+LoadingImgMargin+'px" src="'+spiderBoxBase+'loadingAnimation.gif" />';
+
+if(document.getElementById("showPictureAnimatedBg").style.display=="none")
+FadeOpacity("showPictureAnimatedBg", 0, 70, 500, 10);
+document.getElementById("showPictureAnimatedTable").style.display="table";
+if(darkBG) document.getElementById("showPictureAnimatedBg").style.display="block";
+SetOpacity(document.getElementById("showPictureAnimated"), 100);
+document.getElementById("showPictureAnimated").style.display="block";
+newImg.src = href;
+}
+
+function showPictureAnimatedInner(href, newImgheight, newImgwidth)
+{
+document.getElementById("showPictureAnimated").style.display="none";
+
+if(keyOfOpenImage<0) keyOfOpenImage = getImageKey(href);
+boxContainerWidth=0;
+if(newImgheight<=(viewportheight-100) && newImgwidth<=(viewportwidth-50))
+{
+document.getElementById("showPictureAnimated").innerHTML='<img src="'+href+'" border="0" style="cursor:url(\''+spiderBoxBase+'cursor_magnifier_minus.cur\'),pointer;border:" onClick="hidePictureAnimated();" />';
+
+boxContainerWidth=newImgwidth;
+}
+else
+{
+if((newImgheight/viewportheight)>(newImgwidth/viewportwidth))
+{
+document.getElementById("showPictureAnimated").innerHTML='<img src="'+href+'" border="0" style="cursor:url(\''+spiderBoxBase+'cursor_magnifier_minus.cur\'),pointer;" onClick="hidePictureAnimated();" height="'+(viewportheight-100)+'" />';
+
+boxContainerWidth=((newImgwidth*(viewportheight-100))/newImgheight);
+}
+else
+{
+document.getElementById("showPictureAnimated").innerHTML='<img src="'+href+'" border="0" style="cursor:url(\''+spiderBoxBase+'cursor_magnifier_minus.cur\'),pointer;" onClick="hidePictureAnimated();" width="'+(viewportwidth-50)+'" />';
+boxContainerWidth=(viewportwidth-40);
+}
+}
+document.getElementById("boxContainer").style.width=(boxContainerWidth>300)?(""+boxContainerWidth+"px"):"300px";
+
+document.getElementById("showPictureAnimated").style.height="";
+
+FadeOpacity("showPictureAnimated", 0, 100, 500, 10);
+document.getElementById("showPictureAnimated").style.display="block";
+
+if(slideShowOn) 
+	{
+		clearTimeout(globTimeout);
+		globTimeout=setTimeout('nextImage()',slideShowDelay);
+	}
+}
+
+function nextImage()
+{
+	if(keyOfOpenImage<listOfImages.length-1)
+		keyOfOpenImage=keyOfOpenImage+1;
+	else
+		keyOfOpenImage=0;
+		
+		showPictureAnimated(listOfImages[keyOfOpenImage]);
+}
+
+function prevImage()
+{
+	if(keyOfOpenImage>0)
+		keyOfOpenImage=keyOfOpenImage-1;
+	else
+		keyOfOpenImage=listOfImages.length-1;		
+
+		showPictureAnimated(listOfImages[keyOfOpenImage]);
+}
+
+function toggleSlideShow()
+{
+	clearTimeout(globTimeout);
+    if(!(slideShowOn))
+    	{
+			document.getElementById("toggleSlideShowCheckbox").src=spiderBoxBase+"pause.png";
+			slideShowOn=1;
+    		nextImage();
+        }
+    else
+		{
+			document.getElementById("toggleSlideShowCheckbox").src=spiderBoxBase+"play.png";
+			slideShowOn=0;
+		}
+}
+
+window.onresize=getViewportSize;
+
+function getViewportSize()
+{
+ if (typeof window.innerWidth != 'undefined')
+ {
+      viewportwidth = window.innerWidth,
+      viewportheight = window.innerHeight
+ }
+ 
+ else if (typeof document.documentElement != 'undefined'
+     && typeof document.documentElement.clientWidth !=
+     'undefined' && document.documentElement.clientWidth != 0)
+ {
+       viewportwidth = document.documentElement.clientWidth,
+       viewportheight = document.documentElement.clientHeight
+ }
+ 
+ else
+ {
+       viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+       viewportheight = document.getElementsByTagName('body')[0].clientHeight
+ }
+ 
+ if(document.getElementById("tdviewportheight")!=undefined)
+ document.getElementById("tdviewportheight").style.height=(viewportheight-35)+"px"; 
+ 
+if(document.getElementById("showPictureAnimatedBg")!=undefined)
+document.getElementById("showPictureAnimatedBg").style.height=(viewportheight+300)+"px";
+}
+
+
+
+
+function SpiderCatAddToOnload()
+{
+	if(SpiderCatOFOnLoad){SpiderCatOFOnLoad();}
+
+ getViewportSize();
+
+	slideShowDelay=<?php echo $_GET['delay']; ?>;
+	slideShowQ=<?php echo $_GET['slideShowQ']; ?>;	
+	allImagesQ=<?php echo $_GET['allImagesQ']; ?>;
+	spiderShop=<?php echo isset($_GET['spiderShop'])?$_GET['spiderShop']:0; ?>;
+	darkBG=<?php echo $_GET['darkBG']; ?>;
+	keyOfOpenImage=-1;
+	spiderBoxBase="<?php echo urldecode($_GET['juriroot']); ?>/spiderBox/";
+	LoadingImg.src=spiderBoxBase+"loadingAnimation.gif";
+
+	
+		var spiderBoxElement = document.createElement('span');
+	spiderBoxElement.innerHTML+='<div style="position:fixed; top:0px; left:0px; width:100%; height:'+(viewportheight+300)+'px; background-color:#000000; z-index:98; display:none" id="showPictureAnimatedBg"></div>  <table border="0" cellpadding="0" cellspacing="0" id="showPictureAnimatedTable" style="position:fixed; top:0px; left:0px; width:100%; vertical-align:middle; text-align:center; z-index:99; display:none"><tr><td valign="middle" id="tdviewportheight" style="height:'+(viewportheight-35)+'px; text-align:center;"><div id="boxContainer" style="margin:auto;width:400px; border:5px solid white;"><div id="showPictureAnimated" style=" height:400px">&nbsp;</div><div style="text-align:center;background-color:white;padding:5px;padding-bottom:0px;"><div style="width:48px;float:left;">&nbsp;</div><span onClick="prevImage();" style="cursor:pointer;"><img src="'+spiderBoxBase+'prev.png" /></span>&nbsp;&nbsp;'+(slideShowQ?'<span><img src="'+spiderBoxBase+'play.png" id="toggleSlideShowCheckbox" onClick="toggleSlideShow();"  style="cursor:pointer;"/></span>&nbsp;&nbsp;':'')+'<span onClick="nextImage();" style="cursor:pointer;"><img src="'+spiderBoxBase+'next.png" /></span><span onClick="hidePictureAnimated();" style="cursor:pointer;"><img src="'+spiderBoxBase+'close.png" align="right" /></span></div></div></td></tr></table>';
+
+	document.body.appendChild(spiderBoxElement);
+
+	
+			for ( i = 0; i < document.getElementsByTagName( 'a' ).length; i++ )
+				if(document.getElementsByTagName( 'a' )[i].target=="spiderbox" || ((allImagesQ || spiderShop) && (document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".jpg" || document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".png" || document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".gif" || document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".bmp" || document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".JPG" || document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".PNG" || document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".GIF" || document.getElementsByTagName( 'a' )[i].href.substr(document.getElementsByTagName( 'a' )[i].href.length-4)==".BMP"))) 
+					{
+
+						listOfImages[listOfImages.length]=document.getElementsByTagName( 'a' )[i].href;
+						document.getElementsByTagName( 'a' )[i].href="javascript:showPictureAnimated('"+document.getElementsByTagName( 'a' )[i].href+"')";						document.getElementsByTagName( 'a' )[i].style.cursor="url('<?php echo urldecode($_GET['juriroot']); ?>/spiderBox/cursor_magnifier_plus.cur'),pointer";						
+                        document.getElementsByTagName( 'a' )[i].target="";
+						
+					}
+
+}
+<?php
+	die();
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
 function Categories_Spider_contact()
 {
 	////////including functions for categories
@@ -447,11 +945,6 @@ function Categories_Spider_contact()
 	require_once("Categories.html.php");
 	if(!function_exists ('print_html_nav' ))
 	require_once("nav_function/nav_html_func.php");
-	
-	
-	
-	
-	
 	
 	
 	
@@ -516,8 +1009,9 @@ switch ($task)
 			}
 			else
 			{
-				?><h1>Database Error Please install plugin again</h1><?php
-				showCategory();
+				
+				showCategory_contact();
+				
 			}
 		}
 	
@@ -852,7 +1346,7 @@ switch($mode) {
 	<p style="text-align: center;">
 		<?php echo 'Do you really want to uninstall Spider Contacts?'; ?><br /><br />
 		<input type="checkbox" name="Spider_contact_yes" value="yes" />&nbsp;<?php echo 'Yes'; ?><br /><br />
-		<input type="submit" name="do" value="<?php echo 'UNINSTALL Spider Contacts'; ?>" class="button-primary" onclick="return confirm('<?php echo 'You Are About To Uninstall Spider Contacts From WordPress.\nThis Action Is Not Reversible.\n\n Choose [Cancel] To Stop, [OK] To Uninstall.'; ?>')" />
+		<input type="submit" name="do" value="<?php echo 'UNINSTALL Spider Contacts'; ?>" class="button-primary" onClick="return confirm('<?php echo 'You Are About To Uninstall Spider Contacts From WordPress.\nThis Action Is Not Reversible.\n\n Choose [Cancel] To Stop, [OK] To Uninstall.'; ?>')" />
 	</p>
 </div>
 </form>
@@ -860,6 +1354,17 @@ switch($mode) {
 } // End switch($mode)
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

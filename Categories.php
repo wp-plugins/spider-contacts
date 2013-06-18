@@ -1,9 +1,11 @@
-	<?php	
-	
+	<?php		
+	if(function_exists('current_user_can'))
 	if(!current_user_can('manage_options')) {
 	die('Access Denied');
 }	
-
+if(!function_exists('current_user_can')){
+	die('Access Denied');
+}
 
 
 
@@ -35,8 +37,18 @@ function showCategory_contact()
 	  
 	  
   global $wpdb;
+   if(isset($_POST['search_events_by_title']))
+$_POST['search_events_by_title']=esc_js($_POST['search_events_by_title']);
+if(isset($_POST['asc_or_desc']))
+$_POST['asc_or_desc']=esc_js($_POST['asc_or_desc']);
+if(isset($_POST['order_by']))
+$_POST['order_by']=esc_js($_POST['order_by']);
 	$sort["default_style"]="manage-column column-autor sortable desc";
-	
+	$sort["custom_style"] ="manage-column column-autor sortable desc";
+	$sort["1_or_2"]=1;
+	$where='';
+	$order='';
+	$sort["sortid_by"]='id';
 	if(isset($_POST['page_number']))
 	{
 			
@@ -47,13 +59,13 @@ function showCategory_contact()
 				{
 					$sort["custom_style"]="manage-column column-title sorted asc";
 					$sort["1_or_2"]="2";
-					$order="ORDER BY ".$sort["sortid_by"]." ASC";
+					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." ASC";
 				}
 				else
 				{
 					$sort["custom_style"]="manage-column column-title sorted desc";
 					$sort["1_or_2"]="1";
-					$order="ORDER BY ".$sort["sortid_by"]." DESC";
+					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." DESC";
 				}
 			}
 	if($_POST['page_number'])
@@ -78,13 +90,24 @@ function showCategory_contact()
 		$search_tag="";
 		}
 	if ( $search_tag ) {
-		$where= ' WHERE name LIKE "%'.$search_tag.'%"';
+		$where= ' WHERE name LIKE "%'.$wpdb->escape($search_tag).'%"';
 	}
 	if(isset($_POST['saveorder']))
 	{
 		if($_POST['saveorder']=="save")
 		{
-			
+			foreach($_POST as $key=>$order1)
+			{
+				
+				
+				if(is_numeric(str_replace("order_","",$key))){
+					$id_order[str_replace("order_","",$key)]=$order1;
+					if(!is_numeric($order1))
+					{
+						$id_order[str_replace("order_","",$key)]='10000';
+					}
+				}
+			}
 			$popoxvac_orderner=array();
 			$aranc_popoxutineri_orderner=array();
 			$all_products_oreder=$wpdb->get_results("SELECT `id`,`ordering` FROM ".$wpdb->prefix."spidercontacts_contacts_categories");
@@ -187,8 +210,8 @@ function showCategory_contact()
 	if(isset($_POST["oreder_move"]))
 	{
 		$ids=explode(",",$_POST["oreder_move"]);
-		$this_order=$wpdb->get_var("SELECT ordering FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id=".$ids[0]);
-		$next_order=$wpdb->get_var("SELECT ordering FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id=".$ids[1]);	
+		$this_order=$wpdb->get_var($wpdb->prepare("SELECT ordering FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id=%d",$ids[0]));
+		$next_order=$wpdb->get_var($wpdb->prepare("SELECT ordering FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id=%d",$ids[1]));	
 		$wpdb->update($wpdb->prefix.'spidercontacts_contacts_categories', array(
 		'ordering'    =>$next_order,
           ), 
@@ -211,12 +234,13 @@ function showCategory_contact()
 	$query = "SELECT COUNT(*) FROM ".$wpdb->prefix."spidercontacts_contacts_categories". $where;
 	
 	$total = $wpdb->get_var($query);
+
 	$pageNav['total'] =$total;
 	$pageNav['limit'] =	 $limit/20+1;
 	
 	$query = "SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts_categories".$where." ". $order." "." LIMIT ".$limit.",20";
 	$rows = $wpdb->get_results($query);	   
-		html_showcategories_contact($option, $rows, $controller, $lists, $pageNav,$sort);
+		html_showcategories_contact($rows, $pageNav,$sort);
   }
 
 
@@ -239,14 +263,21 @@ function editCategory_contact($id)
 	  $query="SELECT name,ordering FROM ".$wpdb->prefix."spidercontacts_contacts_categories  ORDER BY `ordering`";
 	  
 	  $ord_elem=$wpdb->get_results($query);
-	  $query="SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id='".$id."'";
+	  $query=$wpdb->prepare("SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id=%d",$id);
 	   $row=$wpdb->get_row($query);
+	   if(!$row){
+		 ?>
+         <div id="message" class="error"><p>insert valid `id`</p></div>
+         <?php
+	 return '';
+	 }
+	 
 	   $images=explode(";;;",$row->category_image_url);
 	   $par=explode('	',$row->param);
 	  $count_ord=count($images);
 
 
-    Html_editCategory_contact($ord_elem, $count_ord,$images,$row);
+    Html_editCategory_contact($ord_elem, $count_ord,$row);
   }
   
   
@@ -280,8 +311,10 @@ function save_cat_contact()
 {
 	
 	 global $wpdb;
+	 if(!(isset($_POST) && count($_POST)))
+	 return '';
 	 if(isset($_POST["ordering"])){	 
-	 	$rows=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE ordering>='.$_POST["ordering"].'  ORDER BY `ordering` ASC ');
+	 	$rows=$wpdb->get_results($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE ordering>=%d  ORDER BY `ordering` ASC ', $_POST["ordering"]));
 	 }
 	 else{
 		 		echo "<h1>Error</h1>";
@@ -289,8 +322,8 @@ function save_cat_contact()
 	 }
 	 
 	$count_of_rows=count($rows);
-	$ordering_values==array();
-	$ordering_ids==array();
+	$ordering_values=array();
+	$ordering_ids=array();
 	for($i=0;$i<$count_of_rows;$i++)
 	{		
 	
@@ -309,12 +342,12 @@ function save_cat_contact()
 	 
 	 
 	 
-	 
+	
 	 $save_or_no= $wpdb->insert($wpdb->prefix.'spidercontacts_contacts_categories', array(
 		'id'	=> NULL,
 		'name'   				 => $_POST["name"],
-        'description'			 => stripslashes($_POST["content"]),
-        'param'  				 =>$_POST["param"],
+        'description'			 => esc_js(stripslashes($_POST["content"])),
+        'param'  				 => esc_js($_POST["param"]),
         'ordering' 				 => $_POST["ordering"],
 		'published'				 =>$_POST["published"],
                 ),
@@ -353,7 +386,7 @@ function save_cat_contact()
 
 function change_cat_contact( $id ){
   global $wpdb;
-  $published=$wpdb->get_var("SELECT published FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE `id`=".$id );
+  $published=$wpdb->get_var($wpdb->prepare("SELECT published FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE `id`=%d",$id ) );
   if($published)
    $published=0;
   else
@@ -385,7 +418,7 @@ function removeCategory_contact($id)
 	
 	
 	global $wpdb;
-	 $sql_remov_tag="DELETE FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id='".$id."'";
+	 $sql_remov_tag=$wpdb->prepare("DELETE FROM ".$wpdb->prefix."spidercontacts_contacts_categories WHERE id=%d",$id);
  if(!$wpdb->query($sql_remov_tag))
  {
 	  ?>
@@ -401,13 +434,16 @@ function removeCategory_contact($id)
 	$rows=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories  ORDER BY `ordering` ASC ');
 	
 	$count_of_rows=count($rows);
-	$ordering_values==array();
-	$ordering_ids==array();
+	$ordering_values=array();
+	$ordering_ids=array();
 	for($i=0;$i<$count_of_rows;$i++)
 	{		
 	
 		$ordering_ids[$i]=$rows[$i]->id;
+		if(isset($_POST["ordering"]))
 		$ordering_values[$i]=$i+1+$_POST["ordering"];
+		else
+		$ordering_values[$i]=$i+1;
 	}
 
 		for($i=0;$i<$count_of_rows;$i++)
@@ -435,11 +471,14 @@ function apply_cat_contact($id)
 	
 	
 		 global $wpdb;
-		 $corent_ord=$wpdb->get_var('SELECT `ordering` FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE id=\''.$id.'\'');
+
+		 if(!(isset($_POST) && count($_POST)))
+		 return '';
+		 $corent_ord=$wpdb->get_var($wpdb->prepare('SELECT `ordering` FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE id=%d',$id ));
 		 $max_ord=$wpdb->get_var('SELECT MAX(ordering) FROM '.$wpdb->prefix.'spidercontacts_contacts_categories');
 		 if($corent_ord>$_POST["ordering"])
 		 {
-				$rows=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE ordering>='.$_POST["ordering"].' AND id<>\''.$id.'\'  ORDER BY `ordering` ASC ');
+				$rows=$wpdb->get_results($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE ordering>=%d AND id<>%d  ORDER BY `ordering` ASC ',$_POST["ordering"],$id));
 			 
 			$count_of_rows=count($rows);
 			$ordering_values==array();
@@ -461,7 +500,7 @@ function apply_cat_contact($id)
 		 }
 		 if($corent_ord<$_POST["ordering"])
 		 {
-			 $rows=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE ordering<='.$_POST["ordering"].' AND id<>\''.$id.'\'  ORDER BY `ordering` ASC ');
+			 $rows=$wpdb->get_results($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE ordering<=%d AND id<>%d  ORDER BY `ordering` ASC ',$_POST["ordering"],$id));
 			 
 			$count_of_rows=count($rows);
 			$ordering_values==array();
@@ -488,9 +527,9 @@ function apply_cat_contact($id)
 	
 	
 	$savedd=$wpdb->update($wpdb->prefix.'spidercontacts_contacts_categories', array(
-					'name'   				 => $_POST["name"],
-					'description'			 => stripslashes($_POST["content"]),
-					'param'  				 =>$_POST["param"],
+					'name'   				 => esc_js($_POST["name"]),
+					'description'			 => esc_js(stripslashes($_POST["content"])),
+					'param'  				 => esc_js($_POST["param"]),
 					'ordering' 				 => $_POST["ordering"],
 					'published'				 =>$_POST["published"],
               ), 

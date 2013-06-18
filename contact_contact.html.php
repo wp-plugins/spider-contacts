@@ -1,8 +1,11 @@
 	<?php	
-	
+	if(function_exists('current_user_can'))
 	if(!current_user_can('manage_options')) {
 	die('Access Denied');
 }	
+if(!function_exists('current_user_can')){
+	die('Access Denied');
+}
  //////////////////////////////////////////////////////                                             /////////////////////////////////////////////////////// 
  //////////////////////////////////////////////////////      Html functions for Contacts            ///////////////////////////////////////////////////////
  //////////////////////////////////////////////////////                                             ///////////////////////////////////////////////////////
@@ -17,7 +20,7 @@
  
  
  
- function html_showContacts($option, $rows, $lists, $pageNav,$sort,$cat_row)
+ function html_showContacts($rows, $pageNav,$sort,$cat_row)
  {
 	 
 	 
@@ -88,6 +91,7 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
     </tr>
     </table>
     <?php
+	$serch_value='';
 	if(isset($_POST['serch_or_not'])) {if($_POST['serch_or_not']=="search"){ $serch_value=$_POST['search_events_by_title']; }else{$serch_value="";}} 
 	$serch_fields='<div class="alignleft actions" style="width:180px;">
     	<label for="search_events_by_title" style="font-size:14px">Filter: </label>
@@ -107,6 +111,7 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
 	{
 		
 		$serch_fields.='<option value="'.$catt->id.'"';
+		if(isset($_POST['cat_search']))
 		if($_POST['cat_search']==$catt->id)
 		$serch_fields.='selected="selected"';
 		
@@ -194,7 +199,7 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
  
  
  
- function html_editContact( $row, $lists,  $option , $params, $rows1,$cat_row)
+ function html_editContact( $row, $lists, $params, $rows1,$cat_row)
  {
 ?>
 <script type="text/javascript">
@@ -342,7 +347,7 @@ Send Email when Message Sent:
 <td align="right" style="color:#F00" class="key">Category:</td>
 <td>
 <?php
-	$cat_select.='<select style=" text-align:left;" name="cat_search" id="cat_search" class="inputbox" onchange="change_select();">
+	$cat_select='<select style=" text-align:left;" name="cat_search" id="cat_search" class="inputbox" onchange="change_select();">
 	<option value="0"';
 	if(!isset($row->category_id))
     $cat_select.='selected="selected"';
@@ -571,7 +576,6 @@ if($images[0] || !$count_ord==1)
 </td>
 </tr>
 <tr><td colspan="2" style="width:500px;">
-<?php echo $image_url_list; ?>
 </td></tr>
 
 
@@ -669,10 +673,15 @@ loadHids();
 
 </td>
 <td>
-<div id="main_editor"><div  style=" width:600px; text-align:left" id="poststuff">
+<div id="main_editor">
+<?php if(version_compare(get_bloginfo('version'),'3.3')<0){ ?>
+<div  style=" width:600px; text-align:left" id="poststuff">
 <div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor(stripslashes($row->description),"content","title" ); ?>
 </div>
 </div>
+<?php }else{
+	wp_editor(stripslashes($row->description),"content");
+	} ?>
 </div>
 </td>
 </tr>
@@ -718,7 +727,7 @@ Published:
 <input type="hidden" name="id"
 value="<?php echo $row->id; ?>" />
 <input type="hidden" name="option"
-value="<?php echo $option;?>" />
+value=""/>
 
 </form>
 <?php
@@ -756,7 +765,7 @@ value="<?php echo $option;?>" />
  
  
  
-function html_addContact($lists,  $option, $params, $rows1,$cat_row)
+function html_addContact($lists,  $option, $params, $cat_row)
 {
 	
 ?>
@@ -841,7 +850,7 @@ Email:
 
 
 
-value="<?php echo $row->email;?>" />
+value="" />
 
 
 
@@ -864,10 +873,6 @@ Send Email when Message Sent:
 
 
 </td>
-
-
-<td>
-
 <?php
         $check0 = "";
         $check1 = "";
@@ -877,13 +882,11 @@ Send Email when Message Sent:
             $check1 = ' checked="checked" ';
 ?>
 
-<input type="radio" name="want_email" id="want_email0" value="0"  <?php
-        echo $check0;
-?> />
+<td>
+
+<input type="radio" name="want_email" id="want_email0" value="0" <?php echo $check0; ?>/>
     <label for="want_email0">No</label>
-    <input type="radio" name="want_email" id="want_email1" value="1" <?php
-        echo $check1;
-?>   />
+    <input type="radio" name="want_email" id="want_email1" value="1" <?php echo $check1; ?>/>
     <label for="want_email1">Yes</label>
 
 
@@ -897,7 +900,7 @@ Send Email when Message Sent:
 <td align="right" style="color:#F00" class="key">Category:</td>
 <td>
 <?php
-	$cat_select.='<select style=" text-align:left;" name="cat_search" id="cat_search" class="inputbox" onchange="change_select();">
+	$cat_select='<select style=" text-align:left;" name="cat_search" id="cat_search" class="inputbox" onchange="change_select();">
 	<option value="0"';
 	$cat_select.='>- Select a Category -</option>';
 	foreach($cat_row as $catt)
@@ -1066,7 +1069,7 @@ function create_images_tags()
 <td id="img__uploads"><input type="hidden" name="uploadded_images_list" id="uploadded_images_list" value="">
 
 <div id="upload_div_1">
-<input type="text"  id="image_no_1" value="" onchange="add_upload('1');" class="text_input" style="width:200px;"><a id="upload_href_1" class="button lu_upload_button" onclick="narek('<?php echo $i+1; ?>')">Select</a><input type="button" value="X" title="Delete" onclick="remov_upload('1')" /><br>
+<input type="text"  id="image_no_1" value="" onchange="add_upload('1');" class="text_input" style="width:200px;"><a id="upload_href_1" class="button lu_upload_button" onclick="narek('1')">Select</a><input type="button" value="X" title="Delete" onclick="remov_upload('1')" /><br>
 </div>
 </td>
 <tr>
@@ -1097,10 +1100,15 @@ loadHids();
 
 </td>
 <td>
-<div id="main_editor"><div  style=" width:600px; text-align:left" id="poststuff">
+<div id="main_editor">
+<?php if(version_compare(get_bloginfo('version'),'3.3')<0){ ?>
+<div  style=" width:600px; text-align:left" id="poststuff">
 <div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor("","content","title" ); ?>
 </div>
 </div>
+<?php }else{
+	wp_editor(stripslashes($row->description),"content");
+	} ?>
 </div>
 </td>
 </tr>
@@ -1116,7 +1124,7 @@ $count_ord=count($ord_elem);
 for($i=0;$i<$count_ord;$i++)
 {
 ?>
-<option value="<?php echo $ord_elem[$i]->ordering  ?>"<?php if($ord_elem[$i]->ordering==$row->ordering) echo 'selected="selected"'; ?> > <?php echo  $ord_elem[$i]->ordering." "; echo $ord_elem[$i]->first_name; ?></option>
+<option value="<?php echo $ord_elem[$i]->ordering  ?>" > <?php echo  $ord_elem[$i]->ordering." "; echo $ord_elem[$i]->first_name; ?></option>
 
 <?php 
 }

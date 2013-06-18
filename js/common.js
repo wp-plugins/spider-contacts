@@ -107,7 +107,7 @@ if(checkEmail())
 	if(resQ) 
 		{
 			resQ=0;
-  	  		sendRequest(document.getElementById('wd_captcha_img').src.split("?")[0]+'?checkcap=1&cap_code='+document.getElementById("message_capcode").value, 'caphid','');
+  	  		sendRequest(document.getElementById('wd_captcha_img').src.split("&")[0]+'&checkcap=1&cap_code='+document.getElementById("message_capcode").value, 'caphid','');
 			resNumberOfTry=0;
 			submitMessageInner(text4);
 		}
@@ -125,7 +125,7 @@ function submitMessageInner(text)
 			else
 				{
 					alert(text);
-					refreshCaptcha();
+					refreshCaptchaCont();
 				}
 		}   
 else if(resNumberOfTry<100) setTimeout("submitMessageInner('"+text+"');",200); resNumberOfTry++;
@@ -134,8 +134,8 @@ else if(resNumberOfTry<100) setTimeout("submitMessageInner('"+text+"');",200); r
 
 
 
-function refreshCaptcha()
+function refreshCaptchaCont()
 {
-document.getElementById('wd_captcha_img').src=document.getElementById('wd_captcha_img').src.split("?")[0]+'?r='+Math.floor(Math.random()*100);
+document.getElementById('wd_captcha_img').src=document.getElementById('wd_captcha_img').src.split("&")[0]+'&r='+Math.floor(Math.random()*100);
 document.getElementById("message_capcode").value='';
 }

@@ -5,7 +5,7 @@
 			
 			ed.addCommand('mceSpider_contact_mce', function() {
 				ed.windowManager.open({
-					file : url + '/../window.php',
+					file : location.protocol+'//'+location.host+ajaxurl+"?action=spidercontactswindow",
 					width : 450 + ed.getLang('Spider_contact_mce.delta_width', 0),
 					height : 220 + ed.getLang('Spider_contact_mce.delta_height', 0),
 					inline : 1

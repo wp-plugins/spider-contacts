@@ -1,8 +1,11 @@
 	<?php	
-	
+if(function_exists('current_user_can'))
 	if(!current_user_can('manage_options')) {
 	die('Access Denied');
 }	
+if(!function_exists('current_user_can')){
+	die('Access Denied');
+}		
 
 
 
@@ -32,7 +35,20 @@ function show_spider_contact_massage()
 	
 	
 	global $wpdb;
+ if(isset($_POST['search_events_by_title']))
+  $_POST['search_events_by_title']=esc_js($_POST['search_events_by_title']);
+ if(isset($_POST['asc_or_desc']))
+  $_POST['asc_or_desc']=esc_js($_POST['asc_or_desc']);
+ if(isset($_POST['order_by']))
+  $_POST['order_by']=esc_js($_POST['order_by']);
 	$sort["default_style"]="manage-column column-autor sortable desc";
+	$sort["custom_style"]='manage-column column-autor sortable desc';
+	$sort["1_or_2"]=1;
+	$where='';
+	$order='';
+	$search_tag='';
+	$sort["sortid_by"]='name';
+	$catigor_for_select='';
 	if(isset($_POST['page_number']))
 	{
 			
@@ -43,13 +59,13 @@ function show_spider_contact_massage()
 				{
 					$sort["custom_style"]="manage-column column-title sorted asc";
 					$sort["1_or_2"]="2";
-					$order="ORDER BY ".$sort["sortid_by"]." ASC";
+					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." ASC";
 				}
 				else
 				{
 					$sort["custom_style"]="manage-column column-title sorted desc";
 					$sort["1_or_2"]="1";
-					$order="ORDER BY ".$sort["sortid_by"]." DESC";
+					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." DESC";
 				}
 			}
 			
@@ -69,13 +85,13 @@ function show_spider_contact_massage()
 			$where='';
 		if(isset( $_POST['startdate']) && isset( $_POST['startdate']))	{
 			if($_POST['startdate'] && $_POST['enddate'])
-			$where.=' WHERE `date` between "'.$_POST['startdate'].' 00:00:00" and "'.$_POST['enddate'].' 23:59:59"';
+			$where.=' WHERE `date` between "'.$wpdb->escape($_POST['startdate']).' 00:00:00" and "'.$wpdb->escape($_POST['enddate']).' 23:59:59"';
 			else
 			{
 				if($_POST['startdate'])
-				$where.=' WHERE `date` BETWEEN "'.$_POST['startdate'].'" AND CURRENT_TIMESTAMP';
+				$where.=' WHERE `date` BETWEEN "'.$wpdb->escape($_POST['startdate']).'" AND CURRENT_TIMESTAMP';
 				if($_POST['enddate'])
-				$where.=' WHERE `date` BETWEEN "0001-05-04" AND "'.$_POST['enddate'].'"';
+				$where.=' WHERE `date` BETWEEN "0001-05-04" AND "'.$wpdb->escape($_POST['enddate']).'"';
 			}
 		}
 		$cont_search=false;
@@ -88,9 +104,9 @@ function show_spider_contact_massage()
 	if ($cont_search && $cat_search )
 	  {
 		  if($where)
-		 $where .= '  AND to_contact=' . $cont_search.' AND  `category`.`id`=' .$cat_search.'';
+		 $where .= '  AND to_contact=' . $wpdb->escape($cont_search).' AND  `category`.`id`=' .$wpdb->escape($cat_search).'';
 		 else
-		 $where .= '  WHERE to_contact=' . $cont_search.' AND  `category`.`id`=' .$cat_search.'';
+		 $where .= '  WHERE to_contact=' . $wpdb->escape($cont_search).' AND  `category`.`id`=' .$wpdb->escape($cat_search).'';
 		  $go= false;
 	  }	
 	if ($go)
@@ -98,26 +114,26 @@ function show_spider_contact_massage()
 	    if ($cont_search)
 		  {
 			   if($where)
-			$where .= '  AND to_contact=' .$cont_search.'';
+			$where .= '  AND to_contact=' .$wpdb->escape($cont_search).'';
 			else
-			$where .= '  WHERE to_contact=' . $cont_search.'';
+			$where .= '  WHERE to_contact=' . $wpdb->escape($cont_search).'';
 		  }
 		if ($cat_search)
 		  {
 			   if($where)
-			$where .= ' AND `category`.`id`=' .$cat_search.'';
+			$where .= ' AND `category`.`id`=' .$wpdb->escape($cat_search).'';
 			else
-			$where .= ' WHERE `category`.`id`=' .$cat_search.'';
-			$cotigor_for_select=" WHERE `category_id`=".$cat_search;
+			$where .= ' WHERE `category`.`id`=' .$wpdb->escape($cat_search).'';
+			$catigor_for_select=" WHERE `category_id`=".$wpdb->escape($cat_search);
 		  }
 	  
 	}
 	if(isset($_POST['search'])){
 		if($_POST['search']){
 		  if($where)
-		  $where .= ' AND LOWER(title) LIKE  \'%'.$_POST['search'].'%\' OR LOWER(text) LIKE  \'%'.$_POST['search'].'%\'';
+		  $where .= ' AND LOWER(title) LIKE  "%'.$wpdb->escape($_POST['search']).'%" OR LOWER(text) LIKE  "%'.$wpdb->escape($_POST['search']).'%"';
 		  else
-		  $where .= ' WHERE LOWER(title) LIKE  \'%'.$_POST['search'].'%\' OR LOWER(text) LIKE  \'%'.$_POST['search'].'%\'';		
+		  $where .= ' WHERE LOWER(title) LIKE  "%'.$wpdb->escape($_POST['search']).'%" OR LOWER(text) LIKE  "%'.$wpdb->escape($_POST['search']).'%"';		
 		}
 	}
 	
@@ -137,24 +153,30 @@ function show_spider_contact_massage()
 	if($_POST['cat_search'])
 	$cat_serch='';
 	$cat_rows=$wpdb->get_results("SELECT `id`,`name` FROM ".$wpdb->prefix."spidercontacts_contacts_categories");
-	$cont_rows=$wpdb->get_results("SELECT `id`,`first_name`,`last_name` FROM ".$wpdb->prefix."spidercontacts_contacts".$cotigor_for_select);
-	html_show_spider_contact_massage($rows, $pageNav, $sort,$id,$cat_rows,$cont_rows);	
+	$cont_rows=$wpdb->get_results("SELECT `id`,`first_name`,`last_name` FROM ".$wpdb->prefix."spidercontacts_contacts".$catigor_for_select);
+	html_show_spider_contact_massage($rows, $pageNav, $sort,$cat_rows,$cont_rows);	
 	
 }
 
 function spider_contact_massages_edit($id){
 	global $wpdb;
-   	$query='SELECT * FROM '.$wpdb->prefix.'spidercontacts_messages WHERE id='.$id.' ';
+   	$query=$wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercontacts_messages WHERE id=%d',$id);
     $row = $wpdb->get_results($query);
+	if(!$row){
+		 ?>
+         <div id="message" class="error"><p>insert valid `id`</p></div>
+         <?php
+	 return '';
+	 }
 	  $row1 =$row[0];
 	 $cont_id = $row1->to_contact;
 	  
-	$query='SELECT id, first_name, last_name, category_id FROM '.$wpdb->prefix.'spidercontacts_contacts WHERE id= '.$cont_id;
+	$query=$wpdb->prepare('SELECT id, first_name, last_name, category_id FROM '.$wpdb->prefix.'spidercontacts_contacts WHERE id=%d',$cont_id);
 
     $cont_row = $wpdb->get_results($query);
 	  $row2 =$cont_row[0];
 	 $cat_id = $row2->category_id;
-	$query='SELECT id, name FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE id='.$cat_id;
+	$query=$wpdb->prepare('SELECT id, name FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE id=%d',$cat_id);
     $cat_row = $wpdb->get_results($query);
 	$row3 =$cat_row[0]; 
 	  	$sender             = $row1->sender;
@@ -185,7 +207,7 @@ function spider_contact_massages_edit($id){
 	  
 	  global $wpdb;
 	  if($id){
-		  $query="DELETE FROM ".$wpdb->prefix."spidercontacts_messages WHERE id=".$id;
+		  $query=$wpdb->prepare("DELETE FROM ".$wpdb->prefix."spidercontacts_messages WHERE id=%d",$id);
 		 $sucsess_query= $wpdb->query($query);
 		  if( $sucsess_query){
 			  ?> <div class="updated"><p><strong>Item Deleted.</strong></p></div> <?php 
@@ -199,6 +221,15 @@ function spider_contact_massages_edit($id){
 	  }
 	  if(isset($_POST['post']))
 	  {
+	  foreach($_POST['post'] as $iddd){
+		if(!is_numeric($iddd))
+		{
+			?>
+             <div id="message" class="error"><p>One or more `id` isnt numerical</p></div>
+            <?php 
+			return false;
+		}
+	  }
 		  if(count($_POST['post'])){
 		    $cids  = implode(',', $_POST['post']);
 			$query = "DELETE FROM ".$wpdb->prefix."spidercontacts_messages WHERE id IN ( ".$cids.")";
@@ -239,7 +270,7 @@ function spider_cont_mark_as_readen(){
         $cids  = implode(',', $cid);
        	$query_mark_readen_messages = "UPDATE  `".$wpdb->prefix."spidercontacts_messages` SET  `readen` =  '1' WHERE `id` IN ( ".$cids." )";
        
-	   echo $query_mark_readen_messages;
+	 
 	    $sucsess_query=$wpdb->query($query_mark_readen_messages);
 		
 		 	 if( $sucsess_query){
