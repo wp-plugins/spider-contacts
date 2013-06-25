@@ -342,11 +342,11 @@ function save_cat_contact()
 	 
 	 
 	 
-	
+	 $script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 	 $save_or_no= $wpdb->insert($wpdb->prefix.'spidercontacts_contacts_categories', array(
 		'id'	=> NULL,
 		'name'   				 => $_POST["name"],
-        'description'			 => esc_js(stripslashes($_POST["content"])),
+        'description'			 => $script_cat,
         'param'  				 => esc_js($_POST["param"]),
         'ordering' 				 => $_POST["ordering"],
 		'published'				 =>$_POST["published"],
@@ -525,10 +525,10 @@ function apply_cat_contact($id)
 			}
 		 }
 	
-	
+	$script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 	$savedd=$wpdb->update($wpdb->prefix.'spidercontacts_contacts_categories', array(
 					'name'   				 => esc_js($_POST["name"]),
-					'description'			 => esc_js(stripslashes($_POST["content"])),
+					'description'			 => $script_cat,
 					'param'  				 => esc_js($_POST["param"]),
 					'ordering' 				 => $_POST["ordering"],
 					'published'				 =>$_POST["published"],

@@ -444,13 +444,14 @@ function  update_prad_cat($id){
 		 $images[$i]=$image_with_id;
 	 }
 	 $new_images=implode(';;;',$images);
+	 $script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 			$savedd=$wpdb->update($wpdb->prefix.'spidercontacts_contacts', array(
 			'first_name'   	 =>esc_js(stripslashes($_POST['first_name'])),
 			'last_name'   	 =>esc_js(stripslashes($_POST['last_name'])),
 			'email'   		 =>esc_js(stripslashes($_POST['email'])),
 			'want_email'   	 =>stripslashes($_POST['want_email']),
 			'category_id'    =>stripslashes($_POST['cat_search']),
-			'description'    =>esc_js(stripslashes($_POST['content'])),
+			'description'    =>$script_cat,
 			'image_url'   	 =>esc_js($new_images),
 			'param'	    	 =>esc_js(stripslashes($_POST['param'])),
 			'ordering'	     =>$_POST['ordering'],
@@ -537,7 +538,7 @@ function save_prad_cat()
 	 }
 	 $new_images=implode(';;;',$images);
 	 
-	 
+	 $script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 	 $save_or_no= $wpdb->insert($wpdb->prefix.'spidercontacts_contacts', array(
 				'id'	=> NULL,
 				'first_name'   	 =>esc_js(stripslashes($_POST['first_name'])),
@@ -545,7 +546,7 @@ function save_prad_cat()
 				'email'   		 =>esc_js(stripslashes($_POST['email'])),
 				'want_email'   	 =>esc_js(stripslashes($_POST['want_email'])),
 				'category_id'    =>stripslashes($_POST['cat_search']),
-				'description'    =>esc_js(stripslashes($_POST['content'])),
+				'description'    =>$script_cat,
 				'image_url'   	 =>esc_js($new_images),
 				'param'	    	 =>esc_js(stripslashes($_POST['param'])),
 				'ordering'	     =>$_POST['ordering'],
