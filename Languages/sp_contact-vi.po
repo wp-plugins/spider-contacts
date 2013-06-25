@@ -1,0 +1,163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: spider_contact\n"
+"POT-Creation-Date: 2012-12-01 11:53+0400\n"
+"PO-Revision-Date: 2012-12-01 13:20+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress\\wp-content\\plugins"
+"\\contacts\n"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:318
+msgid "Back to all Contacts"
+msgstr "Sao để tất cả Liên hệ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:379
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2063
+msgid "Category:"
+msgstr "Thể loại:"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:384
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1038
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2069
+msgid "Email"
+msgstr "Email"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:467
+msgid "Send a Message"
+msgstr "Gửi tin nhắn"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:483
+msgid "Your Name"
+msgstr "Tên khách hàng:"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:496
+msgid "Your Phone"
+msgstr "Điện thoại của bạn:"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:507
+msgid "Your Mail"
+msgstr "Mail của bạn"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:522
+msgid "Contact Preference"
+msgstr "Liên hệ với Sở thích"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:538
+msgid "Title of Message"
+msgstr "Tiêu đề của tin nhắn"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:546
+msgid "Text"
+msgstr "Vãn bản"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:558
+msgid "Please, Enter the Code"
+msgstr "Xin vui lòng, Nhập Mã"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Send"
+msgstr "Gửi"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Name field is required."
+msgstr "Trường Name là bắt buộc."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Message field is required."
+msgstr "Các lĩnh vực tin nhắn được yêu cầu."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Email field is Required."
+msgstr "Các lĩnh vực Email là bắt buộc."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Incorrect security code"
+msgstr "Không chính xác mã bảo mật"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Phone field is required."
+msgstr "Các lĩnh vực điện thoại liên hệ."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:992
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1399
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1960
+msgid "Choose Category"
+msgstr "Chọn Danh mục"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:994
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1401
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1962
+msgid "All"
+msgstr "Tất cả"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1014
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1422
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1985
+msgid "Search by name"
+msgstr "Tìm kiếm theo tên"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Reset"
+msgstr "Đặt lại"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1034
+msgid "Picture"
+msgstr "Hình ảnh đại diện"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1035
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1039
+msgid "Parameters"
+msgstr "Tham số"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1036
+msgid "Last Name"
+msgstr "Tên"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1037
+msgid "Category"
+msgstr "Phân loại"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1501
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2155
+msgid "More"
+msgstr "Thê"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:497
+msgid "Message Sent Successfully"
+msgstr "Tin nhắn gửi thành công"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:507
+msgid "Message sent but not emailed"
+msgstr "Gửi tin nhưng không gửi qua thư điện tử"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:523
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:535
+msgid "Message Sent"
+msgstr "Đã gửi bản tin!"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "Rating"
+msgstr "Phân loạ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "You have already rated this product."
+msgstr "Bạn đã đánh giá sản phẩm này."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/elements/sqlmultilistx.php:3
+msgid "select.genericlist"
+msgstr "select.genericlist"

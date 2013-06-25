@@ -1,0 +1,163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: spider_contact\n"
+"POT-Creation-Date: 2012-12-01 11:53+0400\n"
+"PO-Revision-Date: 2012-12-01 13:17+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress\\wp-content\\plugins"
+"\\contacts\n"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:318
+msgid "Back to all Contacts"
+msgstr "すべての連絡先に戻る"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:379
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2063
+msgid "Category:"
+msgstr "カテゴリ:"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:384
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1038
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2069
+msgid "Email"
+msgstr "メール"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:467
+msgid "Send a Message"
+msgstr "メッセージを送信します。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:483
+msgid "Your Name"
+msgstr "名前"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:496
+msgid "Your Phone"
+msgstr "あなたの電話番号"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:507
+msgid "Your Mail"
+msgstr "あなたのメール"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:522
+msgid "Contact Preference"
+msgstr "プまでお問い合わせください"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:538
+msgid "Title of Message"
+msgstr "メッセージのタイトル"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:546
+msgid "Text"
+msgstr "テキスト"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:558
+msgid "Please, Enter the Code"
+msgstr "、コードを入力してください。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Send"
+msgstr "送信"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Name field is required."
+msgstr "[名前]フィールドに入力する必要があります。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Message field is required."
+msgstr "メッセージフィールドは必須です。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Email field is Required."
+msgstr "'From Email'フィールドは必須です"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Incorrect security code"
+msgstr "間違ったセキュリティコード"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Phone field is required."
+msgstr "電話フィールドは必須です。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:992
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1399
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1960
+msgid "Choose Category"
+msgstr "カテゴリを選択"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:994
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1401
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1962
+msgid "All"
+msgstr "すべて"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1014
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1422
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1985
+msgid "Search by name"
+msgstr "名前で検索する"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Search"
+msgstr "検索"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Reset"
+msgstr "リセット"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1034
+msgid "Picture"
+msgstr "Picture"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1035
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1039
+msgid "Parameters"
+msgstr "パラメータ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1036
+msgid "Last Name"
+msgstr "名"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1037
+msgid "Category"
+msgstr "Category "
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1501
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2155
+msgid "More"
+msgstr "もっと"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:497
+msgid "Message Sent Successfully"
+msgstr "メッセージは正常に送信されました"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:507
+msgid "Message sent but not emailed"
+msgstr "メッセージが送信されますが、電子メールで送信しない"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:523
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:535
+msgid "Message Sent"
+msgstr "メッセージを送信しました"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "Rating"
+msgstr "レート"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "You have already rated this product."
+msgstr "この商品は既に評価済み。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/elements/sqlmultilistx.php:3
+msgid "select.genericlist"
+msgstr "select.genericlist"
