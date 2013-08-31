@@ -587,7 +587,7 @@ Message:
 
 
 	
-function front_end_cotegory_contact_list($id){
+function front_end_cotegory_contact_list($id, $type, $order_by){
 	global $wpdb;
 
 $idddd=$id;
@@ -595,6 +595,25 @@ $params = new wp_cont_param;
 $cont_in_page=$params->get( 'count_of_rows_in_the_table' );
 $search ='';
 
+$pieces = explode(", ", $id);
+	
+	for($i=0; $i<=count($pieces); $i++){
+	$piece[]=$pieces[$i]; 
+	}
+	$param_categories=$piece[0];
+	
+	
+	
+	$param_categories=substr($param_categories,0,-1);
+	
+	
+$cat=explode(',',$param_categories);
+$cats=array();
+
+for($i=0;$i<count($cat);$i++)
+{
+$cats[]="'".$cat[$i]."'";
+}
 
 if(isset($_GET['page_num']))
 		$page_num=$_GET['page_num'];
@@ -614,10 +633,10 @@ if(isset($_POST['cat_id'])){
 		}
 
 
+$pos = strpos($id, ',');
 
-
-
-if($id>0){
+if ($pos === false) {
+   if($id>0){
 
 
 
@@ -655,6 +674,46 @@ $query=$wpdb->prepare($query,$cat_id);
 
 
 }
+} else {
+    if(!in_array(0,$cat)){
+
+$query_count = $wpdb->prepare( "SELECT count(".$wpdb->prefix."spidercontacts_contacts.id) as cont_count FROM ".$wpdb->prefix."spidercontacts_contacts left join ".$wpdb->prefix."spidercontacts_contacts_categories on ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1'  and ".$wpdb->prefix."spidercontacts_contacts.category_id IN (".str_replace("\\",'',$param_categories).") ",$id);
+
+
+
+$query = $wpdb->prepare("SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$wpdb->prefix."spidercontacts_contacts_categories.name as cat_name FROM ".$wpdb->prefix."spidercontacts_contacts left join ".$wpdb->prefix."spidercontacts_contacts_categories on ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1'  and ".$wpdb->prefix."spidercontacts_contacts.category_id IN (".str_replace("\\",'',$param_categories).") ",$id);
+
+}
+else
+
+{
+
+$query_count = "SELECT count(".$wpdb->prefix."spidercontacts_contacts.id) as cont_count FROM ".$wpdb->prefix."spidercontacts_contacts  WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1' ";
+
+
+
+$query= "SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$wpdb->prefix."spidercontacts_contacts_categories.name as cat_name  FROM ".$wpdb->prefix."spidercontacts_contacts left join ".$wpdb->prefix."spidercontacts_contacts_categories on ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1' ";
+if($cat_id!=0){
+$query_count .= " and ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";
+$query_count=$wpdb->prepare($query_count,$cat_id);
+$query .= " and ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";
+$query=$wpdb->prepare($query,$cat_id);
+
+}
+
+
+}
+}
+		
+
 
 if ($search)
 {
@@ -665,10 +724,18 @@ if ($search)
 	$query_count.= " AND concat(first_name,' ', last_name) LIKE %s";
 	$query_count=$wpdb->prepare($query_count,"%".$search."%");
 }
+if($order_by==0){
+$query .= " ORDER BY `id`";
+}
+elseif($order_by==1){
 $query .= " ORDER BY `ordering`";
-$query .= " limit ".(($page_num-1)*$cont_in_page).",".$cont_in_page." ";
-
-
+}
+elseif($order_by==2){
+$query .= " ORDER BY `first_name`";
+}
+elseif($order_by==3){
+$query .= " ORDER BY `last_name`";
+}
 
 
 $row = $wpdb->get_row($query_count,ARRAY_A);
@@ -740,11 +807,33 @@ foreach($rows as $row)
 	
 	
 	
-function	fornt_end_contact_short($id){
+function	fornt_end_contact_short($id,$type,$order_by){
 	global $wpdb;
 	$idddd=$id;
 	
 $params = new wp_cont_param;
+$pieces = explode(", ", $id);
+	
+	for($i=0; $i<=count($pieces); $i++){
+	$piece[]=$pieces[$i]; 
+	}
+	$param_categories=$piece[0];
+	
+	
+	
+	$param_categories=substr($param_categories,0,-1);
+	
+	
+$cat=explode(',',$param_categories);
+$cats=array();
+
+for($i=0;$i<count($cat);$i++)
+{
+$cats[]="'".$cat[$i]."'";
+}
+
+
+$param_categories=implode(',',$cats);
 
 //echo $params_base->get("name");
 
@@ -771,8 +860,10 @@ if(isset($_POST['cat_id'])){
 		$cat_id=0;}
 		}
 
+$pos = strpos($id, ',');
 
-
+if ($pos === false) {
+   
 if($id>0){
 
 
@@ -809,6 +900,43 @@ if($cat_id!=0){
 	}
 
 }
+} else {
+    if(!in_array(0,$cat)){
+
+$query_count = $wpdb->prepare("SELECT count(".$wpdb->prefix."spidercontacts_contacts.id) as cont_count FROM ".$wpdb->prefix."spidercontacts_contacts left join ".$wpdb->prefix."spidercontacts_contacts_categories on ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1'  and ".$wpdb->prefix."spidercontacts_contacts.category_id IN (".str_replace("\\",'',$param_categories).") ",$id);
+
+
+$query = $wpdb->prepare("SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$wpdb->prefix."spidercontacts_contacts_categories.name as cat_name FROM ".$wpdb->prefix."spidercontacts_contacts left join ".$wpdb->prefix."spidercontacts_contacts_categories on ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1'  and ".$wpdb->prefix."spidercontacts_contacts.category_id IN (".str_replace("\\",'',$param_categories).") ",$id);
+
+}
+else
+
+{
+
+$query_count = "SELECT count(".$wpdb->prefix."spidercontacts_contacts.id) as cont_count FROM ".$wpdb->prefix."spidercontacts_contacts  WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1' ";
+
+
+
+$query= "SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$wpdb->prefix."spidercontacts_contacts_categories.name as cat_name  FROM ".$wpdb->prefix."spidercontacts_contacts left join ".$wpdb->prefix."spidercontacts_contacts_categories on ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1' ";
+if($cat_id!=0){
+	$query_count .= " and ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";
+	$query_count=$wpdb->prepare($query_count,$cat_id);
+	$query .= " and ".$wpdb->prefix."spidercontacts_contacts.category_id=%d";
+	$query=$wpdb->prepare($query,$cat_id);
+	}
+
+}
+}
+		
+	
 
 
 if ($search)
@@ -819,11 +947,23 @@ if ($search)
 	$query_count=$wpdb->prepare($query_count,'%'.$search.'%',(($page_num-1)*$cont_in_page),(int)$cont_in_page);
 	}
 else{
+if($order_by==0){
+$query .= " ORDER BY `id`";
+}
+elseif($order_by==1){
 $query .= " ORDER BY `ordering`";
+}
+elseif($order_by==2){
+$query .= " ORDER BY `first_name`";
+}
+elseif($order_by==3){
+$query .= " ORDER BY `last_name`";
+}
 $query .= " limit %d,%d";
 $query=$wpdb->prepare($query,(($page_num-1)*$cont_in_page),(int)$cont_in_page);
 
 }
+
 
 $row = $wpdb->get_row($query_count,ARRAY_A);
 
@@ -884,7 +1024,7 @@ return	html_fornt_end_contact_short($rows, $params,$page_num,$cont_count,@$categ
 	
 	
 	
-function fornt_end_contact_cells($id){
+function fornt_end_contact_cells($id,$type,$order_by){
 	
 $idddd=$id;
 global $wpdb;
@@ -896,6 +1036,26 @@ $params = new wp_cont_param;
 $cont_in_page=$params->get('count_of_contact_in_the_row' )*$params->get( 'count_of_rows_in_the_page' );
 
 $search ='';
+
+$pieces = explode(", ", $id);
+	
+	for($i=0; $i<=count($pieces); $i++){
+	$piece[]=$pieces[$i]; 
+	}
+	$param_categories=$piece[0];
+	
+	
+	
+	$param_categories=substr($param_categories,0,-1);
+	
+	
+$cat=explode(',',$param_categories);
+$cats=array();
+
+for($i=0;$i<count($cat);$i++)
+{
+$cats[]="'".$cat[$i]."'";
+}
 
 
 if(isset($_GET['page_num']))
@@ -916,9 +1076,13 @@ if(isset($_POST['cat_id'])){
 		$cat_id=0;}
 		}
 
+		
+		
+		
+$pos = strpos($id, ',');
 
-
-if($id>0){
+if ($pos === false) {
+    if($id>0){
 
 
 
@@ -954,6 +1118,45 @@ if($cat_id!=0)
 	$query_count=$wpdb->prepare($query_count,$cat_id);
 	$query=$wpdb->prepare($query,$cat_id);
 }
+} else {
+    if(!in_array(0,$cat)){
+
+$query_count = $wpdb->prepare("SELECT COUNT(".$wpdb->prefix."spidercontacts_contacts.id) AS cont_count FROM ".$wpdb->prefix."spidercontacts_contacts LEFT JOIN ".$wpdb->prefix."spidercontacts_contacts_categories ON ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1'  AND ".$wpdb->prefix."spidercontacts_contacts.category_id IN (".str_replace("\\",'',$param_categories).") ",$id);
+
+
+
+$query = $wpdb->prepare("SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$wpdb->prefix."spidercontacts_contacts_categories.name AS cat_name FROM ".$wpdb->prefix."spidercontacts_contacts LEFT JOIN ".$wpdb->prefix."spidercontacts_contacts_categories ON ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1'  AND ".$wpdb->prefix."spidercontacts_contacts.category_id IN (".str_replace("\\",'',$param_categories).") ",$id);
+
+}
+else
+
+{
+
+$query_count = "SELECT count(".$wpdb->prefix."spidercontacts_contacts.id) AS cont_count FROM ".$wpdb->prefix."spidercontacts_contacts  WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1' ";
+
+
+
+$query= "SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$wpdb->prefix."spidercontacts_contacts_categories.name AS cat_name  FROM ".$wpdb->prefix."spidercontacts_contacts LEFT JOIN ".$wpdb->prefix."spidercontacts_contacts_categories ON ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
+
+".$wpdb->prefix."spidercontacts_contacts.published = '1' ";
+if($cat_id!=0)
+
+{
+	$query_count .= " AND ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";
+	$query .= " AND ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";}
+	$query_count=$wpdb->prepare($query_count,$cat_id);
+	$query=$wpdb->prepare($query,$cat_id);
+}
+}
+		
+		
+
 
 
 if ($search)
@@ -966,7 +1169,18 @@ if ($search)
 }
 else
 {	
+if($order_by==0){
+$query .= " ORDER BY `id`";
+}
+elseif($order_by==1){
 $query .= " ORDER BY `ordering`";
+}
+elseif($order_by==2){
+$query .= " ORDER BY `first_name`";
+}
+elseif($order_by==3){
+$query .= " ORDER BY `last_name`";
+}
 $query .= " LIMIT %d,%d";
 $query=$wpdb->prepare($query,(($page_num-1)*$cont_in_page),$cont_in_page);
 }

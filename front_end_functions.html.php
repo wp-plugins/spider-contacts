@@ -1084,7 +1084,7 @@ $name_search = $_POST['name_search'];
 echo '<br />
 ' . __('Search by name','sp_contact') . '&nbsp;
 <input id="name_search" name="name_search" class="input" value="'.$name_search.'"> 
-	<input type="submit" value="'. __('Search','sp_contact') .'" class="spidercontactbutton" style="background-color:'.$params->get( 'table_button_background_color' ).'; color:'.$params->get( 'table_button_color' ).'; width:inherit;"><input type="button" value="'. __('Reset','sp_contact') .'" onClick="cat_form_reset(this.form);" class="spidercontactbutton" style="background-color:'.$params->get( 'table_button_background_color' ).'; color:'.$params->get( 'table_button_color' ).'; width:inherit;">';
+	<input type="submit" value="'. __('Search','sp_contact') .'" class="spidercontactbutton" style="background:'.$params->get( 'table_button_background_color' ).'; color:'.$params->get( 'table_button_color' ).'; width:inherit;border-bottom:0"><input type="button" value="'. __('Reset','sp_contact') .'" onClick="cat_form_reset(this.form);" class="spidercontactbutton" style="background:'.$params->get( 'table_button_background_color' ).'; color:'.$params->get( 'table_button_color' ).'; width:inherit;border-bottom:0">';
 }
 echo '</div></form>';
 }  
@@ -1547,7 +1547,7 @@ $name_search = $_POST['name_search'];
 echo '<br />
 ' . __('Search by name','sp_contact') . '&nbsp;
 <input id="name_search" name="name_search" class="input" value="'.$name_search.'"> 
-	<input type="submit" value="'. __('Search','sp_contact') .'" class="spidercontactbutton" style="background-color:'.$params->get( 'cube_button_background_color' ).'; color:'.$params->get( 'cube_button_color' ).'; width:inherit;"><input type="button" value="'. __('Reset','sp_contact') .'" onClick="cat_form_reset(this.form);" class="spidercontactbutton" style="background-color:'.$params->get( 'cube_button_background_color' ).'; color:'.$params->get( 'cube_button_color' ).'; width:inherit;">';
+	<input type="submit" value="'. __('Search','sp_contact') .'" class="spidercontactbutton" style="background:'.$params->get( 'cube_button_background_color' ).' !important; color:'.$params->get( 'cube_button_color' ).'; width:inherit; border-bottom:0"><input type="button" value="'. __('Reset','sp_contact') .'" onClick="cat_form_reset(this.form);" class="spidercontactbutton" style="background:'.$params->get( 'cube_button_background_color' ).'; color:'.$params->get( 'cube_button_color' ).'; width:inherit;border-bottom:0">';
 }
 echo '</div></form>';
 }
@@ -1582,7 +1582,7 @@ foreach ($rows as $row)
     	
     
     $imgurl = explode(";;;", $row->image_url);
-    echo '<td><div id="contactMainDivCube" style="' .'  border-width:' . $params->get('cube_border_width') . 'px;border-color:' . $params->get('cube_border_color') . ';border-style:' . $params->get('cube_border_style') . ';' . (($params->get('cube_text_size_small') != '') ? ('font-size:' . $params->get('cube_text_size_small') . 'px;') : '') . (($params->get('cube_text_color') != '') ? ('color:' . $params->get('cube_text_color') . ';') : '') . (($params->get('cube_background_color') != '') ? ('background-color:' . $params->get('cube_background_color') . ';') : '') .' width:' . $params->get('cube_contact_cell_width') . 'px; height:' . $params->get('cube_contact_cell_height') . 'px; ">
+    echo '<td><div id="contactMainDivCube" style="' .'  border-width:' . $params->get('cube_border_width') . 'px;border-color:' . $params->get('cube_border_color') . ';border-style:' . $params->get('cube_border_style') . ';' . (($params->get('cube_text_size_small') != '') ? ('font-size:' . $params->get('cube_text_size_small') . 'px;') : '') . (($params->get('cube_text_color') != '') ? ('color:' . $params->get('cube_text_color') . ';') : '') . (($params->get('cube_background_color') != '') ? ('background-color:' . $params->get('cube_background_color') . ';') : '') .' width:' . $params->get('cube_contact_cell_width') . 'px; ">
 
 
 
@@ -1635,7 +1635,7 @@ echo '</td><td></td></tr>';
 </div>
 
 
-<div style="float:right;" id="contMore"><a href="' . $link . '" style="' . (($params->get('cube_hyperlink_color') != '') ? ('color:' . $params->get('cube_hyperlink_color') . ';') : '') . '">' . __('More','sp_contact') . '</a></div></td>';
+<div style="float:right;margin-top:-11%" id="contMore"><a href="' . $link . '" style="' . (($params->get('cube_hyperlink_color') != '') ? ('color:' . $params->get('cube_hyperlink_color') . ';') : '') . '">' . __('More','sp_contact') . '</a></div></td>';
     
     
     
@@ -2157,7 +2157,7 @@ $name_search = $_POST['name_search'];
 echo '<br /><span style="font-size:14px !important">
 ' . __('Search by name','sp_contact') . '</span>&nbsp;
 <input type="text" id="name_search" name="name_search" class="spidercontactinput" value="'.$name_search.'"> 
-	<input type="submit" value="'. __('Search','sp_contact') .'" class="spidercontactbutton" style="background-color:'.$params->get( 'full_button_background_color' ).'; color:'.$params->get( 'full_button_color' ).'; width:inherit;"><input type="button" value="'. __('Reset','sp_contact') .'" onClick="cat_form_reset(this.form);" class="spidercontactbutton" style="background-color:'.$params->get( 'full_button_background_color' ).'; color:'.$params->get( 'full_button_color' ).'; width:inherit;">';
+	<input type="submit" value="'. __('Search','sp_contact') .'" class="spidercontactbutton" style="background:'.$params->get( 'full_button_background_color' ).' !important; color:'.$params->get( 'full_button_color' ).'; width:inherit;border-bottom:0"><input type="button" value="'. __('Reset','sp_contact') .'" onClick="cat_form_reset(this.form);" class="spidercontactbutton" style="background:'.$params->get( 'full_button_background_color' ).' !important; color:'.$params->get( 'full_button_color' ).'; width:inherit;border-bottom:0">';
 }
 echo '</div></form>';
 }

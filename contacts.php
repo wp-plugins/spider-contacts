@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Contacts
 Plugin URI: http://web-dorado.com/
-Version: 1.1.1
+Version: 1.1.2
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -30,14 +30,17 @@ add_shortcode('Spider_contact_single', 'contcat_single_shotrcode');
 function contcat_category_shotrcode($atts) {
      extract(shortcode_atts(array(
 	      'id' => 'no contact',
-		  'type' => 0
+		  'type' => 0,
+		  'order_by' => 0
      ), $atts));
-	 if(!(is_numeric($atts['id']) || $atts['id']=='ALL_CAT'))
-	return 'insert numerical or `ALL_CAT` shortcode in `id`';
+	 
 	if(!($atts['type']==0 || $atts['type']==1 || $atts['type']==2))
 	return  'insert valid `type`';
+	if(!($atts['order_by']==0 || $atts['order_by']==1 || $atts['order_by']==2 || $atts['order_by']==3))
+	return  'insert valid `order_by`';
 	
-     return category_contact_front_end($atts['id'],$atts['type']);
+	
+     return category_contact_front_end($atts['id'],$atts['type'],$atts['order_by']);
 }
 add_shortcode('Spider_contact_categories', 'contcat_category_shotrcode');
 
@@ -50,15 +53,12 @@ function single_contact_front_end($id){
 	return front_end_single_contact($id);
 	
 }
-function category_contact_front_end($id,$type)
+function category_contact_front_end($id,$type,$order_by)
 {
-	require_once("front_end_functions.php");
+require_once("front_end_functions.php");
 	require_once("front_end_functions.html.php");
 	if($type==1){
-		
-	
-	
-	
+
 	if(isset($_GET['contact_id'])){
 		if(isset($_GET['view']))
 		{
@@ -73,7 +73,7 @@ function category_contact_front_end($id,$type)
 	}
 	else
 	{
-	 return	front_end_cotegory_contact_list($id,$type);
+	 return	front_end_cotegory_contact_list($id,$type,$order_by);
 	}
 	}
 	
@@ -95,7 +95,7 @@ function category_contact_front_end($id,$type)
 	}
 	else
 	{
-	 return	fornt_end_contact_short($id);
+	 return	fornt_end_contact_short($id, $type, $order_by);
 	}
 	}
 	if($type==2){
@@ -116,7 +116,7 @@ function category_contact_front_end($id,$type)
 	}
 	else
 	{
-	 return	fornt_end_contact_cells($id);
+	 return	fornt_end_contact_cells($id,$type, $order_by);
 	}
 	}
 	
@@ -547,7 +547,7 @@ $categories=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_co
 		<table border="0" cellpadding="4" cellspacing="0">
          <tbody><tr>
             <td nowrap="nowrap"><label for="Spider_contact_Category">Select Category</label></td>
-            <td><select name="Spider_contact_Category" id="Spider_contact_Category" >
+            <td><select name="Spider_contact_Category" id="Spider_contact_Category" multiple="multiple">
 <option value="ALL_CAT" selected="selected">- All categories -</option>
 <?php 
 	   foreach($categories as $categorie)
@@ -560,15 +560,27 @@ $categories=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_co
           </tr>
           <tr>
             <td nowrap="nowrap" valign="top"><label for="showtype">Show Category Type</label></td>
-            <td>	<input type="radio" name="cat_show" id="paramsshow_category_details0" value="0" checked="checked">
+            <td>	<input type="radio" name="cat_show" id="paramsshow_category_details0" value="0">
                     <label style="position:relative; bottom:4px" for="paramsshow_category_details0">Short</label>
                     <input type="radio" name="cat_show" id="paramsshow_category_details1" value="1">
                     <label style="position:relative; bottom:4px" for="paramsshow_category_details1">Table</label>
-                    <input type="radio" name="cat_show" id="paramsshow_category_details2" value="2">
+                    <input type="radio" name="cat_show" id="paramsshow_category_details2" value="2" checked="checked">
                     <label style="position:relative; bottom:4px" for="paramsshow_category_details2">Full</label>
     		</td>
           </tr>
              
+			 <tr>
+            <td nowrap="nowrap" valign="top"><label for="orderby">Order By</label></td>
+            <td>	
+            	<select name="order_by" id="order_by" >
+                	<option value="0" >id</option>
+                    <option value="1" >Ordering</option>
+                    <option value="2" >Firstname</option>
+                    <option value="3" >Lastname</option>
+                </select>
+    		</td>
+          </tr>
+			 
         </tbody></table>
 		</div>
         </div>
@@ -611,14 +623,22 @@ function insert_spider_catalog() {
 					{
 					show=2;
 					}
+				   order_by=document.getElementById('order_by').value;
+					
 				   var tagtext;
-				   tagtext='[Spider_contact_categories id="'+document.getElementById('Spider_contact_Category').value+'"  type="'+show+'"]';
+				   
+				   
+				   var x=document.getElementById('Spider_contact_Category');
+				   var str = "";
+				   for (var i = 0; i < x.options.length; i++) {
+				        if(x.options[i].selected ==true){
+							str +=x.options[i].value+",";
+						}
+					}
+				   tagtext='[Spider_contact_categories id="'+str+'"  type="'+show+'"  order_by="'+order_by+'"]';
 				   window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
 				   tinyMCEPopup.editor.execCommand('mceRepaint');
 				   tinyMCEPopup.close();		
-				
-	
-	
 	}
 	else
 	{
