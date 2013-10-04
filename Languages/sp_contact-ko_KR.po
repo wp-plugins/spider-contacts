@@ -1,0 +1,163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: spider_contact\n"
+"POT-Creation-Date: 2012-12-01 11:53+0400\n"
+"PO-Revision-Date: 2012-12-01 13:17+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress\\wp-content\\plugins"
+"\\contacts\n"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:318
+msgid "Back to all Contacts"
+msgstr "모든 연락처로 돌아 가기"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:379
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2063
+msgid "Category:"
+msgstr "카테고리:"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:384
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1038
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2069
+msgid "Email"
+msgstr "이메일 보내기"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:467
+msgid "Send a Message"
+msgstr "메시지 보내기"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:483
+msgid "Your Name"
+msgstr "이름"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:496
+msgid "Your Phone"
+msgstr "귀하의 전화 번호"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:507
+msgid "Your Mail"
+msgstr "메일"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:522
+msgid "Contact Preference"
+msgstr "환경 설정 문의"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:538
+msgid "Title of Message"
+msgstr "메시지의 제목"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:546
+msgid "Text"
+msgstr "본문"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:558
+msgid "Please, Enter the Code"
+msgstr ", 코드를 입력하십시오"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Send"
+msgstr "보내기"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Name field is required."
+msgstr "이름 입력란은 필수입니다."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Message field is required."
+msgstr "메시지 입력란은 필수입니다."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Email field is Required."
+msgstr "이메일 입력란은 필수입니다."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Incorrect security code"
+msgstr "잘못된 보안 코드"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Phone field is required."
+msgstr "전화 번호 필드가 필요합니다."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:992
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1399
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1960
+msgid "Choose Category"
+msgstr "카테고리를 선택"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:994
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1401
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1962
+msgid "All"
+msgstr "모두"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1014
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1422
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1985
+msgid "Search by name"
+msgstr "이름으로 검색"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Search"
+msgstr "검색"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Reset"
+msgstr "재 설정"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1034
+msgid "Picture"
+msgstr "Picture"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1035
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1039
+msgid "Parameters"
+msgstr "매개 변수"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1036
+msgid "Last Name"
+msgstr "성"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1037
+msgid "Category"
+msgstr "범주"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1501
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2155
+msgid "More"
+msgstr "자세히 "
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:497
+msgid "Message Sent Successfully"
+msgstr "메시지 전송 완료"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:507
+msgid "Message sent but not emailed"
+msgstr "메시지가 전송하지만 이메일로 전송하지"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:523
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:535
+msgid "Message Sent"
+msgstr "메시지가 전송되었습니다."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "Rating"
+msgstr "평가"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "You have already rated this product."
+msgstr "당신은 이미이 제품을 평가했습니다."
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/elements/sqlmultilistx.php:3
+msgid "select.genericlist"
+msgstr "select.genericlist"

@@ -1,0 +1,163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: spider_contact\n"
+"POT-Creation-Date: 2012-12-01 11:53+0400\n"
+"PO-Revision-Date: 2012-12-01 13:13+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress\\wp-content\\plugins"
+"\\contacts\n"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:318
+msgid "Back to all Contacts"
+msgstr "备份所有联系人"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:379
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2063
+msgid "Category:"
+msgstr "分类"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:384
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1038
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2069
+msgid "Email"
+msgstr "电子邮件"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:467
+msgid "Send a Message"
+msgstr "发送一则短消息"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:483
+msgid "Your Name"
+msgstr "您的姓名 （必填）"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:496
+msgid "Your Phone"
+msgstr "您的电话"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:507
+msgid "Your Mail"
+msgstr "您的邮件"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:522
+msgid "Contact Preference"
+msgstr "联络方式"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:538
+msgid "Title of Message"
+msgstr "邮件的标题"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:546
+msgid "Text"
+msgstr "文本"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:558
+msgid "Please, Enter the Code"
+msgstr "请输入代码"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Send"
+msgstr "发送"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Name field is required."
+msgstr "“名称”字段是必需的。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Message field is required."
+msgstr "“消息”字段是必需的。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Email field is Required."
+msgstr "电子邮件字段是必需的。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Incorrect security code"
+msgstr "不正确的安全码"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Phone field is required."
+msgstr "在手机领域是必要的。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:992
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1399
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1960
+msgid "Choose Category"
+msgstr "选择产品类别"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:994
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1401
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1962
+msgid "All"
+msgstr "所有"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1014
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1422
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1985
+msgid "Search by name"
+msgstr "按名称搜索"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Search"
+msgstr "搜索"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Reset"
+msgstr "重置"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1034
+msgid "Picture"
+msgstr "图片"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1035
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1039
+msgid "Parameters"
+msgstr "变量"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1036
+msgid "Last Name"
+msgstr "姓氏"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1037
+msgid "Category"
+msgstr "分类"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1501
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2155
+msgid "More"
+msgstr "更多"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:497
+msgid "Message Sent Successfully"
+msgstr "信息发送成功"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:507
+msgid "Message sent but not emailed"
+msgstr "消息发送，但不通过电子邮件发送"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:523
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:535
+msgid "Message Sent"
+msgstr "消息已发送！"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "Rating"
+msgstr "内容评级"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "You have already rated this product."
+msgstr "您已经评价了该产品。"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/elements/sqlmultilistx.php:3
+msgid "select.genericlist"
+msgstr "select.genericlist"
