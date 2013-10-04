@@ -595,9 +595,9 @@ $params = new wp_cont_param;
 $cont_in_page=$params->get( 'count_of_rows_in_the_table' );
 $search ='';
 
-$pieces = explode(", ", $id);
+$pieces = explode(",", $id);
 	
-	for($i=0; $i<=count($pieces); $i++){
+	for($i=0; $i<=count($pieces) - 1; $i++){
 	$piece[]=$pieces[$i]; 
 	}
 	$param_categories=$piece[0];
@@ -624,13 +624,17 @@ if(isset($_POST['name_search'])){
    $search = $_POST['name_search'];
 }
 
-if(isset($_POST['cat_id'])){
-		if($_POST['cat_id']!=0){
-		$cat_id=$_POST['cat_id'];
-		}
-		else{
-		$cat_id=0;}
-		}
+if(isset($_POST['cat_id'])) {
+  if($_POST['cat_id']!=0) {
+    $cat_id=$_POST['cat_id'];
+  }
+  else {		
+    $cat_id=0;
+  }
+}
+else {
+  $cat_id=0;
+}
 
 
 $pos = strpos($id, ',');
@@ -812,9 +816,9 @@ function	fornt_end_contact_short($id,$type,$order_by){
 	$idddd=$id;
 	
 $params = new wp_cont_param;
-$pieces = explode(", ", $id);
+$pieces = explode(",", $id);
 	
-	for($i=0; $i<=count($pieces); $i++){
+	for($i=0; $i<=count($pieces) - 1; $i++){
 	$piece[]=$pieces[$i]; 
 	}
 	$param_categories=$piece[0];
@@ -852,13 +856,17 @@ if(isset($_POST['name_search'])){
    $search = $_POST['name_search'];
 }
 
-if(isset($_POST['cat_id'])){
-		if($_POST['cat_id']!=0){		
-		$cat_id=$_POST['cat_id'];
-		}
-		else{
-		$cat_id=0;}
-		}
+if(isset($_POST['cat_id'])) {
+  if($_POST['cat_id']!=0) {
+    $cat_id=$_POST['cat_id'];
+  }
+  else {		
+    $cat_id=0;
+  }
+}
+else {
+  $cat_id=0;
+}
 
 $pos = strpos($id, ',');
 
@@ -1037,9 +1045,9 @@ $cont_in_page=$params->get('count_of_contact_in_the_row' )*$params->get( 'count_
 
 $search ='';
 
-$pieces = explode(", ", $id);
+$pieces = explode(",", $id);
 	
-	for($i=0; $i<=count($pieces); $i++){
+	for($i=0; $i<=count($pieces) - 1; $i++){
 	$piece[]=$pieces[$i]; 
 	}
 	$param_categories=$piece[0];
@@ -1067,14 +1075,17 @@ if(isset($_POST['name_search'])){
    $search = $_POST['name_search'];
 }
 
-if(isset($_POST['cat_id'])){
-		if($_POST['cat_id']!=0){
-		$cat_id=$_POST['cat_id'];
-		}
-		else{
-		
-		$cat_id=0;}
-		}
+if(isset($_POST['cat_id'])) {
+  if($_POST['cat_id']!=0) {
+    $cat_id=$_POST['cat_id'];
+  }
+  else {		
+    $cat_id=0;
+  }
+}
+else {
+  $cat_id=0;
+}
 
 		
 		
