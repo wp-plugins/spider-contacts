@@ -2,8 +2,9 @@
 
 /*
 Plugin Name: Spider Contacts
-Plugin URI: http://web-dorado.com/
+Plugin URI: http://web-dorado.com/products/wordpress-contacts-plugin.html
 Version: 1.1.3
+Description: Spider Contacts is a WordPress staff list plugin with large and affecting capabilities which helps you to display information about the group of people more intelligible, effective and convenient. Spider Contact’s main feature is the possibility to create and manage your own list of different contacts with corresponding images, data and with a feedback option.
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
