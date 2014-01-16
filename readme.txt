@@ -1,7 +1,7 @@
 === WordPress Contacts ===  
 Contributors: webdorado  
 Donate link: http://web-dorado.com/products/wordpress-contacts-plugin.html 
-Tags: contact, connections, contacts, staff  
+Tags: contact ,contacts, contact information, staff,  addressbook, address book , contact widget, People Contact, Contact management system, administration
 Requires at least: 3.0  
 Tested up to: 3.7.1 
 Stable tag: 1.1.4  
