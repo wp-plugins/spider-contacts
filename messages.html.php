@@ -76,10 +76,10 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
         </tr>
     <tr>
     <td style="width:100%; text-align:left">
-    <?php echo "<h2>Massages</h2>"; ?>
+    <?php echo "<h2>Messages</h2>"; ?>
     </td>
-    <td><input class="button-secondary action" type="button" value="Mark as Readen"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_readen'; document.getElementById('admin_form').submit()" /></td>
-        <td><input class="button-secondary action" type="button" value="Mark as Unreaden"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_unread'; document.getElementById('admin_form').submit()" /></td>
+    <td><input class="button-secondary action" type="button" value="Mark as Read"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_readen'; document.getElementById('admin_form').submit()" /></td>
+        <td><input class="button-secondary action" type="button" value="Mark as Unread"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_unread'; document.getElementById('admin_form').submit()" /></td>
     </tr>
     </table>
     
@@ -115,7 +115,7 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
 					}
                    
                     $serch.='</select>
-                    <button class="button-primary" onclick="document.getElementById(\'cat_search\').value=0; document.getElementById(\'cont_search\').value=0;this.form.submit();">Show All Mesages</button>';
+                    <button class="button-primary" onclick="document.getElementById(\'cat_search\').value=0; document.getElementById(\'cont_search\').value=0;this.form.submit();">Show All Messages</button>';
    
 	 print_html_nav($pageNav['total'],$pageNav['limit'],$serch);	
 	

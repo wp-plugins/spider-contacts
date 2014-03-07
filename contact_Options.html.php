@@ -76,13 +76,13 @@ function html_show_sp_contact_massages_options(){
 		  
 		  
 		  ?>
-        <div class="updated" style="font-size: 14px; color:red !important"><p><strong>Massage Options is disabled in free version. If you need this functionality, you need to buy the commercial version.</strong></p></div>
+        <div class="updated" style="font-size: 14px; color:red !important"><p><strong>Message Options is disabled in free version. If you need this functionality, you need to buy the commercial version.</strong></p></div>
           <table>
 <tbody>
 
               <tr>   
 <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/5-options/wordpress-contacts-guide-step-5-6.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
-This section allows you to configure the Massage Options. <a href="http://web-dorado.com/5-options/wordpress-contacts-guide-step-5-6.html" target="_blank" style="color:blue; text-decoration:none;">More...</a><br /> 
+This section allows you to configure the Message Options. <a href="http://web-dorado.com/5-options/wordpress-contacts-guide-step-5-6.html" target="_blank" style="color:blue; text-decoration:none;">More...</a><br /> 
 If you want to customize to the message options of your website,than you need to buy a license.</td>     
  <td colspan="7" align="right" style="font-size:16px;">
   <a href="http://web-dorado.com/files/fromSpiderContactsWP.php" target="_blank" style="color:red; text-decoration:none;">
