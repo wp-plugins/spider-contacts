@@ -1,0 +1,210 @@
+	
+
+@charset "utf-8";/* CSS Document */#productMainTable td
+{
+vertical-align:top;
+}
+#system-readmore
+{
+	display:none;
+}
+
+#contactMainDiv #contMiddle tr, #contactMainDiv #contMiddle td
+{
+border:none !important;
+}
+
+#cap_table ,
+#contactMainTable tr, #contactMainTable td 
+{border:none;}
+
+#cap_table tr, #cap_table td
+{border:none;}
+#paramstable td
+{
+	border-left-style:none;
+	border-right-style:none;
+	padding:2px !important;
+	}
+
+#caphid
+{
+	
+	display:none;}
+
+#contactMainDiv
+{
+margin:15px;
+padding:5px;
+text-align:left;
+}
+
+
+#message_div
+{
+margin:15px;
+padding:5px;
+text-align:left;
+}
+
+#contactMainDivCube
+{
+margin:10px;
+padding:5px;
+text-align:left;
+
+}
+
+#table_of_param tr,
+#table_of_param td
+{ padding:2px;
+	border:none;
+	
+	}
+
+#contactMainDivCube #contTitle
+{
+font-weight:bold;padding:10px;margin-bottom:10px;
+}
+
+#contactMainDiv #contTitle
+{
+font-weight:bold;padding:10px;margin-bottom:10px;
+}
+#contDescription 
+{
+	
+	 height:112px !important; overflow:hidden !important;
+	}
+
+#contactMainDiv #contMore
+{
+text-align:right;
+}
+
+
+#contactMainDiv #contMiddle
+{
+width:100%;
+}
+
+#contactMainDiv #contMiddle td
+{
+padding:0px;padding-bottom:3px;vertical-align:middle;
+}
+
+#contactMainDiv #contact_par_sel
+{
+
+}
+
+
+
+
+
+
+
+
+.hidbut
+{
+visibility:hidden;position:absolute;
+}
+
+#contParam table, #contParam
+{
+margin:0px;padding:0px;border:0px;
+}
+
+#contParam table td
+{
+border:0px;padding:5px;vertical-align:center;
+}
+
+#contactsTable
+{
+position:relative; top:-40px;
+}
+
+#contactsTable td
+{
+text-align:right;
+padding:10px;
+padding-bottom:0px;
+}
+
+#contactsTable input
+{
+width:250px;
+}
+
+#contactMainDiv img 
+{
+border:#CCCCCC solid 2px;
+}
+
+
+
+.spidercontactbutton
+{
+border:0px;
+cursor:pointer;
+padding:7px;
+padding-left:15px;
+padding-right:15px;
+margin:10px;
+margin-right:0px;
+}
+
+#spidercontactnavigation
+{
+padding:0px;
+margin:5px;
+}
+#spidercontactnavigation a
+{
+padding:5px;
+font-weight:bold;
+text-decoration:none;
+}
+#spidercontactnavigation a:hover
+{
+text-decoration:underline;
+}
+
+.spidercontactparamslist,.spidercontactparamslist li
+{
+list-style:none !important;
+background:none !important;
+padding:0px !important;
+margin:0px !important;
+color:inherit !important;
+line-height: 1 !important;
+}
+
+.spidercontactbutton
+{
+border:0px;
+cursor:pointer;
+padding:7px;
+padding-left:15px;
+padding-right:15px;
+margin:10px;
+margin-right:0px;
+}
+
+.spidercontactinput
+{
+padding:4px;
+margin:10px;
+margin-right:0px;
+}
+
+.ContactSearchBox
+{
+text-align: right !important;
+}
+
+.contact_table tr th
+{
+ border:none;
+}
