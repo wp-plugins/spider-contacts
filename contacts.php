@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Contacts
 Plugin URI: http://web-dorado.com/products/wordpress-contacts-plugin.html
-Version: 1.1.5
+Version: 1.1.6
 Description: Spider Contacts is a WordPress staff list plugin with large and affecting capabilities which helps you to display information about the group of people more intelligible, effective and convenient. Spider Contact’s main feature is the possibility to create and manage your own list of different contacts with corresponding images, data and with a feedback option.
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -262,11 +262,7 @@ function Spider_contact_register($plugin_array)
 
 function add_button_style_Spider_contact()
 {
-echo '<style type="text/css">
-.wp_themeSkin span.mce_Spider_contact_mce {background:url('.plugins_url( 'images/Spider_contactLogo.png' , __FILE__ ).') no-repeat !important;}
-.wp_themeSkin .mceButtonEnabled:hover span.mce_Spider_contact_mce,.wp_themeSkin .mceButtonActive span.mce_Spider_Catalog_mce
-{background:url('.plugins_url( 'images/Spider_ContactLogoHover.png' , __FILE__ ).') no-repeat !important;}
-</style>';
+  echo '<script>var spider_contacts_plugin_url = "' . plugins_url('', __FILE__) . '";</script>';
 }
 
 add_action('admin_head', 'add_button_style_Spider_contact');
@@ -502,7 +498,7 @@ $categories=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_co
 	<title>Spider Contact</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/jquery/jquery.js"></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script><link rel="stylesheet" href="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/themes/advanced/skins/wp_theme/dialog.css?ver=342-20110630100">
+	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/tiny_mce_popup.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/utils/mctabs.js"></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option("siteurl"); ?>/wp-includes/js/tinymce/utils/form_utils.js"></script>
 	<base target="_self">
@@ -544,7 +540,6 @@ $categories=$wpdb->get_results('SELECT * FROM '.$wpdb->prefix.'spidercontacts_co
         
         
 		<div id="Contacts_Short_panel" class="panel">
-		<br>
 		<table border="0" cellpadding="4" cellspacing="0">
          <tbody><tr>
             <td nowrap="nowrap"><label for="Spider_contact_Category">Select Category</label></td>
@@ -637,8 +632,7 @@ function insert_spider_catalog() {
 						}
 					}
 				   tagtext='[Spider_contact_categories id="'+str+'"  type="'+show+'"  order_by="'+order_by+'"]';
-				   window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
-				   tinyMCEPopup.editor.execCommand('mceRepaint');
+				   window.tinyMCE.execCommand('mceInsertContent', false, tagtext);
 				   tinyMCEPopup.close();		
 	}
 	else
@@ -653,8 +647,7 @@ function insert_spider_catalog() {
 			{
 			   var tagtext;
 			   tagtext='[Spider_contact_single id="'+document.getElementById('spider_contact_contact').value+'"]';
-			   window.tinyMCE.execInstanceCommand('content', 'mceInsertContent', false, tagtext);
-			   tinyMCEPopup.editor.execCommand('mceRepaint');
+			   window.tinyMCE.execCommand('mceInsertContent', false, tagtext);
 			   tinyMCEPopup.close();		
 			}
 		

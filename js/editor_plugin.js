@@ -16,6 +16,7 @@
             ed.addButton('Spider_contact_mce', {
             title : 'Insert Spider Contact',
 			cmd : 'mceSpider_contact_mce',
+      image: spider_contacts_plugin_url + '/images/Spider_ContactLogoHover.png'
             });
         }
     });
