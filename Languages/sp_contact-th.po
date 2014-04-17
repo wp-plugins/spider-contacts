@@ -1,0 +1,163 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: spider_contact\n"
+"POT-Creation-Date: 2012-12-01 11:53+0400\n"
+"PO-Revision-Date: 2012-12-01 13:19+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress\\wp-content\\plugins"
+"\\contacts\n"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:318
+msgid "Back to all Contacts"
+msgstr "กลับไปที่รายชื่อทั้งหมด"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:379
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2063
+msgid "Category:"
+msgstr "หมวดหมู่"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:384
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1038
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2069
+msgid "Email"
+msgstr "อีเมล"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:467
+msgid "Send a Message"
+msgstr "ส่งข่าวสาร"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:483
+msgid "Your Name"
+msgstr "ชื่อ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:496
+msgid "Your Phone"
+msgstr "โทรศัพท์ของคุณ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:507
+msgid "Your Mail"
+msgstr "Mail ของคุณ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:522
+msgid "Contact Preference"
+msgstr "ติดต่อที่"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:538
+msgid "Title of Message"
+msgstr "ชื่อของข้อความ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:546
+msgid "Text"
+msgstr "ตัวหนังสือ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:558
+msgid "Please, Enter the Code"
+msgstr "โปรดใส่รหัส"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Send"
+msgstr "ส่ง"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Name field is required."
+msgstr "ฟิลด์ชื่อเป็นสิ่งจำเป็น"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Message field is required."
+msgstr "สนามข้อความจะต้อง"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Email field is Required."
+msgstr "สนามอีเมล์จะต้อง"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "Incorrect security code"
+msgstr "รหัสรักษาความปลอดภัยที่ไม่ถูกต้อง"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:563
+msgid "The Phone field is required."
+msgstr "สนามโทรศัพท์เป็นสิ่งจำเป็น"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:992
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1399
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1960
+msgid "Choose Category"
+msgstr "เลือกหมวดหมู่สินค้า"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:994
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1401
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1962
+msgid "All"
+msgstr "ทั้งหมด"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1014
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1422
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1985
+msgid "Search by name"
+msgstr "ค้นหาตามชื่อ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Search"
+msgstr "ค้นหา{0}{/0}"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1016
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1424
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1987
+msgid "Reset"
+msgstr "รีเซ็ต"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1034
+msgid "Picture"
+msgstr "รูปภาพ"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1035
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1039
+msgid "Parameters"
+msgstr "พารามิเตอร์"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1036
+msgid "Last Name"
+msgstr "· นามสกุล"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1037
+msgid "Category"
+msgstr "หมวดหมู่"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:1501
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.html.php:2155
+msgid "More"
+msgstr "เพิ่มเติม"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:497
+msgid "Message Sent Successfully"
+msgstr "ข้อความที่ส่งเรียบร้อยแล้ว"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:507
+msgid "Message sent but not emailed"
+msgstr "ข้อความที่ส่ง แต่ไม่ส่ง"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:523
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/front_end_functions.php:535
+msgid "Message Sent"
+msgstr "ข้อความที่ส่ง"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "Rating"
+msgstr "อันดับ:"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/star_rate.php:72
+msgid "You have already rated this product."
+msgstr "คุณได้รับการจัดอันดับสินค้านี้แล้ว"
+
+#: C:\wamp\www\wordpress\wp-content\plugins\contacts/elements/sqlmultilistx.php:3
+msgid "select.genericlist"
+msgstr "select.genericlist"
