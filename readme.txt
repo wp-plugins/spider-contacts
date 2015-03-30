@@ -11,6 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Spider Contacts helps you to display information about the group of people more intelligible, effective and convenient.   
   
 == Description ==  
+Create and manage staff contact lists in your WordPress site for FREE easily and effectively: add photos, contact data and enable feedback for each contact.    
   
 [Spider WordPress Contacts](http://web-dorado.com/products/wordpress-contacts-plugin.html)
   
