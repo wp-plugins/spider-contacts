@@ -63,6 +63,7 @@ function delete_massages(){
 }
 	</script>
     <form method="post" action="admin.php?page=Massages_Spider_contact" onkeypress="doNothing()" id="admin_form" name="admin_form" >
+	<?php $nonce_sp_con = wp_create_nonce('nonce_sp_con'); ?>
 	<table cellspacing="10" width="100%">
                   <tr>   
 <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/wordpress-contacts-guide-step-4.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
@@ -78,16 +79,16 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
     <td style="width:100%; text-align:left">
     <?php echo "<h2>Messages</h2>"; ?>
     </td>
-    <td><input class="button-secondary action" type="button" value="Mark as Read"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_readen'; document.getElementById('admin_form').submit()" /></td>
-        <td><input class="button-secondary action" type="button" value="Mark as Unread"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_unread'; document.getElementById('admin_form').submit()" /></td>
+    <td><input class="button-secondary action" type="button" value="Mark as Read"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_readen&_wpnonce=<?php echo $nonce_sp_con; ?>'; document.getElementById('admin_form').submit()" /></td>
+        <td><input class="button-secondary action" type="button" value="Mark as Unread"  onclick="document.getElementById('admin_form').action=document.getElementById('admin_form').action+'&task=mark_unread&_wpnonce=<?php echo $nonce_sp_con; ?>'; document.getElementById('admin_form').submit()" /></td>
     </tr>
     </table>
     
    
- Filter:<input type="text" name="search" id="search" value="<?php if(isset($_POST['search'])) echo $_POST['search']; ?>" class="text_area" onchange="document.adminForm.submit();">
- From: 	<input class="inputbox" type="text" value="<?php if(isset($_POST['startdate'])) echo $_POST['startdate']; ?>" name="startdate" id="startdate" size="10" maxlength="10" >
+ Filter:<input type="text" name="search" id="search" value="<?php if(isset($_POST['search'])) echo esc_js(esc_html(stripslashes($_POST['search']))); ?>" class="text_area" onchange="document.adminForm.submit();">
+ From: 	<input class="inputbox" type="text" value="<?php if(isset($_POST['startdate'])) echo esc_js(esc_html(stripslashes($_POST['startdate']))); ?>" name="startdate" id="startdate" size="10" maxlength="10" >
 		<input type="reset" class="button" value="..." onclick="return showCalendar('startdate','%Y-%m-%d');"> 
- To:    <input class="inputbox" type="text" value="<?php if(isset($_POST['enddate'])) echo $_POST['enddate']; ?>" name="enddate" id="enddate" size="10" maxlength="10" > 
+ To:    <input class="inputbox" type="text" value="<?php if(isset($_POST['enddate'])) echo esc_js(esc_html(stripslashes($_POST['enddate']))); ?>" name="enddate" id="enddate" size="10" maxlength="10" > 
 		<input type="reset" class="button" value="..." onclick="return showCalendar('enddate','%Y-%m-%d');">
         <button class="button-primary" onclick="this.form.submit();">Submit</button>
 		<button class="button-primary" onclick="document.getElementById('search').value=''; document.getElementById('enddate').value='';document.getElementById('startdate').value='';this.form.getElementById('filter_state').value='';this.form.submit();">Reset</button>
@@ -150,14 +151,14 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
          <td><?php echo $rows[$i]->name; ?></td>
          <td><?php echo $rows[$i]->date; ?></td>
          <td><a  href="admin.php?page=Massages_Spider_contact&task=edit_massage&id=<?php echo $rows[$i]->id; ?>">Edit</a></td>         
-         <td><a  href="admin.php?page=Massages_Spider_contact&task=delete_massage&id=<?php echo $rows[$i]->id; ?>">Delete</a></td>
+         <td><a  href="admin.php?page=Massages_Spider_contact&task=delete_massage&id=<?php echo $rows[$i]->id; ?>&_wpnonce=<?php echo $nonce_sp_con; ?>">Delete</a></td>
   </tr> 
  <?php } ?>
  </tbody>
  </table>
-
- <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if(isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc'];?>"  />
- <input type="hidden" name="order_by" id="order_by" value="<?php if(isset($_POST['order_by'])) echo $_POST['order_by'];?>"  />
+ <?php wp_nonce_field('nonce_sp_con', 'nonce_sp_con'); ?>
+ <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if(isset($_POST['asc_or_desc'])) echo esc_js(esc_html(stripslashes($_POST['asc_or_desc'])));?>"  />
+ <input type="hidden" name="order_by" id="order_by" value="<?php if(isset($_POST['order_by'])) echo esc_js(esc_html(stripslashes($_POST['order_by'])));?>"  />
 
  <?php
 ?>
@@ -502,13 +503,10 @@ Message:
 
 </table>
 
-
+<?php wp_nonce_field('nonce_sp_con', 'nonce_sp_con'); ?>
 <input type="hidden" name="task" value="" />
-
 <input type="hidden" name="boxchecked" value="0" />
-
 <input type="hidden" name="controller" value="messages" />
-
 </form>
 
 

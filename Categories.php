@@ -38,11 +38,11 @@ function showCategory_contact()
 	  
   global $wpdb;
    if(isset($_POST['search_events_by_title']))
-$_POST['search_events_by_title']=esc_js($_POST['search_events_by_title']);
+$_POST['search_events_by_title']=esc_sql(esc_html(stripslashes($_POST['search_events_by_title'])));
 if(isset($_POST['asc_or_desc']))
-$_POST['asc_or_desc']=esc_js($_POST['asc_or_desc']);
+$_POST['asc_or_desc']=esc_sql(esc_html(stripslashes($_POST['asc_or_desc'])));
 if(isset($_POST['order_by']))
-$_POST['order_by']=esc_js($_POST['order_by']);
+$_POST['order_by']=esc_sql(esc_html(stripslashes($_POST['order_by'])));
 	$sort["default_style"]="manage-column column-autor sortable desc";
 	$sort["custom_style"] ="manage-column column-autor sortable desc";
 	$sort["1_or_2"]=1;
@@ -54,23 +54,23 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 			
 			if($_POST['asc_or_desc'])
 			{
-				$sort["sortid_by"]=$_POST['order_by'];
+				$sort["sortid_by"]=esc_sql(esc_html(stripslashes($_POST['order_by'])));
 				if($_POST['asc_or_desc']==1)
 				{
 					$sort["custom_style"]="manage-column column-title sorted asc";
 					$sort["1_or_2"]="2";
-					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." ASC";
+					$order="ORDER BY ".$sort["sortid_by"]." ASC";
 				}
 				else
 				{
 					$sort["custom_style"]="manage-column column-title sorted desc";
 					$sort["1_or_2"]="1";
-					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." DESC";
+					$order="ORDER BY ".$sort["sortid_by"]." DESC";
 				}
 			}
 	if($_POST['page_number'])
 		{
-			$limit=($_POST['page_number']-1)*20; 
+			$limit=(esc_sql(esc_html(stripslashes($_POST['page_number'])))-1)*20; 
 		}
 		else
 		{
@@ -82,7 +82,7 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 			$limit=0;
 		}
 	if(isset($_POST['search_events_by_title'])){
-		$search_tag=$_POST['search_events_by_title'];
+		$search_tag=esc_sql(esc_html(stripslashes($_POST['search_events_by_title'])));
 		}
 		
 		else
@@ -90,7 +90,7 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 		$search_tag="";
 		}
 	if ( $search_tag ) {
-		$where= ' WHERE name LIKE "%'.$wpdb->escape($search_tag).'%"';
+		$where= ' WHERE name LIKE "%'.$search_tag.'%"';
 	}
 	if(isset($_POST['saveorder']))
 	{
@@ -115,10 +115,10 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 			{
 				if(isset($_POST['order_'.$products_oreder->id]))
 				{
-					if($_POST['order_'.$products_oreder->id]==$products_oreder->ordering)
+					if($_POST['order_'.$products_oreder->id] == $products_oreder->ordering)
 					$aranc_popoxutineri_orderner[$products_oreder->id]=$products_oreder->ordering;
 					else
-					$popoxvac_orderner[$products_oreder->id]=$_POST['order_'.$products_oreder->id];
+					$popoxvac_orderner[$products_oreder->id]=esc_sql(esc_html(stripslashes($_POST['order_'.$products_oreder->id])));
 				}
 				else
 				{
@@ -271,13 +271,14 @@ function editCategory_contact($id)
          <?php
 	 return '';
 	 }
-	 
+	   /*
 	   $images=explode(";;;",$row->category_image_url);
 	   $par=explode('	',$row->param);
-	  $count_ord=count($images);
+	   $count_ord=count($images);
+	   Html_editCategory_contact($ord_elem, $count_ord,$row);
+	   */
 
-
-    Html_editCategory_contact($ord_elem, $count_ord,$row);
+	   Html_editCategory_contact($ord_elem,$row);
   }
   
   
@@ -290,16 +291,12 @@ function editCategory_contact($id)
 function add_category_contact()
 {
 	global $wpdb;
-	
-	
+	$row = new stdClass();
+	$row->description = '';
+	$row->param = '';
 	$query="SELECT name,ordering FROM ".$wpdb->prefix."spidercontacts_contacts_categories ORDER BY `ordering`";
 	$ord_elem=$wpdb->get_results($query); ///////ordering elements list
-	html_add_category_contact($ord_elem);
-	
-
-
-	
-	
+	html_add_category_contact($ord_elem, $row);	
 }
 
 
@@ -308,8 +305,7 @@ function add_category_contact()
 
 
 function save_cat_contact()
-{
-	
+{	
 	 global $wpdb;
 	 if(!(isset($_POST) && count($_POST)))
 	 return '';
@@ -345,11 +341,11 @@ function save_cat_contact()
 	 $script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 	 $save_or_no= $wpdb->insert($wpdb->prefix.'spidercontacts_contacts_categories', array(
 		'id'	=> NULL,
-		'name'   				 => $_POST["name"],
+		'name'   				 => esc_sql(esc_html(stripslashes($_POST["name"]))),
         'description'			 => $script_cat,
-        'param'  				 => esc_js($_POST["param"]),
-        'ordering' 				 => $_POST["ordering"],
-		'published'				 =>$_POST["published"],
+        'param'  				 => esc_sql(esc_html(stripslashes($_POST["param"]))),
+        'ordering' 				 => esc_sql(esc_html(stripslashes($_POST["ordering"]))),
+		'published'				 => esc_sql(esc_html(stripslashes($_POST["published"]))),
                 ),
 				array(
 				'%d',
@@ -361,7 +357,7 @@ function save_cat_contact()
 						
 				)
                 );
-					if(!$save_or_no)
+					if($save_or_no === FALSE)
 	{
 		?>
 	<div class="updated"><p><strong><?php _e('Error. Please install plugin again'); ?></strong></p></div>
@@ -376,9 +372,7 @@ function save_cat_contact()
 	<div class="updated"><p><strong><?php _e('Item Saved'); ?></strong></p></div>
 	<?php
 	
-    return true;
-	
-	
+    return true;	
 }
 
 
@@ -397,7 +391,7 @@ function change_cat_contact( $id ){
               array('id'=>$id),
 			  array(  '%d' )
 			  );
-	if($save_or_no)
+	if($savedd === FALSE)
 	{
 		?>
 	<div class="error"><p><strong><?php _e('Error. Please install plugin again'); ?></strong></p></div>
@@ -441,7 +435,7 @@ function removeCategory_contact($id)
 	
 		$ordering_ids[$i]=$rows[$i]->id;
 		if(isset($_POST["ordering"]))
-		$ordering_values[$i]=$i+1+$_POST["ordering"];
+		$ordering_values[$i]=$i+1+esc_sql(esc_html(stripslashes($_POST["ordering"])));
 		else
 		$ordering_values[$i]=$i+1;
 	}
@@ -476,7 +470,7 @@ function apply_cat_contact($id)
 		 return '';
 		 $corent_ord=$wpdb->get_var($wpdb->prepare('SELECT `ordering` FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE id=%d',$id ));
 		 $max_ord=$wpdb->get_var('SELECT MAX(ordering) FROM '.$wpdb->prefix.'spidercontacts_contacts_categories');
-		 if($corent_ord>$_POST["ordering"])
+		 if($corent_ord > $_POST["ordering"])
 		 {
 				$rows=$wpdb->get_results($wpdb->prepare('SELECT * FROM '.$wpdb->prefix.'spidercontacts_contacts_categories WHERE ordering>=%d AND id<>%d  ORDER BY `ordering` ASC ',$_POST["ordering"],$id));
 			 
@@ -487,7 +481,7 @@ function apply_cat_contact($id)
 			{		
 			
 				$ordering_ids[$i]=$rows[$i]->id;
-				$ordering_values[$i]=$i+1+$_POST["ordering"];
+				$ordering_values[$i]=$i+1+esc_sql(esc_html(stripslashes($_POST["ordering"])));
 			}
 			for($i=0;$i<$count_of_rows;$i++){
 					$wpdb->update($wpdb->prefix.'spidercontacts_contacts_categories', 
@@ -511,7 +505,7 @@ function apply_cat_contact($id)
 				$ordering_ids[$i]=$rows[$i]->id;
 				$ordering_values[$i]=$i+1;
 			}
-			if($max_ord==$_POST["ordering"]-1)
+			if($max_ord == esc_sql(esc_html(stripslashes($_POST["ordering"])))-1)
 			{
 				$_POST["ordering"]--;
 			}
@@ -527,11 +521,11 @@ function apply_cat_contact($id)
 	
 	$script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 	$savedd=$wpdb->update($wpdb->prefix.'spidercontacts_contacts_categories', array(
-					'name'   				 => esc_js($_POST["name"]),
+					'name'   				 => esc_sql(esc_html(stripslashes($_POST["name"]))),
 					'description'			 => $script_cat,
-					'param'  				 => esc_js($_POST["param"]),
-					'ordering' 				 => $_POST["ordering"],
-					'published'				 =>$_POST["published"],
+					'param'  				 => esc_sql(esc_html(stripslashes($_POST["param"]))),
+					'ordering' 				 => esc_sql(esc_html(stripslashes($_POST["ordering"]))),
+					'published'				 => esc_sql(esc_html(stripslashes($_POST["published"]))),
               ), 
               array('id'=>$id),
 			  array( 
@@ -541,7 +535,7 @@ function apply_cat_contact($id)
 				'%d',	
 				'%d', )
 			  );
-	if($save_or_no)
+	if($savedd === FALSE)
 	{
 		?>
 	<div class="error"><p><strong><?php _e('Error. Please install plugin again'); ?></strong></p></div>

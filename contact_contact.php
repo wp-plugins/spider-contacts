@@ -25,11 +25,11 @@ function  showContacts(){
   
   global $wpdb;
   if(isset($_POST['search_events_by_title']))
-$_POST['search_events_by_title']=esc_js($_POST['search_events_by_title']);
+$_POST['search_events_by_title']=esc_sql(esc_html(stripslashes($_POST['search_events_by_title'])));
 if(isset($_POST['asc_or_desc']))
-$_POST['asc_or_desc']=esc_js($_POST['asc_or_desc']);
+$_POST['asc_or_desc']=esc_sql(esc_html(stripslashes($_POST['asc_or_desc'])));
 if(isset($_POST['order_by']))
-$_POST['order_by']=esc_js($_POST['order_by']);
+$_POST['order_by']=esc_sql(esc_html(stripslashes($_POST['order_by'])));
 	$sort["default_style"]="manage-column column-autor sortable desc";
 	$sort["custom_style"]='manage-column column-autor sortable desc';
 	$sort["1_or_2"]=1;
@@ -41,23 +41,23 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 	{		
 			if($_POST['asc_or_desc'])
 			{
-				$sort["sortid_by"]=$_POST['order_by'];
+				$sort["sortid_by"]=esc_sql(esc_html(stripslashes($_POST['order_by'])));
 				if($_POST['asc_or_desc']==1)
 				{
 					$sort["custom_style"]="manage-column column-title sorted asc";
 					$sort["1_or_2"]="2";
-					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." ASC";
+					$order="ORDER BY ".$sort["sortid_by"]." ASC";
 				}
 				else
 				{
 					$sort["custom_style"]="manage-column column-title sorted desc";
 					$sort["1_or_2"]="1";
-					$order="ORDER BY ".$wpdb->escape($sort["sortid_by"])." DESC";
+					$order="ORDER BY ".$sort["sortid_by"]." DESC";
 				}
 			}
 	if($_POST['page_number'])
 		{
-			$limit=($_POST['page_number']-1)*20; 
+			$limit=(esc_sql(esc_html(stripslashes($_POST['page_number'])))-1)*20; 
 		}
 		else
 		{
@@ -69,7 +69,7 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 			$limit=0;
 		}
 	if(isset($_POST['search_events_by_title'])){
-		$search_tag=$_POST['search_events_by_title'];
+		$search_tag=esc_sql(esc_html(stripslashes($_POST['search_events_by_title'])));
 		}
 		
 		else
@@ -77,7 +77,7 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 		$search_tag="";
 		}
 	if ( $search_tag!="") {
-		$where= " WHERE ".$wpdb->prefix."spidercontacts_contacts.first_name LIKE '%".$wpdb->escape($search_tag)."%' ";
+		$where= " WHERE ".$wpdb->prefix."spidercontacts_contacts.first_name LIKE '%".($search_tag)."%' ";
 	}
 	if(isset($_POST['saveorder']))
 	{
@@ -104,7 +104,7 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 					if($_POST['order_'.$products_oreder->id]==$products_oreder->ordering)
 					$aranc_popoxutineri_orderner[$products_oreder->id]=$products_oreder->ordering;
 					else
-					$popoxvac_orderner[$products_oreder->id]=$_POST['order_'.$products_oreder->id];
+					$popoxvac_orderner[$products_oreder->id]=esc_sql(esc_html(stripslashes($_POST['order_'.$products_oreder->id])));
 				}
 				else
 				{
@@ -223,9 +223,9 @@ $_POST['order_by']=esc_js($_POST['order_by']);
 	if($_POST["cat_search"])
 	{
 		if($where)
-		$where.="AND category_id='".$_POST["cat_search"]."' ";
+		$where.="AND category_id='".esc_sql(esc_html(stripslashes($_POST["cat_search"])))."' ";
 		else
-		$where.="WHERE category_id='".$_POST["cat_search"]."' ";
+		$where.="WHERE category_id='".esc_sql(esc_html(stripslashes($_POST["cat_search"])))."' ";
 	}	
 	}
 	$total = $wpdb->get_var($query);
@@ -274,7 +274,7 @@ function change_prod( $id ){
               array('id'=>$id),
 			  array(  '%d' )
 			  );
-	if($save_or_no)
+	if($savedd === FALSE)
 	{
 		?>
 	<div class="error"><p><strong><?php _e('Error. Please install plugin again'); ?></strong></p></div>
@@ -319,7 +319,7 @@ function editContact($id)
 	  }
 	   $params=$new_param;
 	  
-    $row=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts WHERE id='".$wpdb->escape($id)."'");
+    $row=$wpdb->get_row("SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts WHERE id='".($id)."'");
 	if(!$row){
 		 ?>
          <div id="message" class="error"><p>insert valid `id`</p></div>
@@ -354,7 +354,7 @@ function editContact($id)
     else
         $pub = $row->published;
 
-	$query ="SELECT param FROM ".$wpdb->prefix."spidercontacts_contacts_categories where id='".$wpdb->escape($row->category_id)."'";
+	$query ="SELECT param FROM ".$wpdb->prefix."spidercontacts_contacts_categories where id='".($row->category_id)."'";
 	$rows1 =$wpdb->get_results( $query);	
 	$cat_row=$wpdb->get_results("SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts_categories");
 	
@@ -362,7 +362,7 @@ function editContact($id)
 	
 	
 	
-	$lists=$wpdb->get_results("SELECT ordering,first_name FROM ".$wpdb->prefix."spidercontacts_contacts WHERE category_id='".$wpdb->escape($cat_id_for_order)."' order by ordering");
+	$lists=$wpdb->get_results("SELECT ordering,first_name FROM ".$wpdb->prefix."spidercontacts_contacts WHERE category_id='".($cat_id_for_order)."' order by ordering");
 	
 	
 	
@@ -446,16 +446,16 @@ function  update_prad_cat($id){
 	 $new_images=implode(';;;',$images);
 	 $script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 			$savedd=$wpdb->update($wpdb->prefix.'spidercontacts_contacts', array(
-			'first_name'   	 =>esc_js(stripslashes($_POST['first_name'])),
-			'last_name'   	 =>esc_js(stripslashes($_POST['last_name'])),
-			'email'   		 =>esc_js(stripslashes($_POST['email'])),
-			'want_email'   	 =>stripslashes($_POST['want_email']),
-			'category_id'    =>stripslashes($_POST['cat_search']),
+			'first_name'   	 =>esc_sql(esc_html(stripslashes($_POST['first_name']))),
+			'last_name'   	 =>esc_sql(esc_html(stripslashes($_POST['last_name']))),
+			'email'   		 =>esc_sql(esc_html(stripslashes($_POST['email']))),
+			'want_email'   	 =>esc_sql(esc_html(stripslashes($_POST['want_email']))),
+			'category_id'    =>esc_sql(esc_html(stripslashes($_POST['cat_search']))),
 			'description'    =>$script_cat,
-			'image_url'   	 =>esc_js($new_images),
-			'param'	    	 =>esc_js(stripslashes($_POST['param'])),
-			'ordering'	     =>$_POST['ordering'],
-			'published'	     =>$_POST['published'],
+			'image_url'   	 =>esc_sql(esc_html(stripslashes($new_images))),
+			'param'	    	 =>esc_sql(esc_html(stripslashes($_POST['param']))),
+			'ordering'	     =>esc_sql(esc_html(stripslashes($_POST['ordering']))),
+			'published'	     =>esc_sql(esc_html(stripslashes($_POST['published']))),
               ), 
               array('id'=>$id),
 			  array(  
@@ -472,7 +472,7 @@ function  update_prad_cat($id){
 			  
 			   )
 			  );
-	if($save_or_no)
+	if($savedd === FALSE)
 	{
 		?>
 	<div class="error"><p><strong><?php _e('Error. Please install plugin again'); ?></strong></p></div>
@@ -541,16 +541,16 @@ function save_prad_cat()
 	 $script_cat = preg_replace('#<script(.*?)>(.*?)</script>#is', '', stripslashes($_POST["content"]));
 	 $save_or_no= $wpdb->insert($wpdb->prefix.'spidercontacts_contacts', array(
 				'id'	=> NULL,
-				'first_name'   	 =>esc_js(stripslashes($_POST['first_name'])),
-				'last_name'   	 =>esc_js(stripslashes($_POST['last_name'])),
-				'email'   		 =>esc_js(stripslashes($_POST['email'])),
-				'want_email'   	 =>esc_js(stripslashes($_POST['want_email'])),
-				'category_id'    =>stripslashes($_POST['cat_search']),
+				'first_name'   	 =>esc_sql(esc_html(stripslashes($_POST['first_name']))),
+				'last_name'   	 =>esc_sql(esc_html(stripslashes($_POST['last_name']))),
+				'email'   		 =>esc_sql(esc_html(stripslashes($_POST['email']))),
+				'want_email'   	 =>esc_sql(esc_html(stripslashes($_POST['want_email']))),
+				'category_id'    =>esc_sql(esc_html(stripslashes($_POST['cat_search']))),
 				'description'    =>$script_cat,
-				'image_url'   	 =>esc_js($new_images),
-				'param'	    	 =>esc_js(stripslashes($_POST['param'])),
-				'ordering'	     =>$_POST['ordering'],
-				'published'	     =>$_POST['published'],
+				'image_url'   	 =>esc_sql(esc_html(stripslashes($new_images))),
+				'param'	    	 =>esc_sql(esc_html(stripslashes($_POST['param']))),
+				'ordering'	     =>esc_sql(esc_html(stripslashes($_POST['ordering']))),
+				'published'	     =>esc_sql(esc_html(stripslashes($_POST['published']))),
                 ),
 				array(
 				'%d',
@@ -566,35 +566,25 @@ function save_prad_cat()
 				'%d'						
 				)
 			);
-					if(!$save_or_no)
+	if($save_or_no === FALSE)
 	{
 		?>
 	<div class="updated"><p><strong><?php _e('Error. Please install plugin again'); ?></strong></p></div>
 	<?php
 		return false;
-	}
-	
-
-	
-	
+	}	
 	?>
 	<div class="updated"><p><strong><?php _e('Item Saved'); ?></strong></p></div>
-	<?php
-	
+	<?php	
     return true;
-	
-	
-
 }
 
 
 
 function addContact()
-{
-	
+{	
 	  global $wpdb;
-	  
-	  
+	  	  
 	  $params=$wpdb->get_results("SELECT * FROM ".$wpdb->prefix."spidercatalog_params");
 	  $new_param=array();
 	  foreach( $params as $param)
@@ -609,22 +599,13 @@ function addContact()
     
 	
 	$lists=$wpdb->get_results("SELECT ordering,first_name FROM ".$wpdb->prefix."spidercontacts_contacts order by ordering");
-		$cat_row=$wpdb->get_results("SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts_categories");
+	$cat_row=$wpdb->get_results("SELECT * FROM ".$wpdb->prefix."spidercontacts_contacts_categories");
 	
+	$row = new stdClass();
+	$row->description = '';
+	$row->want_email = '';
 	
-	
-	
-	
-	
-	
-    html_addContact($lists, $option, $params,$cat_row);
-  
-	
-	
-	
-	
-	
-	
+    html_addContact($lists, $params,$cat_row, $row);	
 }
 
 

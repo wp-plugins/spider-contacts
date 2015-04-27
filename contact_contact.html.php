@@ -69,6 +69,7 @@ var keyCode = event.keyCode ? event.keyCode : event.which ? event.which : event.
     
     
     <form method="post"  onkeypress="doNothing()" action="admin.php?page=Single_Spider_contact" id="admin_form" name="admin_form">
+	<?php $nonce_sp_con = wp_create_nonce('nonce_sp_con'); ?>
 	<table cellspacing="10" width="100%">
              <tr>   
 <td width="100%" style="font-size:14px; font-weight:bold"><a href="http://web-dorado.com/wordpress-contacts-guide-step-3.html" target="_blank" style="color:blue; text-decoration:none;">User Manual</a><br />
@@ -158,13 +159,14 @@ Get the full version&nbsp;&nbsp;&nbsp;&nbsp;
          <td><a  href="admin.php?page=Single_Spider_contact&task=edit_prad&id=<?php echo $rows[$i]->id?>"><?php echo $rows[$i]->last_name; ?></a></td>
          <td><?php echo $rows[$i]->category; ?></td>
          <td ><?php echo  $move_up.$move_down; ?><input type="text" name="order_<?php echo $rows[$i]->id; ?>" style="width:40px" value="<?php echo $rows[$i]->ordering; ?>" /></td>
-         <td><a  href="admin.php?page=Single_Spider_contact&task=unpublish_prad&id=<?php echo $rows[$i]->id?>"<?php if(!$rows[$i]->published){ ?> style="color:#C00;" <?php }?> ><?php if($rows[$i]->published)echo "Yes"; else echo "No"; ?></a></td>
+         <td><a  href="admin.php?page=Single_Spider_contact&task=unpublish_prad&id=<?php echo $rows[$i]->id?>&_wpnonce=<?php echo $nonce_sp_con; ?>"<?php if(!$rows[$i]->published){ ?> style="color:#C00;" <?php }?> ><?php if($rows[$i]->published)echo "Yes"; else echo "No"; ?></a></td>
          <td ><a  href="admin.php?page=Single_Spider_contact&task=edit_prad&id=<?php echo $rows[$i]->id?>">Edit</a></td>
-         <td><a  href="admin.php?page=Single_Spider_contact&task=remove_prod&id=<?php echo $rows[$i]->id?>">Delete</a></td>
+         <td><a  href="admin.php?page=Single_Spider_contact&task=remove_prod&id=<?php echo $rows[$i]->id?>&_wpnonce=<?php echo $nonce_sp_con; ?>">Delete</a></td>
   </tr> 
  <?php } ?>
  </tbody>
  </table>
+ <?php wp_nonce_field('nonce_sp_con', 'nonce_sp_con'); ?>
  <input type="hidden" name="oreder_move" id="oreder_move" value="" />
  <input type="hidden" name="asc_or_desc" id="asc_or_desc" value="<?php if(isset($_POST['asc_or_desc'])) echo $_POST['asc_or_desc'];?>"  />
  <input type="hidden" name="order_by" id="order_by" value="<?php if(isset($_POST['order_by'])) echo $_POST['order_by'];?>"  />
@@ -556,7 +558,7 @@ for($i=0;$i<$count_ord;$i++){ ?>
 ?>
 
 <div id="upload_div_<?php echo $i+1; ?>">
-<input type="text"  id="image_no_<?php echo $i+1; ?>" value="<?php echo stripslashes($images[$i]) ?>" onchange="add_upload('<?php echo $i+1; ?>');" class="text_input" style="width:200px;"><a id="upload_href_<?php echo $i+1; ?>" class="button lu_upload_button" onclick="narek('<?php echo $i+1; ?>')">Select</a><input type="button" value="X" title="Delete" onclick="remov_upload('<?php echo $i+1; ?>')" /><br>
+<input type="text"  id="image_no_<?php echo $i+1; ?>" value="<?php echo /*stripslashes($images[$i])*/ ''; ?>" onchange="add_upload('<?php echo $i+1; ?>');" class="text_input" style="width:200px;"><a id="upload_href_<?php echo $i+1; ?>" class="button lu_upload_button" onclick="narek('<?php echo $i+1; ?>')">Select</a><input type="button" value="X" title="Delete" onclick="remov_upload('<?php echo $i+1; ?>')" /><br>
 </div>
 </td>
 <tr>
@@ -724,10 +726,9 @@ Published:
 </table>
 
 </fieldset>
-<input type="hidden" name="id"
-value="<?php echo $row->id; ?>" />
-<input type="hidden" name="option"
-value=""/>
+<?php wp_nonce_field('nonce_sp_con', 'nonce_sp_con'); ?>
+<input type="hidden" name="id" value="<?php echo $row->id; ?>" />
+<input type="hidden" name="option" value=""/>
 
 </form>
 <?php
@@ -765,7 +766,7 @@ value=""/>
  
  
  
-function html_addContact($lists,  $option, $params, $cat_row)
+function html_addContact($lists,  $params, $cat_row, $row)
 {
 	
 ?>
@@ -1151,6 +1152,7 @@ Published:
 </table>
 
 </fieldset>
+<?php wp_nonce_field('nonce_sp_con', 'nonce_sp_con'); ?>
 <input type="hidden" name="id"  value="" />
 <input type="hidden" name="option" value="" />
 
@@ -1158,200 +1160,12 @@ Published:
 
 </form>
 <?php
-	 
-	 
-	 
-	 
-	 
- 
-	
-	
-	
-	
-	
-	
+	 	
 	
 }
- 
- 
- 
- 
- 
- 
- 
- 
-
-
- 
- 
  
   //////////////////////////////////////////////////////                                            /////////////////////////////////////////////////////// 
  //////////////////////////////////////////////////////      revive and reting			            ///////////////////////////////////////////////////////
  //////////////////////////////////////////////////////                                             ///////////////////////////////////////////////////////
  //////////////////////////////////////////////////////                                             ///////////////////////////////////////////////////////
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- ///////////////////////////////////////////////////////////////////////////////////////////////
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
  

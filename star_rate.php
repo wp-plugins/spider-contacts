@@ -21,12 +21,12 @@ starrating();
 		{
 			global $wpdb;
 			if(isset($_POST['product_id']))
-			$product_id = $_POST['product_id'];
+			$product_id = esc_js(esc_html(stripslashes($_POST['product_id'])));
 			else
 			$product_id=0;
 			
 			if(isset($_POST['vote_value']))
-			$vote_value = $_POST['vote_value'];
+			$vote_value = esc_js(esc_html(stripslashes($_POST['vote_value'])));
 			else
 			$vote_value=0;
 			

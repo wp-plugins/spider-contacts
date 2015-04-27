@@ -343,8 +343,8 @@ echo '</tr></table></div>
 <tr><td valign="top" width="280">
 <table id="spider_contact_image_table" cellpadding="0" cellspacing="5" border="0" style="margin:0px;">';
 
-if(!($row->image_url!="" and $row->image_url!="******0;;;")){
-$imgurl[0]=plugins_url('images/noimage.jpg',__FILE__);echo '<tr><td colspan="2" id="cont_main_picture_container" valign="top"><div style="width:'.($params->large_picture_width).'px;border: #CCCCCC solid 2px;padding:5px;background-color:white;"><div id="cont_main_picture" style="width:'.($params->large_picture_width).'px;height:'.($params->large_picture_height).'px; background:url('.$imgurl[0].') center no-repeat;background-size:contain;">&nbsp;</div></div></td></tr>';}
+if(!($row->image_url!="" and $row->image_url!=";" and $row->image_url!="******0")){
+$imgurl[0]=plugins_url('Front_images/noimage.jpg',__FILE__);echo '<tr><td colspan="2" id="cont_main_picture_container" valign="top"><div style="width:'.($params->large_picture_width).'px;border: #CCCCCC solid 2px;padding:5px;background-color:white;"><div id="cont_main_picture" style="width:'.($params->large_picture_width).'px;height:'.($params->large_picture_height).'px; background:url('.$imgurl[0].') center no-repeat;background-size:contain;">&nbsp;</div></div></td></tr>';}
 else{
 	
 		$image_with_atach_id=explode('******',$imgurl[0]);
@@ -605,7 +605,7 @@ echo '<div style="font-weight:bold;">'.__('Contact Preference','sp_contact').'</
  <?php
  $code='';
  if(isset($_POST['code']))
-    $code=$_POST['code'];
+    $code=esc_js(esc_html(stripslashes($_POST['code'])));
 	
 	
 }
@@ -1058,7 +1058,7 @@ if ($params->get("choose_category") and !($idddd > 0))
 {
 	$cat_id=0;
 	if(isset($_POST['cat_id']))
-	$cat_id =$_POST['cat_id'];
+	$cat_id =esc_js(esc_html(stripslashes($_POST['cat_id'])));
 	
 	echo __('Choose Category','sp_contact') . '&nbsp;
 	<select id="cat_id" name="cat_id" class="spidercontactinput" size="1" onChange="document.cat_form.submit();">
@@ -1080,7 +1080,7 @@ if ( $params->get("name_search"))
 {
 	$name_search='';
 	if(isset($_POST['name_search']))
-$name_search = $_POST['name_search'];
+$name_search = esc_js(esc_html(stripslashes($_POST['name_search'])));
 echo '<br />
 ' . __('Search by name','sp_contact') . '&nbsp;
 <input id="name_search" name="name_search" class="input" value="'.$name_search.'"> 
@@ -1124,9 +1124,9 @@ if(!strpos(get_permalink(),'?'))
    $link = get_permalink().'&contact_id=' . $row->id . '&view=showcontact&page_num=' . $page_num . '&back=1';
 	  echo '<tr style="border-color:' . $params->get('table_border_color') . ' !important ;" align="center">';
 	  			echo '<td style="border-color:' . $params->get('table_border_color') . ' !important ;" id ="picture">';
-		 if (!($row->image_url != "" and $row->image_url != ";"))
+ if (strpos($row->image_url,'http://') === false  and strpos($row->image_url,'https://') === false)
       {
-        $imgurl[0] =plugins_url('images/noimage.jpg',__FILE__);
+        $imgurl[0] =plugins_url('Front_images/noimage.jpg',__FILE__);
 		  echo   '<div style="margin:5px;"><a href="'.$link.'" target="_self"><img style="max-width:' . $params->get('table_small_picture_width') . 'px ; max-height:' . $params->get('table_small_picture_height') . 'px "   src="'.$imgurl[0].'" /></a></div>';
         
 	  }
@@ -1272,7 +1272,7 @@ else
 
 $cat_id =0;
 if(isset($_POST['cat_id'])) 
-  $cat_id=$_POST['cat_id'];
+  $cat_id=esc_js(esc_html(stripslashes($_POST['cat_id'])));
 
 
 
@@ -1501,7 +1501,7 @@ function submit_cotctt(page_link)
 endif;
 $cat_id =0;
 if(isset($_POST['cat_id'])) 
-  $cat_id=$_POST['cat_id'];
+  $cat_id=esc_js(esc_html(stripslashes($_POST['cat_id'])));
   if( 'page' == get_option( 'show_on_front' ) && ( '' != get_option( 'page_for_posts' ) ) && is_home() ){
       $page_link=get_permalink($frontpage_id);
    }
@@ -1542,7 +1542,7 @@ if ( $params->get("name_search"))
 {
 	$name_search='';
 	if(isset($_POST['name_search']))
-$name_search = $_POST['name_search'];
+$name_search = esc_js(esc_html(stripslashes($_POST['name_search'])));
 
 echo '<br />
 ' . __('Search by name','sp_contact') . '&nbsp;
@@ -1596,9 +1596,9 @@ foreach ($rows as $row)
 <table id="contMiddle" border="0" cellspacing="0" cellpadding="0"><tr>';
     
     
-     if (!($row->image_url != "" and $row->image_url != "******0;;;"))
+     if (strpos($row->image_url,'http://') === false  and strpos($row->image_url,'https://') === false)
       {
-        $imgurl[0] =plugins_url('images/noimage.jpg',__FILE__);
+        $imgurl[0] =plugins_url('Front_images/noimage.jpg',__FILE__);
         
   echo '<td style="padding:10px;"><img style="max-width:' . $params->get('cube_small_picture_width') . 'px; max-height:' . $params->get('cube_small_picture_height') . 'px" src="' .$imgurl[0]. '" />
 
@@ -2109,7 +2109,7 @@ border-top-left-radius: 8px;
 endif;
 $cat_id=0;
 if(isset($_POST['cat_id']))
-$cat_id = $_POST['cat_id'];
+$cat_id = esc_js(esc_html(stripslashes($_POST['cat_id'])));
   if( 'page' == get_option( 'show_on_front' ) && ( '' != get_option( 'page_for_posts' ) ) && is_home() ){
       $page_link=get_permalink($frontpage_id);
    }
@@ -2151,7 +2151,7 @@ if ( $params->get("name_search"))
 	
 $name_search='';
 if(isset($_POST['name_search']))
-$name_search = $_POST['name_search'];	
+$name_search = esc_js(esc_html(stripslashes($_POST['name_search'])));	
 	
 
 echo '<br /><span style="font-size:14px !important">
@@ -2203,9 +2203,9 @@ foreach ($rows as $row)
 <table id="contMiddle" border="0" cellspacing="0" cellpadding="0"><tr>';
     
     
-      if (!($row->image_url != "" and $row->image_url != "******0;;;"))
+      if (strpos($row->image_url,'http://') === false  and strpos($row->image_url,'https://') === false)
       {
-        $imgurl[0] = plugins_url('images/noimage.jpg',__FILE__);
+        $imgurl[0] = plugins_url('Front_images/noimage.jpg',__FILE__);
         
   echo '<td style="padding:10px;"><img style="max-width:' . $params->get('small_picture_width') . 'px;max-height:' . $params->get('small_picture_height') . 'px" src="' . $imgurl[0] . '" />
 

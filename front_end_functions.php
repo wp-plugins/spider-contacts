@@ -186,7 +186,7 @@ foreach($paramsarrray as $par){
 
 													
 		if(isset($_POST['code']))
-			$code=$wpdb->escape($_POST['code']);
+			$code=esc_sql(esc_html(stripslashes($_POST['code'])));
 		else
 			$code='';
 		
@@ -621,12 +621,12 @@ if(isset($_GET['page_num']))
 		$page_num=1;
 		
 if(isset($_POST['name_search'])){
-   $search = $_POST['name_search'];
+   $search = esc_sql(esc_html(stripslashes($_POST['name_search'])));
 }
 
 if(isset($_POST['cat_id'])) {
   if($_POST['cat_id']!=0) {
-    $cat_id=$_POST['cat_id'];
+    $cat_id=esc_sql(esc_html(stripslashes($_POST['cat_id'])));
   }
   else {		
     $cat_id=0;
@@ -853,12 +853,12 @@ if(isset($_GET['page_num']))
 		$page_num=1;
 		
 if(isset($_POST['name_search'])){
-   $search = $_POST['name_search'];
+   $search = esc_sql(esc_html(stripslashes($_POST['name_search'])));
 }
 
 if(isset($_POST['cat_id'])) {
   if($_POST['cat_id']!=0) {
-    $cat_id=$_POST['cat_id'];
+    $cat_id=esc_sql(esc_html(stripslashes($_POST['cat_id'])));
   }
   else {		
     $cat_id=0;
@@ -1072,12 +1072,12 @@ if(isset($_GET['page_num']))
 		$page_num=1;
 		
 if(isset($_POST['name_search'])){
-   $search = $_POST['name_search'];
+   $search = esc_sql(esc_html(stripslashes($_POST['name_search'])));
 }
 
 if(isset($_POST['cat_id'])) {
   if($_POST['cat_id']!=0) {
-    $cat_id=$_POST['cat_id'];
+    $cat_id=esc_sql(esc_html(stripslashes($_POST['cat_id'])));
   }
   else {		
     $cat_id=0;
@@ -1111,6 +1111,7 @@ $query = $wpdb->prepare("SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$w
 else
 
 {
+
 
 $query_count = "SELECT count(".$wpdb->prefix."spidercontacts_contacts.id) AS cont_count FROM ".$wpdb->prefix."spidercontacts_contacts  WHERE
 
@@ -1156,13 +1157,14 @@ $query_count = "SELECT count(".$wpdb->prefix."spidercontacts_contacts.id) AS con
 $query= "SELECT ".$wpdb->prefix."spidercontacts_contacts.*, ".$wpdb->prefix."spidercontacts_contacts_categories.name AS cat_name  FROM ".$wpdb->prefix."spidercontacts_contacts LEFT JOIN ".$wpdb->prefix."spidercontacts_contacts_categories ON ".$wpdb->prefix."spidercontacts_contacts.category_id=".$wpdb->prefix."spidercontacts_contacts_categories.id WHERE
 
 ".$wpdb->prefix."spidercontacts_contacts.published = '1' ";
-if($cat_id!=0)
 
-{
+if($cat_id!=0) { 
 	$query_count .= " AND ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";
-	$query .= " AND ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";}
+	$query .= " AND ".$wpdb->prefix."spidercontacts_contacts.category_id=%d ";
 	$query_count=$wpdb->prepare($query_count,$cat_id);
 	$query=$wpdb->prepare($query,$cat_id);
+}
+	
 }
 }
 		

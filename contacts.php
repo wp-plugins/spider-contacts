@@ -3,7 +3,7 @@
 /*
 Plugin Name: Spider Contacts
 Plugin URI: http://web-dorado.com/products/wordpress-contacts-plugin.html
-Version: 1.1.6
+Version: 1.1.7
 Description: Spider Contacts is a WordPress staff list plugin with large and affecting capabilities which helps you to display information about the group of people more intelligible, effective and convenient. Spider Contact’s main feature is the possibility to create and manage your own list of different contacts with corresponding images, data and with a feedback option.
 Author: http://web-dorado.com/
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -303,7 +303,7 @@ function spider_contact() {
 	wp_print_scripts('editor');
 	if (function_exists('add_thickbox')) add_thickbox();
 	wp_print_scripts('media-upload');
-	if (function_exists('wp_tiny_mce')) wp_tiny_mce();
+	//if (function_exists('wp_tiny_mce')) wp_tiny_mce();
 	wp_admin_css();
 	wp_enqueue_script('utils');
 	do_action("admin_print_styles-post-php");
@@ -963,7 +963,7 @@ function Categories_Spider_contact()
 	
 	
 	
-$task=$_GET["task"];//get task for choosing function
+$task=isset($_GET["task"]) ? $_GET["task"]: '';//get task for choosing function
 
 if(isset($_GET["id"]))
 	$id=$_GET["id"];
@@ -979,12 +979,18 @@ switch ($task)
 		
 		
 		case 'publish_cat':
+		    $nonce_sp_con = $_REQUEST['_wpnonce'];
+			if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+			  die("Are you sure you want to do this?");
 			change_cat_contact($id);
 			showCategory_contact();
 		break;	 
 		
 		
 		case 'unpublish_cat':
+			$nonce_sp_con = $_REQUEST['_wpnonce'];
+			if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+			  die("Are you sure you want to do this?");
 			change_cat_contact($id);
 			showCategory_contact();
 		break;	
@@ -1000,22 +1006,26 @@ switch ($task)
         break;
 
     case 'save':
-		if($id)
+		if($id) {
+		    check_admin_referer('nonce_sp_con', 'nonce_sp_con');
 		 	apply_cat_contact($id);
-		 else
+			}
+		 else { 
+		    check_admin_referer('nonce_sp_con', 'nonce_sp_con');
 		  	save_cat_contact();
+			}
 		 showCategory_contact();
 	break;
 			
 	case 'apply':
 		if($id)
-		{ 
+		{    check_admin_referer('nonce_sp_con', 'nonce_sp_con');
 			 apply_cat_contact($id);
 			 editCategory_contact($id);
 			
 		}
 		else
-		{
+		{   check_admin_referer('nonce_sp_con', 'nonce_sp_con');
 			$true=save_cat_contact();
 			if($true){
 				$id=$wpdb->get_var("SELECT MAX( id ) FROM ".$wpdb->prefix."spidercontacts_contacts_categories");
@@ -1033,7 +1043,10 @@ switch ($task)
  
   
    case 'remove_cat':
-            removeCategory_contact($id);
+            $nonce_sp_con = $_REQUEST['_wpnonce'];
+			if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+			  die("Are you sure you want to do this?");
+			removeCategory_contact($id);
 			showCategory_contact();
 			break;
 
@@ -1092,39 +1105,52 @@ function Single_Spider_contact(){
         break;
     case 'apply':
 	if($id){
+	 check_admin_referer('nonce_sp_con', 'nonce_sp_con');
 	update_prad_cat($id);
 	}
 	else
-	{
+	{   check_admin_referer('nonce_sp_con', 'nonce_sp_con');
 		save_prad_cat();
 		$id=$wpdb->get_var("SELECT MAX(id) FROM ".$wpdb->prefix."spidercontacts_contacts");
 	}
 	 editContact($id);
 	break;
 	  case 'save':
-	  if($id)
-	  update_prad_cat($id);
-	  else
-	   save_prad_cat();
+	  if($id) {
+	    check_admin_referer('nonce_sp_con', 'nonce_sp_con');
+	    update_prad_cat($id);
+	  }
+	  else {
+	   check_admin_referer('nonce_sp_con', 'nonce_sp_con');
+	   save_prad_cat(); 
+	   }
 	    showContacts();
 	break;
 	
     case 'saveorder':
 
         break;
-			case 'unpublish_prad':
-			change_prod($id);
-			showContacts();
-				break;	 
-		case 'unpublish_prad':
-			change_prod($id);
-			showContacts();
-				break;	
+	case 'unpublish_prad':
+	$nonce_sp_con = $_REQUEST['_wpnonce'];
+	if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+	  die("Are you sure you want to do this?");
+	change_prod($id);
+	showContacts();
+		break;	 
+	case 'unpublish_prad':
+		$nonce_sp_con = $_REQUEST['_wpnonce'];
+		if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+		  die("Are you sure you want to do this?");
+		change_prod($id);
+		showContacts();
+			break;	
     case 'remove_prod':
-            removeContact($id);
-			 showContacts();
-			
-			break;
+		$nonce_sp_con = $_REQUEST['_wpnonce'];
+		if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+		  die("Are you sure you want to do this?");
+		removeContact($id);
+		showContacts(); 			
+		break;
 			
    default:
             showContacts();
@@ -1167,17 +1193,27 @@ function Massages_Spider_contact(){
 		break;
 
 		
-	case 'mark_readen';		
+	case 'mark_readen':	
+	    $nonce_sp_con = $_REQUEST['_wpnonce'];
+		if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+		  die("Are you sure you want to do this?");
 		spider_cont_mark_as_readen();
 		show_spider_contact_massage();
 		break;
-	case 'mark_unread';		
+		
+	case 'mark_unread':
+		$nonce_sp_con = $_REQUEST['_wpnonce'];
+		if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+		  die("Are you sure you want to do this?");	
 		spider_cont_mark_as_unreaden();
 		show_spider_contact_massage();
 		break;
 
 		
 	case 'delete_massage':
+		$nonce_sp_con = $_REQUEST['_wpnonce'];
+		if (! wp_verify_nonce($nonce_sp_con, 'nonce_sp_con') )
+		  die("Are you sure you want to do this?");
 		spider_contact_removeMessages($id);
 		show_spider_contact_massage();
 		break;
@@ -1267,7 +1303,7 @@ function Uninstall_Spider_Contact(){
 global $wpdb;
 $base_name = plugin_basename('Categories_Spider_contact');
 $base_page = 'admin.php?page='.$base_name;
-$mode = trim($_GET['mode']);
+$mode = isset($_GET['mode']) ? trim($_GET['mode']) : '';
 
 
 if(!empty($_POST['do'])) {
