@@ -3,7 +3,7 @@ Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-contacts-plugin.html 
 Tags: contact ,contacts, contact information, staff,  addressbook, address book , contact widget, People Contact, Contact management system, administration
 Requires at least: 3.0  
-Tested up to: 4.2  
+Tested up to: 4.3  
 Stable tag: 1.1.7  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
